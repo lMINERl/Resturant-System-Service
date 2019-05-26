@@ -5,7 +5,7 @@ const add = (a, b) => {
   return a + b;
 }
 
-const App = () => {
+const App = (props) => {
   return (
     <>
     <div>App</div>
