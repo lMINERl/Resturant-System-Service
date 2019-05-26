@@ -7,12 +7,15 @@ const add = (a, b) => {
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path=""></Route>
-        <Redirect path="/home" to="/" />
-      </Switch>
-    </BrowserRouter>
+    <>
+    <div>App</div>
+      <BrowserRouter>
+        <Switch>
+          <Route path=""></Route>
+          <Redirect path="/home" to="/" />
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 
