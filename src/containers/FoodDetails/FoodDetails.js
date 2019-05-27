@@ -1,11 +1,11 @@
 import React from 'react';
 
-const FoodDetails = (props) => {
-
-  return (
-    <div>FoodDetails</div>
-  );
-
+class FoodDetails extends React.Component {
+  render() {
+    return (
+      <div>FoodDetails</div>
+    );
+  }
 }
 
 export default FoodDetails;

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ProfileFavCuisins = (props) => {
-
-  return (
-    <div>ProfileFavCuisins</div>
-  );
-
+class ProfileFavCuisins extends React.Component {
+  render() {
+    return (
+      <div>ProfileFavCuisins</div>
+    );
+  }
 }
 
 export default ProfileFavCuisins;

@@ -1,11 +1,10 @@
 import React from 'react';
-
-const GroupOrder = (props) => {
-  
-  return (
-    <div>GroupOrder</div>
-  );
-
+class GroupOrder extends React.Component {
+  render() {
+    return (
+      <div>GroupOrder</div>
+    );
+  }
 }
 
 export default GroupOrder;
