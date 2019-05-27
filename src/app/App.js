@@ -1,22 +1,24 @@
-const React = require('react');
-const { BrowserRouter, Switch, Route, Redirect } = require('react-router-dom');
+import React from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-const add = (a, b) => {
-  return a + b;
+import CardFood from '../components/CardFood';
+
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <>
+        <CardFood></CardFood>
+        <BrowserRouter>
+          <Switch>
+            <Route path=""></Route>
+            <Redirect path="/home" to="/" />
+          </Switch>
+        </BrowserRouter>
+      </>
+    );
+  }
 }
 
-const App = (props) => {
-  return (
-    <>
-    <div>App</div>
-      <BrowserRouter>
-        <Switch>
-          <Route path=""></Route>
-          <Redirect path="/home" to="/" />
-        </Switch>
-      </BrowserRouter>
-    </>
-  );
-}
-
-module.exports = { App, add };
+export default App;

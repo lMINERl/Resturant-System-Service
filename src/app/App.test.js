@@ -1,17 +1,11 @@
-const { React, ReactDOM, renderer, configure, shallow, Adapter, enzymeSerializer } = require('../test/config');
-const { App, add } = require('./App');
+import { React, ReactDOM, renderer, configure, shallow, Adapter, enzymeSerializer } from '../test/config';
+import { App } from './App';
 
 describe('just a fake test', () => {
   test('fake test', () => {
     expect(true).toBeTruthy();
   });
-  test('function add', () => {
-    // success test
-    expect(add(1, 2)).toBe(3);
-
-    // fail test
-    // expect(add(1,2)).toBe(4);
-  })
+  
 });
 
 // test shallow component

@@ -48,6 +48,8 @@
     "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "prop-types": "^15.7.2",
-    "react-test-renderer": "^16.8.6"
+    "react-test-renderer": "^16.8.6",
+    "bootstrap": "^4.2.1",
+    "font-awesome": "^4.7.0"
   }
 }
