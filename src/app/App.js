@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import CardFood from '../components/CardFood';
+import CardFood from '../containers/CardFood';
 
 
 class App extends React.Component {
