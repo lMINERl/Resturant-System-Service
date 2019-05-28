@@ -11,6 +11,7 @@ const CardListing = (props) => {
         discountPrice: 160.00,
         discountPercent: 50,
         price: 85.00,
+        img:null,
         rating: 4,
         size: 0,
         sizes: [`small`, `meduim`, `large`],
@@ -36,6 +37,16 @@ const CardListing = (props) => {
         rating: 4,
         size: 0,
         sizes: [`small`, `large`],
+        amount: 0
+      }, {
+        id: 'falhpaiow1241',
+        name: 'Cheese Burger',
+        discountPrice: 160.00,
+        discountPercent: 50,
+        price: 85.00,
+        rating: 4,
+        size: 0,
+        sizes: [`small`, `meduim`, `large`],
         amount: 0
       }
     ]
