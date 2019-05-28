@@ -1,19 +1,19 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Navigation from '../containers/Navigation/index';
-import HomePage from '../components/HomePage/index';
-import FormAddFood from '../containers/FormAddFood/index';
-import FormCreateGroup from '../containers/FormCreateGroup/index';
-import FormCreateResturant from '../containers/FormCreateResturant/index';
-import FormLogin from '../containers/FormLogin/index';
-import FormRegister from '../containers/FormRegister/index';
-import GroupOrder from '../containers/GroupOrder/index';
-import Footer from '../components/Footer/index';
-import FoodDetails from '../containers/FoodDetails/index';
-import ResturantDetails from '../containers/ResturantDetails/index';
-import CardListing from '../containers/CardListing/index';
-import Profile from '../containers/Profile/index';
+import Navigation from '../containers/Navigation/';
+import HomePage from '../components/HomePage/';
+import FormAddFood from '../containers/FormAddFood/';
+import FormCreateGroup from '../containers/FormCreateGroup/';
+import FormCreateResturant from '../containers/FormCreateResturant/';
+import FormLogin from '../containers/FormLogin/';
+import FormRegister from '../containers/FormRegister/';
+import GroupOrder from '../containers/GroupOrder/';
+import Footer from '../components/Footer/';
+import FoodDetails from '../containers/FoodDetails/';
+import ResturantDetails from '../containers/ResturantDetails/';
+import CardListing from '../containers/CardListing/';
+import Profile from '../containers/Profile/';
 
 
 class App extends React.Component {
