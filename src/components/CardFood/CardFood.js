@@ -44,9 +44,9 @@ const CardFood = (props) => {
 
       </div>
       <div className="menu-card__size-info">
-        <span onClick={() => props.setamount(props.data.id, props.data.amount + 1)} className="menu-card__size-info-left"><i className="fa fa-minus"></i></span>
+        <span onClick={() => props.setamount(props.data.id, props.data.amount - 1)} className="menu-card__size-info-left"><i className="fa fa-minus"></i></span>
         <input type="number" className="menu-card__size-info-medium" value={props.data.amount} onChange={() => { }} />
-        <span onClick={() => props.setamount(props.data.id, props.data.amount - 1)} className="menu-card__size-info-right"><i className="fa fa-plus"></i></span>
+        <span onClick={() => props.setamount(props.data.id, props.data.amount + 1)} className="menu-card__size-info-right"><i className="fa fa-plus"></i></span>
       </div>
       <button className="button button--primary button--small-btn  button--block-btn">Order Now</button>
     </div>

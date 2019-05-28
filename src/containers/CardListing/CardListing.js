@@ -42,7 +42,6 @@ const CardListing = (props) => {
   });
 
   const setAmount = (id, amount) => {
-
     if (amount < 10 && amount > -1) {
 
       const index = state.menu.findIndex((v) => {
