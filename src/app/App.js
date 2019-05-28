@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import CardFood from '../containers/CardFood';
+import CardListing from '../containers/CardListing/index';
 
 
 class App extends React.Component {
@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <CardFood></CardFood>
+        <CardListing />
         <BrowserRouter>
           <Switch>
             <Route path=""></Route>
