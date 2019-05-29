@@ -6,7 +6,7 @@ const CardListing = (props) => {
   const [state, setState] = useState({
     menu: [
       {
-        id: 'falhpaiow1241',
+        id: 'falhpaiow1241231',
         name: 'Cheese Burger',
         discountPrice: 160.00,
         discountPercent: 50,
@@ -103,6 +103,7 @@ const CardListing = (props) => {
       menu: nArray
     });
   }
+
   const menuListing = state.menu.map((v, index) => {
     return (
       <div key={v.id} className="mb-3 mr-3">
