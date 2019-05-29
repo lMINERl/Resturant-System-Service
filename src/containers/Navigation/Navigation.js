@@ -26,7 +26,7 @@ class Navigation extends React.Component {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/resturantdetails">Resturants</NavLink>
+                      <NavLink to="/restaurants">Resturants</NavLink>
                     </li>
                     <li>
                       <NavLink to="/offers">Offers</NavLink>

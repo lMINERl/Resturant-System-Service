@@ -13,7 +13,7 @@ import FoodDetails from '../containers/FoodDetails/';
 import ResturantDetails from '../containers/ResturantDetails/';
 import CardListing from '../containers/CardListing/';
 import Profile from '../containers/Profile/';
-import CardResturants from '../containers/CardRestaurantListing/';
+import ResturantListing from '../containers/RestaurantListing';
 
 class App extends React.Component {
 
@@ -35,7 +35,7 @@ class App extends React.Component {
                 <Route path="/fooddetails" exact component={FoodDetails}></Route>
                 <Route path="/offers" exact component={CardListing}></Route>
                 <Route path="/profile" component={Profile}></Route>
-                <Route path="/restaurants" exact component={CardResturants}></Route>
+                <Route path="/restaurants" exact component={ResturantListing}></Route>
                 <Route path="/restaurants/:id" exact component={ResturantDetails}></Route>
 
                 <Redirect path="/home" to="/" />

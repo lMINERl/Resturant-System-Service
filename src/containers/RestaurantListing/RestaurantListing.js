@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import CardResturant from "../../components/CardResturant/index";
+import {NavLink} from 'react-router-dom';
+import CardResturant from "../../components/CardResturant";
 import logo from "../../assets/logo.svg";
 
-const CardResturantListing = props => {
+const RestaurantListing = props => {
   const [state, setState] = useState({
     restaurants: [
       {
@@ -63,13 +64,13 @@ const CardResturantListing = props => {
     <>
       <h2 className="listing-header">
         All Restaurants
-        <a href="#" className="badge badge-warning listing-header__btn ">
+        <NavLink to="/resturantform" className="badge badge-warning listing-header__btn ">
           <i className="fa fa-plus-square" />
           Add Restaurant
-        </a>
+        </NavLink>
       </h2>
-      <div class="col-md-9 d-flex align-content-around">{restaurantList}</div>
+      <div className="col-md-9 d-flex align-content-around">{restaurantList}</div>
     </>
   );
 };
-export default CardResturantListing;
+export default RestaurantListing;
