@@ -25,7 +25,7 @@ class App extends React.Component {
         <>
           <BrowserRouter>
             <>
-              <Navigation />
+            <Navigation />
               <Switch>
                 <Route path="/" exact component={HomePage}></Route>
                 <Route path="/foodform" exact component={FormAddFood}></Route>
