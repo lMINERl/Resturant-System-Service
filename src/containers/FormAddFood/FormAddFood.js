@@ -25,10 +25,14 @@ checkboxHandler(e) {
 }
 category = ['meat' , 'chicken', 'pizza']
 food =[]
+x= true;
 submitHandler=(event) => {
   event.preventDefault();
-  this.food.push(this.state);
-  console.log(this.food)
+  if(isNaN(this.state.name) && isNaN(this.state.description) && !isNaN(this.state.price.small) && !isNaN(this.state.price.large) && !isNaN(this.state.price.meduim)&& !isNaN(this.state.discount))
+{  this.food.push(this.state);
+}
+else{this.x = false}  
+console.log(this.food)
 }
 displayPrice(event,id){
   const npricesize = [...this.state.priceSize];
@@ -133,8 +137,15 @@ displayPrice(event,id){
                         {/* <-- confirm --> */}
                         <div className="form-separator"></div>
                         <div className="ml-auto mr-auto">
-                            <button type="submit" className="button button--black" onClick={(e) => this.submitHandler(e)}>Save</button>
-                            <button type="submit" className="button button--secondary">Cancel</button>
+                            <button type="submit" className="button button--black" onClick={(e) => this.submitHandler(e)} >Save</button>
+                            <button type="submit" className="button button--secondary">Cancel</button> 
+                            {!this.x ? <div >
+                                <ul>
+                                    <li>name must be string</li>
+                                    <li>description must be string</li>
+                                    <li>price must be number</li>
+                                    <li>discount must be number</li>
+                            </ul></div> : null }
                         </div>
 
 
