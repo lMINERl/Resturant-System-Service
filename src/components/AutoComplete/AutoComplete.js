@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import './AutoComplete.css';
-export class Autocomplete extends Component {
+import {connect} from 'react-redux';
+import { Redirect } from 'react-router';
+// import {withRouter} from 'react-router-dom';
+export class AutocompleteComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
           activeSuggestion: 0,
           filteredSuggestions: [],
           showSuggestions: false,
-          userInput: ''
+          userInput: '',
+          submitted:false,
+          res:0
         };
         this.handleSubmit=this.handleSubmit.bind(this);
       }
@@ -20,8 +25,25 @@ export class Autocomplete extends Component {
     handleSubmit(e){
       e.preventDefault();
       if(this.state.userInput){
+        const {restaurants}=this.props;
+        
+          const res = restaurants.find(r=>r.city===this.state.userInput.toLowerCase());
+         
+          // this.props.history.replace("/restaurants");
+          if(res){
 
-        alert(this.state.userInput);
+            this.setState({
+              submitted:true,
+              res:res
+            });
+          }else{
+            alert("cannot find this city");
+          }
+        
+        
+       
+      }else{
+        alert('please enter a city');
       }
     }
     onChange = (e) => {
@@ -79,7 +101,7 @@ export class Autocomplete extends Component {
             onClick,
             onKeyDown,
             state: {
-              activeSuggestion,
+              // activeSuggestion,
               filteredSuggestions,
               showSuggestions,
               userInput
@@ -110,9 +132,10 @@ export class Autocomplete extends Component {
     }
     return (
         <React.Fragment>
+          {this.state.submitted?<Redirect to={`/restaurants/${this.state.res.city}`}/>:null}
           <form className="form-inline form-search form-pos" onSubmit={this.handleSubmit}>
             <input className="filter-search form-control input-search mr-0 " type="search"
-                placeholder="Enter Restaurant Or Location" onChange={onChange}
+                placeholder="Enter City To Find Restaurants" onChange={onChange}
                 onKeyDown={onKeyDown}
                 value={userInput}/>
                 
@@ -125,4 +148,10 @@ export class Autocomplete extends Component {
     )
     }
 }
-export default Autocomplete;
+const mapStateToProps =(state)=>{
+  return {
+    restaurants:state.restaurants
+  }
+}
+const AutoComplete = connect(mapStateToProps)(AutocompleteComponent);
+export {AutoComplete};

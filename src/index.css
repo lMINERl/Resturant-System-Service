@@ -163,7 +163,9 @@ a:hover {
 
 .margin--top {
   margin-top: 4rem; }
-
+  .menu-card{
+    margin: 12rem;
+  }
 .menu-card__item {
   background-color: #F2F2F2;
   padding: 2rem;

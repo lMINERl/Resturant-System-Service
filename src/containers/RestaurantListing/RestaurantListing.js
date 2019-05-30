@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CardResturant from "../../components/CardResturant";
 import logo from "../../assets/logo.svg";
 
@@ -11,23 +11,42 @@ const RestaurantListing = props => {
         name: "KFC",
         imgUrl: logo,
         rating: 4,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        city:'cairo'
       },
       {
         id: "falhpaiow1242",
         name: "MAC",
         imgUrl: "",
         rating: 3,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        city:'alex'
       },
       {
         id: "falhpaiow1243",
         name: "KFC",
         imgUrl: "",
         rating: 4,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      }
-    ]  
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        city:'ismailia'
+      },
+      {
+          id: "falhpaiow1244",
+          name: "KFC",
+          imgUrl: "",
+          rating: 4,
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          city:'ismailia'
+        },
+      {
+          id: "falhpaiow1245",
+          name: "KFC",
+          imgUrl: "",
+          rating: 4,
+          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+          city: 'suez'
+        }
+    ]
   });
 
   const setRating = (id, rating) => {
@@ -62,14 +81,20 @@ const RestaurantListing = props => {
   });
   return (
     <>
-      <h2 className="listing-header">
-        All Restaurants
+    <h2 className="listing-header">
+      All Restaurants
         <NavLink to="/resturantform" className="badge badge-warning listing-header__btn ">
-          <i className="fa fa-plus-square" />
-          Add Restaurant
+        <i className="fa fa-plus-square" />
+        Add Restaurant
         </NavLink>
-      </h2>
-      <div className="col-md-9 d-flex align-content-around">{restaurantList}</div>
+    </h2>
+    <div className="menu-card">
+      <div className="container">
+        <div className="row">
+          {restaurantList}
+        </div>
+      </div>
+    </div>
     </>
   );
 };

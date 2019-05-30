@@ -106,20 +106,23 @@ const CardListing = (props) => {
 
   const menuListing = state.menu.map((v, index) => {
     return (
-      <div key={v.id} className="mb-3 mr-3">
         <CardFood
           data={v}
           setsize={(id, size) => setSize(id, size)}
           setrating={(id, rating) => setRating(id, rating)}
           setamount={(id, amount) => setAmount(id, amount)}
+          key={v.id}
         />
-      </div>
     );
   });
 
   return (
-    <div className="col-md-9 d-flex align-content-around flex-wrap">
-      {menuListing}
+    <div className="menu-card">
+      <div className="container">
+        <div className="row">
+          {menuListing}
+        </div>
+      </div>
     </div>
   );
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Autocomplete } from '../AutoComplete/AutoComplete';
+import {AutoComplete} from '../AutoComplete/AutoComplete';
 // import { Autocomplete } from '../AutoComplete/AutoComplete';
 
 const HomePage = (props) => {
@@ -20,7 +20,7 @@ const HomePage = (props) => {
                     <h3 className="caption">Order Your Food Online For <br/>
                       Take Away, Home Delivery</h3>
                   </div>
-                  <Autocomplete suggestions={['Cairo', 'Ismailia', 'Alex', 'Suez', 'Arish', 'Damitte']}/>
+                  <AutoComplete suggestions={['Cairo', 'Ismailia', 'Alex', 'Suez', 'Arish', 'Damitte']} {...props}/>
                 </div>
               </div>
             </div>
@@ -30,7 +30,7 @@ const HomePage = (props) => {
                 <h3 className="caption">Add Your Restaurant And<br/>
                   Grow Your Business</h3>
               </div>
-              {/* <Autocomplete  suggestions={['White', 'Black', 'Green', 'Blue', 'Yellow', 'Red']}/> */}
+             
             </div>
             <div className="carousel-item">
               <div className="d-block d-block--third w-100" alt="Third slide"></div>

@@ -21,15 +21,15 @@ class Navigation extends React.Component {
                 <div className="nav-content">
                   <ul className="d-flex flex-direction-row justify-content-between">
                     <li>
-                      <NavLink to="/" className="active">
+                      <NavLink to="/" exact>
                         Home
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/restaurants">Resturants</NavLink>
+                      <NavLink to="/restaurants" >Resturants</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/offers">Offers</NavLink>
+                      <NavLink to="/offers" >Offers</NavLink>
                     </li>
                   </ul>
                 </div>

@@ -8,6 +8,7 @@ const CardFood = (props) => {
 
 
   return (
+   <div className="col-md-3">
     <div className="menu-card__item">
       <div className="menu-card__edit-delete-fav">
         <i className="fa fa-pencil"></i>
@@ -58,6 +59,7 @@ const CardFood = (props) => {
       </div>
       <button className="button button--primary button--small-btn  button--block-btn">Add To Cart</button>
     </div>
+   </div>
 
   );
 
