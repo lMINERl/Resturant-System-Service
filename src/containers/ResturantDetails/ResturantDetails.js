@@ -7,6 +7,7 @@ class ResturantDetailsComponent extends React.Component {
     res: null
   }
   componentDidMount() {
+    
     if (this.props.match.params.city) {
       if (!this.state.res || this.state.res.city !== this.state.match.params.city) {
         const res = this.props.restaurants.filter(r => r.city === this.props.match.params.city);

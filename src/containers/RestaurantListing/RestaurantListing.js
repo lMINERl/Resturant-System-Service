@@ -15,7 +15,7 @@ const RestaurantListing = props => {
         city:'cairo'
       },
       {
-        id: "falhpaiow1242",
+        
         name: "MAC",
         imgUrl: "",
         rating: 3,
