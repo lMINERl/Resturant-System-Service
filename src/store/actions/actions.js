@@ -3,6 +3,7 @@ import userApi from '../../api/userAPI';
 
 export const LOGIN = 'LOGIN';
 export const ERROR = 'ERROR';
+export const ADDFOOD = 'ADD_FOOD';
 
 
 export const addDispatch = (arg) => {

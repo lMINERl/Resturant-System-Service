@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions/actions';
 class FormAddFood extends React.Component {
   state = {
     name: ' ',
@@ -7,7 +8,6 @@ class FormAddFood extends React.Component {
     description: ' ',
     price: {small: null , meduim :null , large : null},
     discount: null,
-    paymentTypes: [],
     categorySelected: ' ',
     tags : [],
     priceSize:[false,false,false,false],
@@ -23,16 +23,18 @@ checkboxHandler(e) {
       size
   })
 }
-category = ['meat' , 'chicken', 'pizza']
-food =[]
+// category = ['meat' , chicken', 'pizza']
+// food =[]
 x= true;
 submitHandler=(event) => {
   event.preventDefault();
   if(isNaN(this.state.name) && isNaN(this.state.description) && !isNaN(this.state.price.small) && !isNaN(this.state.price.large) && !isNaN(this.state.price.meduim)&& !isNaN(this.state.discount))
-{  this.food.push(this.state);
+{ 
+    //  this.food.push(this.state);
+    this.props.add(this.state);
+
 }
 else{this.x = false}  
-console.log(this.food)
 }
 displayPrice(event,id){
   const npricesize = [...this.state.priceSize];
@@ -46,7 +48,7 @@ displayPrice(event,id){
     let options = (
       <>
           {
-              this.category.map((category, index) => {
+              this.props.category.map((category, index) => {
                   return <option key={index} value={category} >{category}</option>
               })
           }
@@ -167,4 +169,17 @@ displayPrice(event,id){
   }
 }
 
-export default FormAddFood;
+const mapStateToProps = state => {
+    return {
+        category: state.category,
+        food: state.food
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        add: ({name, description,price, priceSize, discount, categorySelected ,size }) => dispatch({ type: actionTypes.ADDFOOD, foodData: { name: name, description: description,price:price, priceSize: priceSize, discount: discount, categorySelected: categorySelected , size:size } })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormAddFood);

@@ -46,7 +46,9 @@ export const initialState = {
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             city: 'suez'
         }
-    ]
+    ],
+    food : [],
+    category : ['meat' , 'chicken' , 'pizza' , 'dirnks']
 }
 
 
@@ -57,7 +59,16 @@ const userReducer = (state = initialState, action) => {
             break;
         case action.ERROR:
             console.log(action.payload);
-            break
+            break;
+            case actions.ADDFOOD:
+                let foodCopy = [...state.food];
+                let newFood = action.foodData;
+                foodCopy.push(newFood);
+                console.log(foodCopy)
+                return {
+                    ...state,
+                    food: foodCopy
+                }
         default:
             break;
     }
