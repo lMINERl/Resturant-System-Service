@@ -31,7 +31,7 @@ const RestaurantListing = props => {
         city:'ismailia'
       },
       {
-          id: "falhpaiow1244",
+          id: "falhpaiow12sda4",
           name: "KFC",
           imgUrl: "",
           rating: 4,
@@ -53,7 +53,6 @@ const RestaurantListing = props => {
     const index = state.restaurants.findIndex(v => {
       return v.id === id;
     });
-
     if (
       state.restaurants[index].rating > -1 &&
       state.restaurants[index].rating < 5

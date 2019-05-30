@@ -7,28 +7,20 @@ export const initialState = {
     user: userModel,
     restaurants: [
         {
-          id: "falhpaiow1241",
-          name: "KFC",
-          imgUrl: logo,
-          rating: 4,
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          city:'cairo'
+            id: "falhpaiow1241",
+            name: "KFC",
+            imgUrl: logo,
+            rating: 4,
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            city: 'cairo'
         },
         {
-          id: "falhpaiow1242",
-          name: "MAC",
-          imgUrl: "",
-          rating: 3,
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          city:'alex'
-        },
-        {
-          id: "falhpaiow1243",
-          name: "KFC",
-          imgUrl: "",
-          rating: 4,
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          city:'ismailia'
+            id: "falhpaiow1242",
+            name: "MAC",
+            imgUrl: "",
+            rating: 3,
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            city: 'alex'
         },
         {
             id: "falhpaiow1243",
@@ -36,17 +28,25 @@ export const initialState = {
             imgUrl: "",
             rating: 4,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            city:'ismailia'
-          },
+            city: 'ismailia'
+        },
         {
             id: "falhpaiow1244",
             name: "KFC",
             imgUrl: "",
             rating: 4,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            city: 'ismailia'
+        },
+        {
+            id: "falhpaiow1245",
+            name: "KFC",
+            imgUrl: "",
+            rating: 4,
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             city: 'suez'
-          }
-      ] 
+        }
+    ]
 }
 
 
