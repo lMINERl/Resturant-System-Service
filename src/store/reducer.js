@@ -48,7 +48,8 @@ export const initialState = {
         }
     ],
     food : [],
-    category : ['meat' , 'chicken' , 'pizza' , 'dirnks']
+    category : ['meat' , 'chicken' , 'pizza' , 'dirnks'],
+    groub : []
 }
 
 
@@ -69,6 +70,17 @@ const userReducer = (state = initialState, action) => {
                     ...state,
                     food: foodCopy
                 }
+                break;
+                case actions.ADDGROUB:
+                    let groubCopy = [...state.groub];
+                    let newGroub = action.groubData;
+                    groubCopy.push(newGroub);
+                    console.log(groubCopy)
+                    return {
+                        ...state,
+                        groub: groubCopy
+                    }
+                    break;   
         default:
             break;
     }

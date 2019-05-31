@@ -13,16 +13,6 @@ class FormAddFood extends React.Component {
     priceSize:[false,false,false,false],
 }
 
-checkboxHandler(e) {
-  const checked = e.target.value;
-  console.log(checked);
-  let size = this.state.size;
-  size.push(checked);
-  console.log(size);
-  this.setState({
-      size
-  })
-}
 // category = ['meat' , chicken', 'pizza']
 // food =[]
 x= true;
