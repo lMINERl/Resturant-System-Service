@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actions';
+import { Link } from 'react-router-dom';
 
 class FormCreateGroup extends React.Component {
   
@@ -91,7 +92,7 @@ class FormCreateGroup extends React.Component {
                       <div className="form-separator"></div>
                       <div className="ml-auto mr-auto">
                           <button type="submit" className="button button--black" onClick={(e) => this.submitHandler(e) }>Save</button>
-                          <button type="submit" className="button button--secondary">Cancel</button>
+                          <Link to="/" className="button button--secondary">Cancel</Link>
 
                       </div>
 
