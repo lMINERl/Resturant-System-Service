@@ -25,9 +25,9 @@ const Footer = (props) => {
                       <div className="ftco-footer ftco-footer-widget mb-4 ml-md-4 ">
                         <h2 className="ftco-heading-2">Links</h2>
                         <ul className="list-unstyled">
-                          <li><NavLink to="/"  className="a" href="#"><span className="fa fa-long-arrow-right"></span> Home</NavLink></li>
-                          <li><NavLink to="/resturantdetails"  className="a" href="#"><span className="fa fa-long-arrow-right"></span> All Restaurant</NavLink></li>
-                          <li><NavLink to="/contact"  className="a" href="#"><span className="fa fa-long-arrow-right"> </span> Contact Us</NavLink></li>
+                          <li><NavLink to="/"  className="a"><span className="fa fa-long-arrow-right"></span> Home</NavLink></li>
+                          <li><NavLink to="/resturants"  className="a"><span className="fa fa-long-arrow-right"></span> All Restaurant</NavLink></li>
+                          <li><NavLink to="/contact"  className="a"><span className="fa fa-long-arrow-right"> </span> Contact Us</NavLink></li>
                         </ul>
                       </div>
                     </div>

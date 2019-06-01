@@ -32,7 +32,7 @@ export const initialState = {
         },
         {
             id: "falhpaiow1244",
-            name: "KFC",
+            name: "MAC",
             imgUrl: "",
             rating: 4,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",

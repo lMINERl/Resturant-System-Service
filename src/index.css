@@ -691,8 +691,9 @@ a:hover {
 .order-bill {
   border: 0.1rem solid #000;
   padding: 1rem;
-  padding-bottom: 5rem;
-  position: relative; }
+  position: relative;
+  width: 40%;
+  margin: auto; }
   .order-bill__heading {
     text-align: center;
     margin: 3rem 0;
@@ -703,8 +704,9 @@ a:hover {
     margin: 1rem 0; }
   .order-bill__total {
     position: relative;
-    left: 6rem;
-    font-size: 2rem;
+    left: 1rem;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
     font-weight: bold; }
   .order-bill__order {
     margin: 0 1rem;
@@ -720,7 +722,7 @@ a:hover {
   .order-bill__dash {
     position: relative;
     top: -0.5rem;
-    width: 15rem;
+    width: 7rem;
     height: 0.1rem;
     background-color: #d8d5d5;
     display: inline-block; }
@@ -728,25 +730,17 @@ a:hover {
     margin-left: 1rem; }
   .order-bill__data {
     margin: 3rem 0; }
-    .order-bill__data:after {
-      content: "";
-      width: 100%;
-      height: 0.2rem;
-      background-color: #d8d5d5;
-      display: block;
-      position: relative;
-      top: 2rem; }
+  
   .order-bill__check {
     background-color: #333;
-    width: 70%;
     color: white;
     padding: 1rem;
     position: absolute;
-    left: 60%;
+    left: 50%;
     transform: translateX(-50%);
     font-size: 1.5rem; }
   .order-bill__check-subtotal {
-    margin-right: 1.5rem; }
+    margin-right: 12.5rem; }
   .order-bill__check-info {
     position: relative;
     margin: 0.8rem 0; }
@@ -1118,16 +1112,16 @@ a:hover {
         cursor: pointer; }
         .navigation__basic .nav-extras .nav-item .cart-icon__orders {
           background-color: red;
-          line-height: 3px;
-          height: 13px;
-          width: 13px;
+          line-height: 20px;
+          height: 20px;
+          width: 20px;
           border-radius: 50%;
-          padding: 5px 3px 5px;
+          text-align: center;
           color: white;
           font-size: 1.2rem;
           font-weight: bold;
           position: absolute;
-          top: -3px;
+          top: -6px;
           right: 3px; }
       .navigation__basic .nav-extras .nav-item .setting_icon {
         cursor: pointer; }
