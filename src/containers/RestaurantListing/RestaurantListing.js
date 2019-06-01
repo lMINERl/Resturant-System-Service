@@ -9,7 +9,7 @@ import * as actionTypes from '../../store/actions/actions';
 
 
 const mapStateToProps= (state)=>{
-  console.log(state.current)
+  console.log(state.reducer.current)
    return {
       restaurants : state.reducer.restaurants ,
       pageSize : state.reducer.pageSize,
