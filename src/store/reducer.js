@@ -46,7 +46,13 @@ export const initialState = {
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             city: 'suez'
         }
-    ]
+    ],
+    food : [],
+    category : ['meat' , 'chicken' , 'pizza' , 'dirnks'],
+    groub : [] ,
+    currentPage : 1 , 
+    pageSize : 3
+
 }
 
 
@@ -57,7 +63,32 @@ const userReducer = (state = initialState, action) => {
             break;
         case action.ERROR:
             console.log(action.payload);
-            break
+            break;
+            case actions.ADDFOOD:
+                let foodCopy = [...state.food];
+                let newFood = action.foodData;
+                foodCopy.push(newFood);
+                console.log(foodCopy)
+                return {
+                    ...state,
+                    food: foodCopy
+                }
+                break;
+                case actions.ADDGROUB:
+                    let groubCopy = [...state.groub];
+                    let newGroub = action.groubData;
+                    groubCopy.push(newGroub);
+                    console.log(groubCopy)
+                    return {
+                        ...state,
+                        groub: groubCopy
+                    }
+                    break; 
+                    case actions.CHANGECURRENT:
+        
+            return {...state, currentPage: action.payload};
+            break;
+  
         default:
             break;
     }

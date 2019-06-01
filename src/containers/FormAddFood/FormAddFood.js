@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import * as actionTypes from '../../store/actions/actions';
+import { Link } from 'react-router-dom';
 class FormAddFood extends React.Component {
   state = {
     name: ' ',
@@ -7,28 +9,23 @@ class FormAddFood extends React.Component {
     description: ' ',
     price: {small: null , meduim :null , large : null},
     discount: null,
-    paymentTypes: [],
     categorySelected: ' ',
     tags : [],
     priceSize:[false,false,false,false],
 }
 
-checkboxHandler(e) {
-  const checked = e.target.value;
-  console.log(checked);
-  let size = this.state.size;
-  size.push(checked);
-  console.log(size);
-  this.setState({
-      size
-  })
-}
-category = ['meat' , 'chicken', 'pizza']
-food =[]
+// category = ['meat' , chicken', 'pizza']
+// food =[]
+x= true;
 submitHandler=(event) => {
   event.preventDefault();
-  this.food.push(this.state);
-  console.log(this.food)
+  if(isNaN(this.state.name) && isNaN(this.state.description) && !isNaN(this.state.price.small) && !isNaN(this.state.price.large) && !isNaN(this.state.price.meduim)&& !isNaN(this.state.discount))
+{ 
+    //  this.food.push(this.state);
+    this.props.add(this.state);
+
+}
+else{this.x = false}  
 }
 displayPrice(event,id){
   const npricesize = [...this.state.priceSize];
@@ -42,7 +39,7 @@ displayPrice(event,id){
     let options = (
       <>
           {
-              this.category.map((category, index) => {
+              this.props.category.map((category, index) => {
                   return <option key={index} value={category} >{category}</option>
               })
           }
@@ -133,8 +130,15 @@ displayPrice(event,id){
                         {/* <-- confirm --> */}
                         <div className="form-separator"></div>
                         <div className="ml-auto mr-auto">
-                            <button type="submit" className="button button--black" onClick={(e) => this.submitHandler(e)}>Save</button>
-                            <button type="submit" className="button button--secondary">Cancel</button>
+                            <button type="submit" className="button button--black" onClick={(e) => this.submitHandler(e)} >Save</button>
+                            <Link  className="button button--secondary"  to="/">Cancel</Link> 
+                            {!this.x ? <div >
+                                <ul>
+                                    <li>name must be string</li>
+                                    <li>description must be string</li>
+                                    <li>price must be number</li>
+                                    <li>discount must be number</li>
+                            </ul></div> : null }
                         </div>
 
 
@@ -156,4 +160,17 @@ displayPrice(event,id){
   }
 }
 
-export default FormAddFood;
+const mapStateToProps = state => {
+    return {
+        category: state.category,
+        food: state.food
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        add: ({name, description,price, priceSize, discount, categorySelected ,size }) => dispatch({ type: actionTypes.ADDFOOD, foodData: { name: name, description: description,price:price, priceSize: priceSize, discount: discount, categorySelected: categorySelected , size:size } })
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormAddFood);
