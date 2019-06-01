@@ -150,7 +150,7 @@ export class AutocompleteComponent extends Component {
 }
 const mapStateToProps =(state)=>{
   return {
-    restaurants:state.restaurants
+    restaurants:state.reducer.restaurants
   }
 }
 const AutoComplete = connect(mapStateToProps)(AutocompleteComponent);

@@ -160,10 +160,10 @@ displayPrice(event,id){
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        category: state.category,
-        food: state.food
+        category: state.reducer.category,
+        food: state.reducer.food
     };
 };
 

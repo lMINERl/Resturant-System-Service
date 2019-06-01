@@ -11,9 +11,9 @@ import * as actionTypes from '../../store/actions/actions';
 const mapStateToProps= (state)=>{
   console.log(state.current)
    return {
-      restaurants : state.restaurants ,
-      pageSize : state.pageSize,
-      currentPage : state.currentPage,
+      restaurants : state.reducer.restaurants ,
+      pageSize : state.reducer.pageSize,
+      currentPage : state.reducer.currentPage,
      
       
   }
