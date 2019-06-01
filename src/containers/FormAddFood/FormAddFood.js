@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../store/actions/actions';
+import { Link } from 'react-router-dom';
 class FormAddFood extends React.Component {
   state = {
     name: ' ',
@@ -130,7 +131,7 @@ displayPrice(event,id){
                         <div className="form-separator"></div>
                         <div className="ml-auto mr-auto">
                             <button type="submit" className="button button--black" onClick={(e) => this.submitHandler(e)} >Save</button>
-                            <button type="submit" className="button button--secondary">Cancel</button> 
+                            <Link  className="button button--secondary"  to="/">Cancel</Link> 
                             {!this.x ? <div >
                                 <ul>
                                     <li>name must be string</li>
@@ -159,10 +160,10 @@ displayPrice(event,id){
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
-        category: state.category,
-        food: state.food
+        category: state.reducer.category,
+        food: state.reducer.food
     };
 };
 

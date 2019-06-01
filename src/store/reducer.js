@@ -32,7 +32,7 @@ export const initialState = {
         },
         {
             id: "falhpaiow1244",
-            name: "KFC",
+            name: "MAC",
             imgUrl: "",
             rating: 4,
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
@@ -49,7 +49,10 @@ export const initialState = {
     ],
     food : [],
     category : ['meat' , 'chicken' , 'pizza' , 'dirnks'],
-    groub : []
+    groub : [] ,
+    currentPage : 1 , 
+    pageSize : 3
+
 }
 
 
@@ -80,7 +83,12 @@ const userReducer = (state = initialState, action) => {
                         ...state,
                         groub: groubCopy
                     }
-                    break;   
+                    break; 
+                    case actions.CHANGECURRENT:
+        
+            return {...state, currentPage: action.payload};
+            break;
+  
         default:
             break;
     }

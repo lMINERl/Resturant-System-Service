@@ -10,11 +10,13 @@ const SelectSize = (props) => {
           onClick={() => props.select(index)} >
 
           <input
+
             id={`radiosize${props.comId}${index}`}
-            onChange={() => { console.log(`require change`); }}
+            onChange={()=>props.handleChange()}
             type="radio"
             name={`checksize${props.comId}`}
-            checked={index === props.size}
+            value={props.names[index]}
+            checked={props.size === props.names[index]}
           />
 
           <span className="menu-card__option"></span>{v}
