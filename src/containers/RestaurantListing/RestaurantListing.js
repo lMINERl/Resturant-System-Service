@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import CardResturant from "../../components/CardResturant";
 import logo from "../../assets/logo.svg";
+import Filter from "../../components/Filter";
 
 const RestaurantListing = props => {
   const [state, setState] = useState({
@@ -12,15 +13,14 @@ const RestaurantListing = props => {
         imgUrl: logo,
         rating: 4,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        city:'cairo'
+        city: "cairo"
       },
       {
-        
         name: "MAC",
         imgUrl: "",
         rating: 3,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        city:'alex'
+        city: "alex"
       },
       {
         id: "falhpaiow1243",
@@ -28,24 +28,24 @@ const RestaurantListing = props => {
         imgUrl: "",
         rating: 4,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        city:'ismailia'
+        city: "ismailia"
       },
       {
-          id: "falhpaiow12sda4",
-          name: "KFC",
-          imgUrl: "",
-          rating: 4,
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          city:'ismailia'
-        },
+        id: "falhpaiow12sda4",
+        name: "KFC",
+        imgUrl: "",
+        rating: 4,
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        city: "ismailia"
+      },
       {
-          id: "falhpaiow1245",
-          name: "KFC",
-          imgUrl: "",
-          rating: 4,
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-          city: 'suez'
-        }
+        id: "falhpaiow1245",
+        name: "KFC",
+        imgUrl: "",
+        rating: 4,
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        city: "suez"
+      }
     ]
   });
 
@@ -80,20 +80,25 @@ const RestaurantListing = props => {
   });
   return (
     <>
-    <h2 className="listing-header">
-      All Restaurants
-        <NavLink to="/resturantform" className="badge badge-warning listing-header__btn ">
-        <i className="fa fa-plus-square" />
-        Add Restaurant
+      <div>
+        {" "}
+        <Filter />{" "}
+      </div>
+      <h2 className="listing-header">
+        All Restaurants
+        <NavLink
+          to="/resturantform"
+          className="badge badge-warning listing-header__btn "
+        >
+          <i className="fa fa-plus-square" />
+          Add Restaurant
         </NavLink>
-    </h2>
-    <div className="menu-card">
-      <div className="container">
-        <div className="row">
-          {restaurantList}
+      </h2>
+      <div className="menu-card">
+        <div className="container">
+          <div className="row">{restaurantList}</div>
         </div>
       </div>
-    </div>
     </>
   );
 };
