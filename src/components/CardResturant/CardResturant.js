@@ -15,7 +15,7 @@ const CardResturant =props=> {
           </div>
           <div className="menu-card__menu-data">
             <NavLink
-              to={`/restaurants/${props.resturant.id}`}
+              to={`/restaurants/details/${props.resturant.id}`}
               onClick={() => props.viewRestaurant(props.resturant.id)}
             >
               <h3 className="menu-card__heading">{props.resturant.name}</h3>
@@ -42,18 +42,18 @@ const CardResturant =props=> {
             </div>
             <button className="button button--primary button--small-btn">
               <NavLink
-                to="/offers"
+                to={`/menus/${props.resturant.id}`}
                 onClick={() => props.viewRestaurantMenu(props.resturant.id)}
               >
                 <i className="fa fa-spoon margin-right" />
                 View Menu
               </NavLink>
             </button>
-  
-            <NavLink to="/profile/grouporder" className="button button--black button--small-btn">
+            <button className="button button--black button--small-btn">
+            <NavLink to="/profile/grouporder">
               Add to group
             </NavLink>
-            
+            </button>
           </div>
         </div>
       </div>

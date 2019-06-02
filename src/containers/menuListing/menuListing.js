@@ -4,7 +4,7 @@ import Cart from '../../components/OrderBill/OrderBill';
 import {connect} from 'react-redux';
 import {addToCart} from '../../store/actions/cartActions'
 import { bindActionCreators } from 'redux'
-class CardListing extends Component {
+class MenuListing extends Component {
   // from database
   constructor(props){
     super(props);
@@ -13,19 +13,17 @@ class CardListing extends Component {
     }
   }
   componentDidMount() {
-    
-    if (this.props.match.params.id) {
-      
-        const res = this.props.restaurants.find(r => r.id === this.props.match.params.id);
-        if (res) {
+        const menus = this.props.menus.map(r => {
+            return r
+        });
+        if (menus) {
           this.setState({
-            menus: res.menu
+            menus: menus
           })
         } else {
           this.props.history.push("/")
         }
 
-      }
     
   }
 
@@ -85,6 +83,7 @@ dispatchAddToCart(cardItem){
   this.props.addToCart(cardItem)
 }
 render(){
+    console.log(this.state.menus);
   let menuListing = this.state.menus? (this.state.menus.map((v, index) => {
     return(<CardFood
       handleOnAdd={this.dispatchAddToCart.bind(this)}
@@ -118,7 +117,7 @@ function mapActionsToProps(dispatch) {
 }
 function mapStateToProps(state) {
   return {
-      restaurants:state.reducer.restaurants
+      menus:state.reducer.menus
   }
 }
-export default connect(mapStateToProps,mapActionsToProps)(CardListing);
+export default connect(mapStateToProps,mapActionsToProps)(MenuListing);

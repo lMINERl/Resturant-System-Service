@@ -20,9 +20,9 @@ class CartItem extends React.Component {
                         <span className="order-bill__dash-no">{this.props.cartItem.amount}</span>
 
                         <span className="order-bill__price">{this.props.cartItem.price}</span>
-                        <button type="button" class="btn btn-secondary btn-sm" onClick={() => this.props.onAddUnit()}>+</button>
-                        <button type="button" class="btn btn-secondary btn-sm" onClick={() => this.props.onDeductUnit()}>-</button>
-                        <button type="button" class="btn btn-secondary btn-sm" onClick={() => this.props.handleDeleteFromCart()}>DEL</button>
+                        <button type="button" className="btn btn-secondary btn-sm" onClick={() => this.props.onAddUnit()}>+</button>
+                        <button type="button" className="btn btn-secondary btn-sm" onClick={() => this.props.onDeductUnit()}>-</button>
+                        <button type="button" className="btn btn-secondary btn-sm" onClick={() => this.props.handleDeleteFromCart()}>DEL</button>
                     </div>
 
 
