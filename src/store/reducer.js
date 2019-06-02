@@ -58,9 +58,7 @@ export const initialState = {
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case actions.LOGIN:
-            // const data = { ...action.payload };
-            break;
+       
         case action.ERROR:
             console.log(action.payload);
             break;
