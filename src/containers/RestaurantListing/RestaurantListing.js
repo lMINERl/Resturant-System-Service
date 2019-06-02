@@ -60,7 +60,7 @@ const RestaurantListing = props => {
   });
   return (
     <>
-    <h2 className="listing-header">
+    <h2 className="listing-header listing-header--with-margin">
       All Restaurants
         <NavLink to="/resturantform" className="badge badge-warning listing-header__btn ">
         <i className="fa fa-plus-square" />

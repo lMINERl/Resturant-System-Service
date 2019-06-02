@@ -93,7 +93,11 @@ a:hover {
   transition: all ease-in-out 0.5s;
   cursor: pointer; }
   .button--black {
-    background-color: #333; }
+    background-color: #333;
+   }
+   a{
+    color:white
+   }
     .button--black:hover {
       color: #FFC107; }
   .button--white {
@@ -114,7 +118,7 @@ a:hover {
       color: #000; }
   .button--primary {
     background-color: #FFC107; }
-    .button--primary:hover {
+    .button--primary:hover a{
       color: #000; }
   .button--border {
     border: 3px solid #FFC107; }
@@ -160,16 +164,23 @@ a:hover {
 .border--primary {
   border: 0.2rem solid #FFC107;
   border-radius: 50%; }
-
+ .menu-card__menu-data a{
+    color: black
+  }
+  .menu-card__menu-data a:hover{
+    color: #FFC107;
+  }
 .margin--top {
   margin-top: 4rem; }
   .menu-card{
-    margin: 12rem;
+    margin: 14rem 0 12rem;
   }
 .menu-card__item {
   background-color: #F2F2F2;
   padding: 2rem;
-  position: relative; }
+  position: relative;
+margin-bottom: 4rem;
+margin-top: 4rem; }
 
 .menu-card__header {
   position: relative;
@@ -360,8 +371,6 @@ a:hover {
 .menu-card__info-data {
   display: flex; }
 
-.menu-card__menu-data {
-  margin-left: 1.6rem; }
 
 .menu-card .margin-right {
   margin-right: 0.5rem; }
@@ -1130,16 +1139,27 @@ a:hover {
   z-index: 999; }
 
 .listing-header {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: bold;
-  margin-top: 1.5rem;
+  margin: 2rem;
   color: rgba(51, 51, 51, 0.5); }
+  .listing-header--with-margin{
+    position: relative;
+    top:10rem;
+    left:40%;
+  }
   .listing-header__btn {
-    float: right;
-    font-size: 2rem;
+    
+    font-size: 1.5rem;
+    margin-left: 24rem;
     padding: 0.7rem;
     background-color: #FFC107; }
-
+    .btn--right{
+      float: right;
+    }
+    .listing-header__btn i{
+      margin-right: .5rem
+    }
 .product-details__image {
   border-radius: 2rem;
   width: 60rem;
@@ -1173,4 +1193,66 @@ a:hover {
     border: 1px solid #FFC107; }
     .navigation__basic .nav-extras .nav li a.button--small-btn{
       font-size:1.3rem;
-    } 
+    }
+    button[disabled]{
+      cursor: not-allowed
+    }
+    .invalid-feedback {
+      text-align: left
+    }
+    .form-control.is-invalid{
+      border-bottom: 2px solid red !important;
+    }
+    .Restaurant__photo {
+      /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/res-1.jpg"); */
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      background-size: cover;
+      width: 100%;
+      height: 300px; }
+      .Restaurant__photo h3 {
+        color: #ffc107;
+        font-size: 6rem;
+        font-weight: 900; }
+    
+    .Restaurant .edit-icon,
+    .Restaurant .love-icon {
+      cursor: pointer;
+      padding: 10px;
+      background-color: #444;
+      border-radius: 50%;
+      color: #f9f9f9;
+      transition: all 0.4s ease-in-out;
+      display: inline-block;
+      margin-bottom: 1rem; }
+    
+    .Restaurant .edit-icon:hover {
+      color: #ffc107; }
+    
+    .Restaurant .love-icon:hover {
+      color: #fb5858; }
+    
+    .Restaurant .gold-star li {
+      color: #ffe7a0; }
+    
+    .Restaurant__details p {
+      line-height: 25px; }
+    
+    .Restaurant__categories {word-wrap: break-word; }
+    .Restaurant__categories .tags {
+      border: 2px solid #f2f2f2;
+      padding: 30px; }
+      .Restaurant__categories .tags span {
+        background-color: #ffc107;
+        padding: 5px 10px;
+        border-radius: 30px;
+        color: #fff;
+        font-size: 1.4rem;
+        margin-right: 6px;
+        cursor: pointer;
+        margin-bottom: 6px;
+        display: inline-block;
+        transition: all 0.3s ease-in-out; }
+        .Restaurant__categories .tags span:hover {
+          background-color: #d39e00; }
+  

@@ -47,7 +47,7 @@ const CardFood = (props) => {
           size={props.data.size}
           comId={props.data.id}
           names={props.data.sizes}
-          handleChange={props.handleChange}
+          // handleChange={props.handleChange}
           select={(size) => props.setsize(props.data.id, size)}
            />
 
