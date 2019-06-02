@@ -32,7 +32,6 @@ class LoginPage extends Component {
   render() {
     return (
       <div style={{ padding: 20 }}>
-        <h1>Sign In </h1>
         {this._renderErrorIfAny()}
         <Formik
           initialValues={{ email: '', password: '' }}

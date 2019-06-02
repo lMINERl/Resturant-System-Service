@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import Navigation from '../containers/Navigation/';
 import HomePage from '../components/HomePage/';
@@ -17,7 +17,6 @@ import Profile from '../containers/Profile/';
 import ResturantListing from '../containers/RestaurantListing';
 import ResturantDetailsPage from '../containers/RestaurantDetailsPage/RestaurantDetailsPage';
 class App extends React.Component {
-
   render() {
     return (
       <>
@@ -25,7 +24,7 @@ class App extends React.Component {
         <>
           <BrowserRouter>
             <>
-            <Navigation />
+              <Navigation />
               <Switch>
                 <Route path="/" exact component={HomePage}></Route>
                 <Route path="/foodform" exact component={FormAddFood}></Route>
@@ -41,7 +40,7 @@ class App extends React.Component {
                 <Route path="/restaurants/:city" exact component={ResturantDetails}></Route>
                 <Route path="/restaurants/details/:id" exact component={ResturantDetailsPage}></Route>
                 <Redirect path="/home" to="/" />
-              </Switch>  
+              </Switch>
               <Footer />
             </>
           </BrowserRouter>
