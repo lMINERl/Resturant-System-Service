@@ -1,26 +1,26 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import bgimg from "../../assets/register.png";
-import userAPI from "../../api/userAPI";
+import{ userAPI }from "../../api/userAPI";
 
 class FormRegister extends Component {
   state = {
     user: {
       username: "",
       email: "",
-      password: ""    
+      password: ""
     },
     isnNew: true,
     ismNew: true,
-    ispNew:true,
-    iscNew:true,
+    ispNew: true,
+    iscNew: true,
     nameclass: false,
     emailClass: false,
     passClass: false,
     conpassClass: false
   };
 
-  checker = (type, validtype,flag) => {
+  checker = (type, validtype, flag) => {
     let result = type === "" || type.length < 4 ? false : true;
     if (validtype === "conpassClass" && type !== this.state.user.password) {
       result = false;
@@ -37,8 +37,8 @@ class FormRegister extends Component {
     this.setState({
       isnNew: false,
       ismNew: false,
-      ispNew:false,
-      iscNew:false,
+      ispNew: false,
+      iscNew: false
     });
   };
 
@@ -51,7 +51,7 @@ class FormRegister extends Component {
       isnNew,
       ismNew,
       ispNew,
-      iscNew,
+      iscNew
     } = this.state;
 
     let nameValid = "";
@@ -95,11 +95,13 @@ class FormRegister extends Component {
                   name="username"
                   placeholder="Full Name"
                   onBlur={event =>
-                    this.checker(event.target.value, "nameclass","isnNew")
+                    this.checker(event.target.value, "nameclass", "isnNew")
                   }
                   className={nameValid}
                   onChange={event =>
-                    this.setState({user:{ ...this.state.user,username: event.target.value} })
+                    this.setState({
+                      user: { ...this.state.user, username: event.target.value }
+                    })
                   }
                 />
                 <input
@@ -107,11 +109,13 @@ class FormRegister extends Component {
                   name="email"
                   placeholder="Email"
                   onBlur={event =>
-                    this.checker(event.target.value, "emailClass","ismNew")
+                    this.checker(event.target.value, "emailClass", "ismNew")
                   }
                   className={emailValid}
                   onChange={event =>
-                    this.setState({user:{...this.state.user, email: event.target.value} })
+                    this.setState({
+                      user: { ...this.state.user, email: event.target.value }
+                    })
                   }
                 />
                 <input
@@ -119,7 +123,7 @@ class FormRegister extends Component {
                   name="password"
                   placeholder="Password"
                   onBlur={event =>
-                    this.checker(event.target.value, "passClass","ispNew")
+                    this.checker(event.target.value, "passClass", "ispNew")
                   }
                   className={passValid}
                   onChange={event =>
@@ -133,7 +137,7 @@ class FormRegister extends Component {
                   name="confirmpassword"
                   placeholder="Confirm Password"
                   onBlur={event =>
-                    this.checker(event.target.value, "conpassClass","iscNew")
+                    this.checker(event.target.value, "conpassClass", "iscNew")
                   }
                   className={conpassValid}
                 />

@@ -8,10 +8,10 @@ import thunk from "redux-thunk";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import reducer from "./store/reducer";
+import reducers from "./store";
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const myStore = createStore(reducer, applyMiddleware(thunk));
+const myStore = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={myStore}>

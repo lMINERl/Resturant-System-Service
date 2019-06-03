@@ -1,12 +1,12 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import StarRating from '../../components/StarRating';
 import SelectSize from '../../components/SelectSize';
 
 const CardFood = (props) => {
 
-
-
   return (
+   <div className="col-md-3">
     <div className="menu-card__item">
       <div className="menu-card__edit-delete-fav">
         <i className="fa fa-pencil"></i>
@@ -18,11 +18,18 @@ const CardFood = (props) => {
           <img className="menu-card__image" alt="logo" src="images/services/logo.jpg" />
           <div className="menu-card__sale">{props.data.discountPercent}</div>
         </div>
-        <h3 className="menu-card__heading text-center">{props.data.name}</h3>
+        <NavLink to="/fooddetails">
+          <h3 className="menu-card__heading text-center">
+             {props.data.name}
+          </h3>
+        </NavLink>
         <div className="star-rating text-center">
           <ul className="list-inline">
 
-            <StarRating setRate={(rating) => props.setrating(props.data.id, rating)} rating={props.data.rating} outof={5} />
+            <StarRating
+              setRate={(rating) => props.setrating(props.data.id, rating)}
+              rating={props.data.rating}
+              outof={5} />
 
           </ul>
         </div>
@@ -40,7 +47,9 @@ const CardFood = (props) => {
           size={props.data.size}
           comId={props.data.id}
           names={props.data.sizes}
-          select={(size) => props.setsize(props.data.id, size)} />
+          // handleChange={props.handleChange}
+          select={(size) => props.setsize(props.data.id, size)}
+           />
 
       </div>
       <div className="menu-card__size-info">
@@ -48,8 +57,9 @@ const CardFood = (props) => {
         <input type="number" className="menu-card__size-info-medium" value={props.data.amount} onChange={() => { }} />
         <span onClick={() => props.setamount(props.data.id, props.data.amount + 1)} className="menu-card__size-info-right"><i className="fa fa-plus"></i></span>
       </div>
-      <button className="button button--primary button--small-btn  button--block-btn">Order Now</button>
+      <button onClick={() => props.handleOnAdd(props.data)} className="button button--primary button--small-btn  button--block-btn">Add To Cart</button>
     </div>
+   </div>
 
   );
 

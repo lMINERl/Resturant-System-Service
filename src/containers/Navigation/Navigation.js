@@ -1,7 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import {connect} from 'react-redux';
 class Navigation extends React.Component {
+   totalCount(cartArray) {
+    return cartArray.reduce((tcount, item) => {
+        tcount += item.amount;
+        return tcount;
+    }, 0);
+}
   render() {
     return (
       <div className="container-fluid fixed-top nav-fixed">
@@ -21,15 +27,15 @@ class Navigation extends React.Component {
                 <div className="nav-content">
                   <ul className="d-flex flex-direction-row justify-content-between">
                     <li>
-                      <NavLink to="/" className="active">
+                      <NavLink to="/" exact>
                         Home
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/resturantdetails">Resturants</NavLink>
+                      <NavLink to="/restaurants" >Resturants</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/offers">Offers</NavLink>
+                      <NavLink to="/menus" >Menus</NavLink>
                     </li>
                   </ul>
                 </div>
@@ -53,7 +59,7 @@ class Navigation extends React.Component {
                       >
                         <i className="fa fa-shopping-cart cart-icon" />
                       </NavLink>
-                      <span className="cart-icon__orders">5</span>
+                      <span className="cart-icon__orders">{this.totalCount(this.props.tamount)}</span>
                       <div
                         className="dropdown-menu"
                         aria-labelledby="dropdownMenu2"
@@ -105,5 +111,9 @@ class Navigation extends React.Component {
     );
   }
 }
-
-export default Navigation;
+const mapStateToProps= (state)=>{
+return{
+  tamount:state.cart
+}
+}
+export default connect(mapStateToProps)(Navigation);
