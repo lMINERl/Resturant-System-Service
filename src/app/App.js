@@ -16,6 +16,7 @@ import CardListing from '../containers/CardListing/';
 import Profile from '../containers/Profile/';
 import CardResturants from '../containers/CardRestaurantListing/';
 
+
 class App extends React.Component {
 
   render() {
@@ -39,7 +40,6 @@ class App extends React.Component {
                 <Route path="/profile" exact component={Profile}></Route>
                 <Route path="/restaurants" exact component={CardResturants}></Route>
                 <Route path="/restaurants/:id" exact component={ResturantDetails}></Route>
-
                 <Redirect path="/home" to="/" />
               </Switch>  
               <Footer />

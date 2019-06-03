@@ -9,7 +9,7 @@ import accessToken from '../db/local-storage';
 
 const userAPI = {
     register(user) {
-        return axios.post(`${baseURL}/users/register`, user);
+        return axios.post(`${baseURL}/users/register`, user).then(res => res.data);
     },
     login(data) {
         return axios.post(`${baseURL}/users/login`, data).then(res => res.data);
