@@ -1,5 +1,4 @@
 import * as actions from './actions/actions';
-
 import userModel from '../models/user';
 import logo from "../assets/logo.svg";
 
@@ -37,7 +36,13 @@ export const initialState = {
                   size: 'small',
                   sizes: [`small`, `meduim`, `large`, `x-large`],
                   amount: 1
-                }]
+                }],
+                comments:[
+                    {userId:121,comment:"I know they are going to be honest with me.",rating:3,userName:"Israa"},
+                    {userId:122,comment:"Hungry is always responsive to any question I have.",rating:3,userName:"Marwa"},
+                    {userId:123,comment:"they keep me informed and they understand who we are and what we’re trying to do.",rating:3,userName:"Ahmed"},
+                    {userId:124,comment:"All communication with them is really easy. They do handle everything.",rating:3,userName:"Omar"}
+                ]
         },
         {
             id: "falhpaiow1242",
@@ -69,6 +74,11 @@ export const initialState = {
                     sizes: [`small`, `meduim`, `large`, `x-large`],
                     amount: 1
                   }
+            ],
+            comments:[
+                {userId:125,comment:"lorem",rating:3,userName:"Fatma"},
+                {userId:126,comment:"lorem",rating:3,userName:"Mohamed"},
+                {userId:127,comment:"lorem",rating:3,userName:"Rana"}
             ]
         },
         {
@@ -101,6 +111,10 @@ export const initialState = {
                     sizes: [`small`, `meduim`, `large`, `x-large`],
                     amount: 1
                   }
+            ],
+            comments:[
+                {userId:128,comment:"lorem",rating:3,userName:"Nora"},
+                {userId:129,comment:"lorem",rating:3,userName:"Sara"} 
             ]
         },
         {
@@ -263,14 +277,39 @@ export const initialState = {
     category : ['meat' , 'chicken' , 'pizza' , 'dirnks'],
     groub : [] ,
     currentPage : 1 , 
-    pageSize : 3
+    pageSize : 3,
+    comments:[
+        {userId:121,comment:"I know they are going to be honest with me.",rating:3,userName:"Israa"},
+        {userId:122,comment:"Hungry is always responsive to any question I have.",rating:3,userName:"Marwa"},
+        {userId:123,comment:"they keep me informed and they understand who we are and what we’re trying to do.",rating:3,userName:"Ahmed"},
+        {userId:124,comment:"I am not going to get a subpar product; I know it is going to be good",rating:3,userName:"Omar"},
+        {userId:125,comment:"All communication with them is really easy. They do handle everything.",rating:3,userName:"Fatma"},
+        {userId:126,comment:"lorem",rating:3,userName:"Mohamed"},
+        {userId:127,comment:"lorem",rating:3,userName:"Rana"},
+        {userId:128,comment:"lorem",rating:3,userName:"Nora"},
+        {userId:129,comment:"lorem",rating:3,userName:"Sara"} 
+
+    ]
 
 }
 
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        
+        case actions.ADD_COMMENT:
+        let res = state.restaurants.find(r=>r.id===action.payload.resid);
+        let resCopy ={...res};
+        let comments = [...state.comments]
+        let newComment ={userId:Math.random()*100,comment:action.payload.comment,rating:3,userName:action.payload.userName};
+        resCopy.comments.push(newComment);
+        comments.push(newComment)
+        res=resCopy;
+        console.log(res)
+        return {
+        ...state,
+        comments
+        }
+        break;
         case action.ERROR:
             console.log(action.payload);
             break;

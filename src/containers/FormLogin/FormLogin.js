@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import {FormFeedback, Alert,Label,FormGroup,Input,Button } from 'reactstrap';
+import {FormFeedback, Alert,Input} from 'reactstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/actions';
 class LoginPage extends Component {

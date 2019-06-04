@@ -1,11 +1,16 @@
-import React from 'react';
+import React ,{Component}from 'react';
 import {AutoComplete} from '../AutoComplete/AutoComplete';
 // import { Autocomplete } from '../AutoComplete/AutoComplete';
+import Carousel from '../slider/slider'
+import {connect} from 'react-redux';
 
-const HomePage = (props) => {
-  var style = {
+class HomePage extends Component {
+  style = {
     backgroundImage: "url('../assets/download.jpg')"
   }
+
+
+render(){
   return (
     <div>
       {/* <!-- Start sliders --> */}
@@ -20,7 +25,7 @@ const HomePage = (props) => {
                     <h3 className="caption">Order Your Food Online For <br/>
                       Take Away, Home Delivery</h3>
                   </div>
-                  <AutoComplete suggestions={['Cairo', 'Ismailia', 'Alex', 'Suez', 'Arish', 'Damitte']} {...props}/>
+                  <AutoComplete suggestions={['Cairo', 'Ismailia', 'Alex', 'Suez', 'Arish', 'Damitte']} {...this.props}/>
                 </div>
               </div>
             </div>
@@ -90,7 +95,7 @@ const HomePage = (props) => {
       {/* // <!-- End Status Bar --> */}
 
      
-      <div style={style}>
+      <div style={this.style}>
         <div className="bg-color">
           <div className="container">
             <div className="row ">
@@ -226,283 +231,19 @@ const HomePage = (props) => {
 
       {/* <!--End Features --> */}
       {/* <!--start testimonials--> */}
-      <div className="testimonials">
-        <div className="container">
-
-          <div className="row">
-            <div className="col-sm-12">
-              <div id="myCarousel" className="carousel slide" data-ride="carousel">
-                <h2>Customer
-              <b>Testimonials</b>
-                </h2>
-                {/* <!-- Carousel indicators --> */}
-                <ol className="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" className="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-                {/* <!-- Wrapper for carousel items --> */}
-                <div className="carousel-inner">
-                  <div className="carousel-item active">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="testimonial">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.
-                      </p>
-                        </div>
-                        <div className="media">
-                          <div className="media-left d-flex mr-3">
-                            <img src="../../assets/user2.png" alt="" />
-                          </div>
-                          <div className="media-body">
-                            <div className="overview">
-                              <div className="name">
-                                <b>Paula Wilson</b>
-                              </div>
-                              <div className="details">Media Analyst / SkyNet</div>
-                              <div className="star-rating">
-                                <ul className="list-inline">
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star-o"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="testimonial">
-                          <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.
-                      </p>
-                        </div>
-                        <div className="media">
-                          <div className="media-left d-flex mr-3">
-                            <img src="../../assets/user2.png" alt="" />
-                          </div>
-                          <div className="media-body">
-                            <div className="overview">
-                              <div className="name">
-                                <b>Antonio Moreno</b>
-                              </div>
-                              <div className="details">Web Developer / SoftBee</div>
-                              <div className="star-rating">
-                                <ul className="list-inline">
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star-o"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="testimonial">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.
-                      </p>
-                        </div>
-                        <div className="media">
-                          <div className="media-left d-flex mr-3">
-                            <img src="../../assets/user2.png" alt="" />
-                          </div>
-                          <div className="media-body">
-                            <div className="overview">
-                              <div className="name">
-                                <b>Michael Holz</b>
-                              </div>
-                              <div className="details">Web Developer / DevCorp</div>
-                              <div className="star-rating">
-                                <ul className="list-inline">
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star-o"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="testimonial">
-                          <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.
-                      </p>
-                        </div>
-                        <div className="media">
-                          <div className="media-left d-flex mr-3">
-                            <img src="../../assets/user2.png" alt="" />
-                          </div>
-                          <div className="media-body">
-                            <div className="overview">
-                              <div className="name">
-                                <b>Mary Saveley</b>
-                              </div>
-                              <div className="details">Graphic Designer / MarsMedia</div>
-                              <div className="star-rating">
-                                <ul className="list-inline">
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star-o"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="testimonial">
-                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper malesuada ante.
-                      </p>
-                        </div>
-                        <div className="media">
-                          <div className="media-left d-flex mr-3">
-                            <img src="../../assets/user2.png" alt="" />
-                          </div>
-                          <div className="media-body">
-                            <div className="overview">
-                              <div className="name">
-                                <b>Martin Sommer</b>
-                              </div>
-                              <div className="details">SEO Analyst / RealSearch</div>
-                              <div className="star-rating">
-                                <ul className="list-inline">
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star-o"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-sm-6">
-                        <div className="testimonial">
-                          <p>Vestibulum quis quam ut magna consequat faucibu. Eget mi suscipit tincidunt. Utmtc tempus dictum. Pellentesque virra. Quis quam ut magna consequat faucibus quam.
-                      </p>
-                        </div>
-                        <div className="media">
-                          <div className="media-left d-flex mr-3">
-                            <img src="../../assets/user2.png" alt="" />
-                          </div>
-                          <div className="media-body">
-                            <div className="overview">
-                              <div className="name">
-                                <b>John Williams</b>
-                              </div>
-                              <div className="details">Web Designer / UniqueDesign</div>
-                              <div className="star-rating">
-                                <ul className="list-inline">
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star"></i>
-                                  </li>
-                                  <li className="list-inline-item">
-                                    <i className="fa fa-star-o"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- Carousel controls --> */}
-                <a className="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
-                  <i className="fa fa-chevron-left"></i>
-                </a>
-                <a className="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
-                  <i className="fa fa-chevron-right"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 className="section__title p-5">Testimonials</h2>
+      <Carousel slides={this.props.comments} />
       {/* <!--end testimonials--> */}
+      </div>
 
-
-    </div>
+ 
 
   );
 
+}}
+const mapStateToProps = (state)=>{
+  return{
+    comments:state.reducer.comments
+  }
 }
-
-export default HomePage;
+export default connect(mapStateToProps)(HomePage);

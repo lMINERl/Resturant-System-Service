@@ -37,3 +37,13 @@ const error=(error)=>{
 export const ADDFOOD = 'ADD_FOOD';
 export const ADDGROUB = 'ADD_GROUB';
 export const CHANGECURRENT = 'CHANGECURRENT';
+export const ADD_COMMENT = 'ADD_COMMENT';
+
+
+export function addComment(resid,comment,rating,userName) {
+    return {
+        type: ADD_COMMENT,
+        payload: {resid,comment,rating,userName}
+    }
+}
+

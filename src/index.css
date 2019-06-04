@@ -359,10 +359,10 @@ margin-top: 4rem; }
   text-align: center;
   cursor: pointer; }
 
-.menu-card .star-rating li {
+.star-rating li {
   padding: 0 0.1rem; }
 
-.menu-card .star-rating i {
+.star-rating i {
   font-size: 1.4rem;
   color: #ffdc12; }
 
@@ -510,45 +510,49 @@ margin-top: 4rem; }
     overflow: hidden;
     min-height: 12rem;
     font-size: 1.4rem; }
-    .testimonials  .carousel .media {
+    
+    .testimonials  .media {
     position: relative;
     padding: 0 0 0 2rem;
-    margin-left: 2rem; }
-    .testimonials  .carousel .media img {
+    margin: 2rem; }
+    .testimonials  .media-body{
+      margin-top: 2rem;
+    } 
+    .testimonials  .media img {
     width: 7.5rem;
     height: 7.5rem;
     display: block;
     border-radius: 50%;
     box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
     border: 2rem solid #fff; }
-  .carousel .testimonial {
+  .testimonial {
     color: #505050;
     position: relative;
     background: #ddd;
     padding: 1.5rem;
     margin: 0 0 2rem 2rem; }
-    .testimonials .carousel .testimonial::before,
-  .testimonials  .carousel .testimonial::after {
+    .testimonials .testimonial::before,
+  .testimonials  .testimonial::after {
     content: "";
     display: inline-block;
     position: absolute;
     left: -0.1rem;
     bottom: -2rem; }
-    .testimonials  .carousel .testimonial::after {
+    .testimonials  .testimonial::after {
     width: 0;
     height: 0;
     border-left: 2rem solid transparent;
     border-right: 2rem solid transparent;
     border-top: 2rem solid #666; }
     .testimonials .carousel .carousel-item .row > div:first-child .testimonial {
-    margin: 0 2rem 2rem 0; }
+      margin: 0 2rem 2rem 0; }
     .testimonials .carousel .carousel-item .row > div:first-child .media {
     margin-left: 0; }
-    .testimonials .carousel .testimonial p {
+    .testimonials .testimonial p {
     text-indent: 4rem;
     line-height: 2.1rem;
     margin: 0; }
-    .testimonials .carousel .testimonial p::before {
+    .testimonials .testimonial p::before {
     content: open-quote;
     color: #9b9b9b;
     font-size: 6rem;
@@ -556,11 +560,11 @@ margin-top: 4rem; }
     position: absolute;
     left: -2rem;
     top: 0; }
-    .testimonials .carousel .overview {
+    .testimonials  .overview {
     padding: 0.3rem 0 0 1.5rem; }
-    .testimonials .carousel .overview .details {
+    .testimonials  .overview .details {
     padding: 0.5rem 0 0.8rem; }
-    .testimonials .carousel .overview b {
+    .testimonials .overview b {
     text-transform: uppercase;
     color: #ff5555; }
     .testimonials .carousel .carousel-control {
@@ -590,12 +594,12 @@ margin-top: 4rem; }
     color: #fff;
     background: #ff5555;
     border: 0.5rem double; }
-    .testimonials  .carousel .star-rating li {
+    .testimonials  .star-rating li {
     padding: 0 0.2rem; }
-    .testimonials .carousel .star-rating i {
+    .testimonials .star-rating i {
     font-size: 1.4rem;
     color: #ffdc12; }
-
+   
 /*end testimonials*/
 .filter-search {
   padding: 1.93rem !important;
@@ -1257,4 +1261,116 @@ margin-top: 4rem; }
         transition: all 0.3s ease-in-out; }
         .Restaurant__categories .tags span:hover {
           background-color: #d39e00; }
-  
+
+          
+          .carousel-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 210px;
+          }
+          
+          .carousel {
+            position: relative;
+          }
+          .carousel--margin{
+            margin: 6rem
+          }
+          
+          .carousel__slide {
+            margin-right: auto;
+            margin-left: auto;
+            display: none;
+            max-width: 900px;
+            list-style-type: none;
+            text-align: center;
+          }
+          @media (max-width: 991px) {
+            .carousel__slide {
+              padding-right: 60px;
+              padding-left: 60px;
+            }
+          }
+          .carousel__slide--active {
+            display: block;
+          }
+          
+          .carousel-slide__content {
+            margin-bottom: 19px;
+            font-family: "Open Sans", "Trebuchet MS", sans-serif;
+            font-size: 18px;
+          }
+          @media (max-width: 991px) {
+            .carousel-slide__content {
+              font-size: 18px;
+            }
+          }
+          
+          .carousel-slide__author,
+          .carousel-slide__source {
+            font-family: "Roboto", arial, sans-serif;
+            font-size: 14px;
+          }
+          @media (min-width: 992px) {
+            .carousel-slide__author,
+            .carousel-slide__source {
+              font-size: 16px;
+            }
+          }
+          
+          .carousel-slide__source {
+            font-style: italic;
+            color: #888;
+          }
+          
+          .carousel__arrow {
+            position: absolute;
+            top: 50%;
+            display: block;
+            color: #111;
+            cursor: pointer;
+            opacity: 0.75;
+            -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+            transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
+          }
+          .carousel__arrow:focus {
+            outline: 0;
+          }
+          .carousel__arrow:hover {
+            opacity: 0.5;
+          }
+          .carousel__arrow--left {
+            left: 32px;
+          }
+          .carousel__arrow--right {
+            right: 32px;
+          }
+          
+          .carousel__indicators {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 20px;
+          }
+          .carousel__indicators li:nth-of-type(n + 2) {
+            margin-left: 9px;
+          }
+          
+          .carousel__indicator {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: #111;
+            cursor: pointer;
+            opacity: 0.15;
+            transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
+          }
+          .carousel__indicator:hover {
+            opacity: 0.5;
+          }
+          .carousel__indicator--active, .carousel__indicator--active:hover {
+            opacity: 0.75;
+          }
+          
+          
