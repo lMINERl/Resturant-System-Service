@@ -14,6 +14,8 @@ import {ResturantDetails} from '../containers/ResturantDetails/';
 import CardListing from '../containers/CardListing/';
 import MenuListing from '../containers/menuListing/menuListing';
 import Profile from '../containers/Profile/';
+
+
 import ResturantListing from '../containers/RestaurantListing';
 import ResturantDetailsPage from '../containers/RestaurantDetailsPage/RestaurantDetailsPage';
 class App extends React.Component {
@@ -32,6 +34,9 @@ class App extends React.Component {
                 <Route path="/login" exact component={FormLogin}></Route>
                 <Route path="/register" exact component={FormRegister}></Route>
                 <Route path="/fooddetails" exact component={FoodDetails}></Route>
+                <Route path="/offers" exact component={CardListing}></Route>
+                <Route path="/profile" exact component={Profile}></Route>
+                <Route path="/restaurants/:id" exact component={ResturantDetails}></Route>
                 <Route path="/menus/:id" exact component={CardListing}></Route>
                 <Route path="/menus" exact component={MenuListing}></Route>
                 <Route path="/profile" component={Profile}></Route>

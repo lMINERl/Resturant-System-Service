@@ -6,7 +6,7 @@ import Pagination from "../../components/Common/pagination";
 import {connect} from 'react-redux';
 import {paginate} from '../../utils/paginate'
 import * as actionTypes from '../../store/actions/actions';
-
+import SideBar from "../../components/SideBar";
 
 const mapStateToProps= (state)=>{
   console.log(state.reducer.current)
@@ -69,9 +69,14 @@ const RestaurantListing = props => {
     </h2>
     <div className="menu-card">
       <div className="container">
-        <div className="row">
-          {restaurantList}
-        </div>
+      <div className="row  align-items-start">
+            <div className="col-sm-3">
+              <SideBar />
+            </div>
+            <div className="col-md-9 d-flex align-content-around">
+              {restaurantList}
+            </div>
+          </div>
         <Pagination itemCount={props.restaurants.length} pageSize={props.pageSize} currentPage={props.currentPage} onPageChange={props.onPageChange}/>
       </div>
     </div>
