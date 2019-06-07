@@ -4,7 +4,6 @@ import Cart from '../../components/OrderBill/OrderBill';
 import { connect } from 'react-redux';
 import { getRestaurantMenuDispatch, setSize, setRating, setAmount } from '../../store/actions/foodActions';
 import { addToCart } from '../../store/actions/cartActions';
-import dataComp from '../../helpers/dataCompare';
 import { bindActionCreators } from 'redux';
 
 class CardListing extends Component {
@@ -15,10 +14,7 @@ class CardListing extends Component {
       data: null
     }
   }
-  shouldComponentUpdate = (prevProp, prevState) => {
-    const isSame = dataComp(this.props, prevProp) && dataComp(this.state, prevState);
-    return !isSame;
-  }
+  
   componentDidMount() {
     if (this.props.match.params.id) {
       this.props.getRestaurantMenuDispatch(this.props.match.params.id);
@@ -40,6 +36,7 @@ class CardListing extends Component {
   dispatchAddToCart(cardItem) {
     this.props.addToCart(cardItem)
   }
+  
   render() {
     let menuListing = this.props.data ? (this.props.data.map((v, index) => {
       return (
@@ -64,12 +61,10 @@ class CardListing extends Component {
       </div>
     );
   }
-
-
-
 }
 
 function mapStateToProps(state) {
+  console.log(state.food.foods);
   return {
     data: state.food.foods,
   }

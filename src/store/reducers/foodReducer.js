@@ -80,6 +80,7 @@ const foodReducer = (state = initialState, action) => {
         case actions.SET_SIZE: {
 
             const { id, size } = { ...action.payload };
+            // debugger;
             const index = findIndex(nfoods, id);
             if (index !== -1) {
                 if (size < nfoods[index].sizes.length && size > -1) {
