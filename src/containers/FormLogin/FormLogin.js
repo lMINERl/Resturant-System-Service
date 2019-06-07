@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import {NavLink} from 'react-router-dom';
 import {FormFeedback, Alert,Input} from 'reactstrap';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { connect } from 'react-redux';
-import { signIn } from '../../store/actions/actions';
+import { signIn } from '../../store/actions/userActions';
+
 class LoginPage extends Component {
   componentDidUpdate() {
-    //console.log(this.props);
     const { error, isAuth } = this.props;
     if (error && this.bag) {
       this.bag.setSubmitting(false);
@@ -16,7 +17,6 @@ class LoginPage extends Component {
     }
   }
   handleFormSubmit(values, bag) {
-    console.log(values)
     this.props.signIn(values);
     this.bag = bag;
   }
@@ -55,7 +55,7 @@ class LoginPage extends Component {
                   alt="Background for register form"
                   className="form-style__img"
                 />
-                <a href="#" className="form-style__close"><i className="fa fa-times-circle d-flex justify-content-end"></i></a>
+                <NavLink className="form-style__close"><i className="fa fa-times-circle d-flex justify-content-end"></i></NavLink>
                 <div className="row">
                   <div className="col-md-12 col-sm-6 form-style__body">
                     <h2 className="form-style__body__title">Log in</h2>
@@ -81,11 +81,11 @@ class LoginPage extends Component {
                     </form>
                     <p
                       className="form-style__body--forget  d-flex flex-direction-row justify-content-center align-items-center">
-                      <a href="#">Forget Password</a>
+                      <NavLink>Forget Password</NavLink>
                     </p>
                     <p
                       className="form-style__body--signup  d-flex flex-direction-row justify-content-center align-items-center">
-                      Don't have an account ? <a href="#">Signup</a>
+                      Don't have an account ? <NavLink>Signup</NavLink>
                     </p>
                   </div>
                 </div>

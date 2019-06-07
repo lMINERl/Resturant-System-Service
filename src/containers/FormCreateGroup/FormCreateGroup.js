@@ -1,6 +1,7 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions/actions';
+import * as actionTypes from '../../store/actions/userActions';
 import { Link } from 'react-router-dom';
 
 class FormCreateGroup extends React.Component {
@@ -72,9 +73,9 @@ class FormCreateGroup extends React.Component {
 
                           {/* <!-- add class show for menu show --> */}
                           <div className="dropdown-menu">
-                              <a className="dropdown-item" href="#">Region1</a>
-                              <a className="dropdown-item" href="#">Region2</a>
-                              <a className="dropdown-item" href="#">Region3</a>
+                              <NavLink className="dropdown-item">Region1</NavLink>
+                              <NavLink className="dropdown-item">Region2</NavLink>
+                              <NavLink className="dropdown-item">Region3</NavLink>
                           </div>
 
 
@@ -105,7 +106,7 @@ class FormCreateGroup extends React.Component {
                   <img src="images/services/order.jpg" alt=""/>
               </div>
               <div className="d-flex justify-content-center form-separator ">
-                  <input type="file" href="#" className="button form-control--inputs button--white" placeholder="Upload"/>
+                  <input type="file" className="button form-control--inputs button--white" placeholder="Upload"/>
               </div>
           </div>
       </div>

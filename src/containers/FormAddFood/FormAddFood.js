@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions/actions';
+import * as actionTypes from '../../store/actions/userActions';
 import { Link } from 'react-router-dom';
 class FormAddFood extends React.Component {
   state = {
@@ -162,8 +162,8 @@ displayPrice(event,id){
 
 const mapStateToProps = (state) => {
     return {
-        category: state.reducer.category,
-        food: state.reducer.food
+        category: state.user.category,
+        food: state.user.food
     };
 };
 

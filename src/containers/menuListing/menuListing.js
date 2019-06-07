@@ -83,7 +83,6 @@ dispatchAddToCart(cardItem){
   this.props.addToCart(cardItem)
 }
 render(){
-    console.log(this.state.menus);
   let menuListing = this.state.menus? (this.state.menus.map((v, index) => {
     return(<CardFood
       handleOnAdd={this.dispatchAddToCart.bind(this)}
@@ -117,7 +116,7 @@ function mapActionsToProps(dispatch) {
 }
 function mapStateToProps(state) {
   return {
-      menus:state.reducer.menus
+      menus:state.user.menus
   }
 }
 export default connect(mapStateToProps,mapActionsToProps)(MenuListing);

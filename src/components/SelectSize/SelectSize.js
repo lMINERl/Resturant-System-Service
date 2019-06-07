@@ -12,7 +12,7 @@ const SelectSize = (props) => {
           <input
 
             id={`radiosize${props.comId}${index}`}
-            onChange={()=>props.handleChange()}
+            onChange={() => { }}
             type="radio"
             name={`checksize${props.comId}`}
             value={props.names[index]}

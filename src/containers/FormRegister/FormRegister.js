@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 // import bgimg from "../../assets/register.png";
-import{ userAPI }from "../../api/userAPI";
+import { userAPI } from "../../api/userAPI";
 
 class FormRegister extends Component {
   state = {

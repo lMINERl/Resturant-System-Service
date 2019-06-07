@@ -10,7 +10,7 @@ class Navigation extends React.Component {
 }
   render() {
     return (
-      <div className="container-fluid fixed-top nav-fixed">
+      <div className="container-fluid fixed-top">
         <div className="row">
           <div className="col-md-12 col-sm-4 nopadding">
             <div className="navigation__secondary d-flex justify-content-end">

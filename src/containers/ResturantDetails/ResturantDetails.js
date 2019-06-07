@@ -43,10 +43,8 @@ class ResturantDetailsComponent extends React.Component {
     }
   }
   render() {
-    console.log(this.state);
     let restaurants = null;
     if (this.state.res) {
-      console.log(this.state.res);
       restaurants = this.state.res.map(r => {
 
         return (
@@ -72,7 +70,7 @@ class ResturantDetailsComponent extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    restaurants: state.reducer.restaurants
+    restaurants: state.user.restaurants
   }
 }
 const ResturantDetails = connect(mapStateToProps)(ResturantDetailsComponent)

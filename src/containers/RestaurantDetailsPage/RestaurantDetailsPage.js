@@ -4,7 +4,7 @@ import CardFood from '../../components/CardFood/CardFood';
 import { NavLink } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { addToCart } from '../../store/actions/cartActions';
-import {addComment} from '../../store/actions/actions';
+import {addComment} from '../../store/actions/userActions';
 import Comment from '../../components/comments/comments';
 import OrderBill from '../../components/OrderBill/OrderBill';
 class DetailsPage extends Component {
@@ -190,50 +190,50 @@ class DetailsPage extends Component {
                                         </button>
                                         <ul className="navbar-nav ">
                                             <li className="nav-item dropdown mx-4">
-                                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                                <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Category
-                                        </a>
+                                        </NavLink>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <a className="dropdown-item" href="#">Pizza</a>
-                                                    <a className="dropdown-item" href="#">Sea Food</a>
-                                                    <a className="dropdown-item" href="#">Drinks</a>
+                                                    <NavLink className="dropdown-item">Pizza</NavLink>
+                                                    <NavLink className="dropdown-item">Sea Food</NavLink>
+                                                    <NavLink className="dropdown-item">Drinks</NavLink>
                                                 </div>
                                             </li>
                                             <li className="nav-item dropdown mx-4">
-                                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                                <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Rating
-                                        </a>
+                                        </NavLink>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <a className="dropdown-item" href="#">Action</a>
-                                                    <a className="dropdown-item" href="#">Another action</a>
+                                                    <NavLink className="dropdown-item">Action</NavLink>
+                                                    <NavLink className="dropdown-item">Another action</NavLink>
                                                     <div className="dropdown-divider"></div>
-                                                    <a className="dropdown-item" href="#">Something else here</a>
+                                                    <NavLink className="dropdown-item">Something else here</NavLink>
                                                 </div>
                                             </li>
                                             <li className="nav-item dropdown mx-4">
-                                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                                <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Price
-                                        </a>
+                                        </NavLink>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <a className="dropdown-item" href="#">Action</a>
-                                                    <a className="dropdown-item" href="#">Another action</a>
+                                                    <NavLink className="dropdown-item">Action</NavLink>
+                                                    <NavLink className="dropdown-item">Another action</NavLink>
                                                     <div className="dropdown-divider"></div>
-                                                    <a className="dropdown-item" href="#">Something else here</a>
+                                                    <NavLink className="dropdown-item">Something else here</NavLink>
                                                 </div>
                                             </li>
                                             <li className="nav-item dropdown mx-4">
-                                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                                <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     A_Z
-                                        </a>
+                                        </NavLink>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <a className="dropdown-item" href="#">Action</a>
-                                                    <a className="dropdown-item" href="#">Another action</a>
+                                                    <NavLink className="dropdown-item">Action</NavLink>
+                                                    <NavLink className="dropdown-item">Another action</NavLink>
                                                     <div className="dropdown-divider"></div>
-                                                    <a className="dropdown-item" href="#">Something else here</a>
+                                                    <NavLink className="dropdown-item">Something else here</NavLink>
                                                 </div>
                                             </li>
                                         </ul>
@@ -297,7 +297,7 @@ class DetailsPage extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        restaurants: state.reducer.restaurants
+        restaurants: state.user.restaurants
     }
 }
 function mapActionsToProps(dispatch) {

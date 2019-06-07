@@ -7,7 +7,6 @@ export const signIn = requset_data =>{
         dispatch({type:'AUTH_ATTEMPTING'});
         try{
             const {data:{token}} = await apiLogin(requset_data);
-            console.log(token);
             AuthHeader(token);
             dispatch(fetchProfile())
             dispatch(success(token));

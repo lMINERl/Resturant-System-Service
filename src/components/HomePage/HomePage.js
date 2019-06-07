@@ -243,7 +243,7 @@ render(){
 }}
 const mapStateToProps = (state)=>{
   return{
-    comments:state.reducer.comments
+    comments:state.user.comments
   }
 }
 export default connect(mapStateToProps)(HomePage);

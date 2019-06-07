@@ -3,7 +3,7 @@ import StarRating from "../../components/StarRating";
 import { NavLink } from "react-router-dom";
 const CardResturant =props=> {
     return (
-      <div className="col-md-4">
+      <div className="col-md-6">
                 <div className="menu-card__item mb-3 mr-3">
         <div className="menu-card__info-data">
           <div className="menu-card__image-card">

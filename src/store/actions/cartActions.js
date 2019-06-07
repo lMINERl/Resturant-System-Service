@@ -3,21 +3,21 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const UPDATE_ITEM_UNITS = 'UPDATE_ITEM_UNITS';
 
-export function addToCart({id, name, price,size, amount=1}) {
+export const addToCart = ({ _id, name, price, size, amount = 1 }) => {
     return {
         type: ADD_TO_CART,
-        payload: {id, name, price,size, amount}
+        payload: { _id, name, price, size, amount }
     }
 }
-export function deleteFromCart({id}) {
+export const deleteFromCart = ( _id ) => {
     return {
         type: DELETE_FROM_CART,
-        payload: {id}
+        payload: { _id }
     }
 }
-export function updateItemUnits({id, amount}) {
+export const updateItemUnits = ( _id, amount ) => {
     return {
         type: UPDATE_ITEM_UNITS,
-        payload: {id, amount}
+        payload: { _id, amount }
     }
 }

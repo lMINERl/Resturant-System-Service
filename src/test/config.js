@@ -9,4 +9,4 @@ const enzymeSerializer = require('enzyme-to-json/serializer');
 expect.addSnapshotSerializer(enzymeSerializer);
 configure({ adapter: new Adapter() });
 
-module.exports={React,ReactDOM,renderer,configure,shallow,Adapter,enzymeSerializer};
+export {React,ReactDOM,renderer,configure,shallow,Adapter,enzymeSerializer};

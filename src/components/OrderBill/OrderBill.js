@@ -13,27 +13,29 @@ class Cart extends React.Component {
             </div>
         );
     }
-    handleDeleteFromCart(id) {
-        this.props.deleteFromCart({id})
+    handleDeleteFromCart(_id) {
+        
+        this.props.deleteFromCart(_id)
     }
-    handleDeductUnit(id) {
+    handleDeductUnit(_id) {
         let amount= -1;
-        this.props.updateItemUnits({id, amount})
+        this.props.updateItemUnits(_id, amount)
     }
-    handleAddUnit(id) {
+    handleAddUnit(_id) {
         let amount = 1;
-        this.props.updateItemUnits({id, amount})
+        this.props.updateItemUnits(_id, amount)
     }
 
     cartList() {
+        
         return (
             this.props.cart.map(cartItem => {
               return (
-                  <CartItem key={cartItem.id}
+                  <CartItem key={cartItem._id}
                             cartItem={cartItem}
-                            onAddUnit={this.handleAddUnit.bind(this, cartItem.id)}
-                            onDeductUnit={this.handleDeductUnit.bind(this, cartItem.id)}
-                            handleDeleteFromCart={this.handleDeleteFromCart.bind(this, cartItem.id)} />
+                            onAddUnit={this.handleAddUnit.bind(this, cartItem._id)}
+                            onDeductUnit={this.handleDeductUnit.bind(this, cartItem._id)}
+                            handleDeleteFromCart={this.handleDeleteFromCart.bind(this, cartItem._id)} />
               );
             })
         );

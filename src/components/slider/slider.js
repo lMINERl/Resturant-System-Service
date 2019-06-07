@@ -1,17 +1,16 @@
-import React ,{Component} from 'react';
-
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 class CarouselLeftArrow extends Component {
   render() {
     return (
-      <a
-        href="#"
+      <NavLink
         className="carousel__arrow carousel__arrow--left"
         onClick={this.props.onClick}
       >
         <span className="fa fa-2x fa-angle-left" />
-      </a>
+      </NavLink>
     );
   }
 }
@@ -19,13 +18,12 @@ class CarouselLeftArrow extends Component {
 class CarouselRightArrow extends Component {
   render() {
     return (
-      <a
-        href="#"
+      <NavLink
         className="carousel__arrow carousel__arrow--right"
         onClick={this.props.onClick}
       >
         <span className="fa fa-2x fa-angle-right" />
-      </a>
+      </NavLink>
     );
   }
 }
@@ -34,12 +32,11 @@ class CarouselIndicator extends Component {
   render() {
     return (
       <li>
-        <a
-          className={
-            this.props.index == this.props.activeIndex
-              ? "carousel__indicator carousel__indicator--active"
-              : "carousel__indicator"
-          }
+        <NavLink className={
+          this.props.index === this.props.activeIndex
+            ? "carousel__indicator carousel__indicator--active"
+            : "carousel__indicator"
+        }
           onClick={this.props.onClick}
         />
       </li>
@@ -67,24 +64,24 @@ class CarouselSlide extends Component {
           <small className="carousel-slide__source">
             {this.props.slide.rating}
             <div className="star-rating">
-                <ul className="list-inline">
-                    <li className="list-inline-item">
-                    <i className="fa fa-star"></i>
-                    </li>
-                    <li className="list-inline-item">
-                    <i className="fa fa-star"></i>
-                    </li>
-                    <li className="list-inline-item">
-                    <i className="fa fa-star"></i>
-                    </li>
-                    <li className="list-inline-item">
-                    <i className="fa fa-star"></i>
-                    </li>
-                    <li className="list-inline-item">
-                    <i className="fa fa-star-o"></i>
-                    </li>
-                </ul>
-                </div>
+              <ul className="list-inline">
+                <li className="list-inline-item">
+                  <i className="fa fa-star"></i>
+                </li>
+                <li className="list-inline-item">
+                  <i className="fa fa-star"></i>
+                </li>
+                <li className="list-inline-item">
+                  <i className="fa fa-star"></i>
+                </li>
+                <li className="list-inline-item">
+                  <i className="fa fa-star"></i>
+                </li>
+                <li className="list-inline-item">
+                  <i className="fa fa-star-o"></i>
+                </li>
+              </ul>
+            </div>
           </small>
         </div>
       </li>
@@ -172,7 +169,7 @@ export default class Carousel extends Component {
               key={index}
               index={index}
               activeIndex={this.state.activeIndex}
-              isActive={this.state.activeIndex===index} 
+              isActive={this.state.activeIndex === index}
               onClick={e => this.goToSlide(index)}
             />
           )}
