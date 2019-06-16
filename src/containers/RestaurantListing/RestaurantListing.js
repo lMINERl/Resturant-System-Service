@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from 'react-router-dom';
-import CardResturant from "../../components/CardResturant";
+import CardRestaurant from "../../components/CardRestaurant";
 import Pagination from "../../components/Common/pagination";
 import { connect } from 'react-redux';
 import { paginate } from '../../utils/paginate'
@@ -8,11 +8,9 @@ import SideBar from "../../components/SideBar";
 
 const mapStateToProps = (state) => {
   return {
-    restaurants: state.user.restaurants,
-    pageSize: state.user.pageSize,
-    currentPage: state.user.currentPage,
-
-
+    restaurants: state.restaurant.restaurants,
+    pageSize: state.restaurant.pageSize,
+    currentPage: state.restaurant.currentPage,
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -25,34 +23,12 @@ const mapDispatchToProps = dispatch => {
   }
 }
 const RestaurantListing = props => {
-
-  const setRating = (id, rating) => {
-    // const index = state.restaurants.findIndex(v => {
-    //   return v.id === id;
-    // });
-    // if (
-    //   state.restaurants[index].rating > -1 &&
-    //   state.restaurants[index].rating < 5
-    // ) {
-    //   const nArray = [...state.restaurants];
-    //   nArray[index] = {
-    //     ...state.restaurants[index],
-    //     rating: rating
-    //   };
-    //   setState({
-    //     ...state,
-    //     restaurants: nArray
-    //   });
-    //   }
-  };
-
   const Restaurants = paginate(props.restaurants, props.currentPage, props.pageSize)
   let restaurantList = Restaurants.map(r => {
     return (
-      <CardResturant
-        setrating={(id, rating) => setRating(id, rating)}
-        key={r.id}
-        resturant={r}
+      <CardRestaurant      
+        key={r._id}
+        restaurant={r}
       />
     );
   });
@@ -66,7 +42,7 @@ const RestaurantListing = props => {
       <div className="">
         <div className="d-flex justify-content-between container mt-5 mb-5 listing-header listing-header--with-margin">
           All Restaurants
-        <NavLink to="/resturantform" className="badge badge-warning listing-header__btn ">
+        <NavLink to="/restaurantform" className="badge badge-warning listing-header__btn ">
             <i className="fa fa-plus-square" />
             Add Restaurant
         </NavLink>

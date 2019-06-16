@@ -22,7 +22,7 @@ class Navigation extends React.Component {
   render() {
     const cartBill = this.state.isCart ? <Cart /> : <></>;
     return (
-      <div className="container-fluid fixed-top">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-12 col-sm-4 nopadding">
             <div className="navigation__secondary d-flex justify-content-end">
@@ -44,7 +44,7 @@ class Navigation extends React.Component {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/restaurants" >Resturants</NavLink>
+                      <NavLink to="/restaurants" >Restaurants</NavLink>
                     </li>
                     <li>
                       <NavLink to="/menus" >Menus</NavLink>

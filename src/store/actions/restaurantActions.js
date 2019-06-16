@@ -4,7 +4,14 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const GET_ITEMS = 'GET_ITEMS';
 export const GET_ITEM_BY_ID = 'GET_ITEM_BY_ID';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
+export const SET_RATING = 'SET_RATING';
 
+export const setRating = (id, rating) => {
+    return {
+        type: SET_RATING,
+        payload: { id, rating }
+    }
+}
 export const changePage = (pageNumber) => {
     return {
         type: CHANGE_PAGE,

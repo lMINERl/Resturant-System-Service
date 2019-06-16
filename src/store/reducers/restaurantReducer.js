@@ -1,5 +1,6 @@
 import * as actions from '../actions/restaurantActions';
 // import restaurantModel from '../../models/restaurant';
+import findIndex from '../../helpers/findIndex';
 
 const initialState = {
     restaurants: [
@@ -8,6 +9,15 @@ const initialState = {
             name: "restaurant1",
             imgUrl: null,
             rating: 4,
+            location: "cairo",
+            description: "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken.",
+        },
+        {
+            _id: "5cf92b292a79451758f83c1c2",
+            name: "restaurant1",
+            imgUrl: null,
+            rating: 4,
+            location: "casdiasd2",
             description: "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken.",
         }
     ],
@@ -24,13 +34,19 @@ const initialState = {
         "comments": [{ userId: "5cf92f1c2a79451758f83c2a", number: 0 }],
         "description": "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
     },
-    restaurantMenu: null,
+    restaurantMenu: ['5cf929e62a79451758f83c1b'],
     pageSize: 5,
     currentPage: 1
 }
 
 const restaurantReducer = (state = initialState, action) => {
-    let { restaurants, selectedRestaurant, pageSize, currentPage, restaurantMenu } = { ...state };
+
+    let restaurants = [...state.restaurants];
+    let selectedRestaurant = {...state.selectedRestaurant};
+    let pageSize = state.pageSize;
+    let currentPage = state.currentPage;
+    let restaurantMenu = [...state.restaurantMenu];
+
     switch (action.type) {
         case actions.ADD_ITEM:
             const data = { ...action.payload };
@@ -60,6 +76,15 @@ const restaurantReducer = (state = initialState, action) => {
             break;
         case actions.CHANGE_PAGE:
             currentPage = action.payload;
+            break;
+        case actions.SET_RATING: {
+            const { id, rating } = { ...action.payload };
+            if (rating < 5 && rating > -1) {
+                const index = findIndex(restaurants, id);
+                if (index !== -1)
+                    restaurants[index].rating = rating;
+            }
+        }
             break;
         case action.ERROR:
             break;

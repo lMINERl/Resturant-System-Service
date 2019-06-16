@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 
 
 class CarouselLeftArrow extends Component {
   render() {
     return (
-      <NavLink
-        className="carousel__arrow carousel__arrow--left"
+      <button 
+        className="button carousel__arrow carousel__arrow--left"
         onClick={this.props.onClick}
       >
         <span className="fa fa-2x fa-angle-left" />
-      </NavLink>
+      </button>
     );
   }
 }
@@ -18,12 +17,12 @@ class CarouselLeftArrow extends Component {
 class CarouselRightArrow extends Component {
   render() {
     return (
-      <NavLink
-        className="carousel__arrow carousel__arrow--right"
+      <button 
+        className="button carousel__arrow carousel__arrow--right"
         onClick={this.props.onClick}
       >
         <span className="fa fa-2x fa-angle-right" />
-      </NavLink>
+      </button>
     );
   }
 }
@@ -32,10 +31,10 @@ class CarouselIndicator extends Component {
   render() {
     return (
       <li>
-        <NavLink className={
+        <button className={
           this.props.index === this.props.activeIndex
-            ? "carousel__indicator carousel__indicator--active"
-            : "carousel__indicator"
+            ? "button carousel__indicator carousel__indicator--active"
+            : "button carousel__indicator"
         }
           onClick={this.props.onClick}
         />

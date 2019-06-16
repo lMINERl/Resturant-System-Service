@@ -69,7 +69,7 @@ const foodReducer = (state = initialState, action) => {
                 nselectedFood = itemindex;
         }
             break;
-        case actions.GET_RESTURANT_MENU:
+        case actions.GET_RESTAURANT_MENU:
             nfoods = [...action.payload];
             break;
 
@@ -78,9 +78,7 @@ const foodReducer = (state = initialState, action) => {
             break;
 
         case actions.SET_SIZE: {
-
             const { id, size } = { ...action.payload };
-            // debugger;
             const index = findIndex(nfoods, id);
             if (index !== -1) {
                 if (size < nfoods[index].sizes.length && size > -1) {

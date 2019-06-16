@@ -17,7 +17,7 @@ export const foodAPI = {
     delete(id) {
         return axios.delete(`${baseURL}/food/${id}`).then(res => res.data);
     },
-    getResturantMenu(resturantId) {
+    getRestaurantMenu(restaurantId) {
         return axios.get(`${baseURL}/food/restaurant/5cf92b292a79451758f83c1c`).then(res => res.data);
     }
 }

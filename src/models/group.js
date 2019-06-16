@@ -6,6 +6,6 @@ export default Object.freeze({
     initiateOrder: null,
     deliveryLocation: null,
     orderedFoods: () => [],
-    resturantId: null,
+    restaurantId: null,
     users: () => [],
 });

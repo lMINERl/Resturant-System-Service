@@ -4,7 +4,7 @@ export default Object.freeze({
     password: null,
     email: null,
     favouriteFood: () => [], //contains ids of foods unbinded
-    favouriteResturant: () => [], //contains ids of resturant unbinded
+    favouriteRestaurant: () => [], //contains ids of restaurant unbinded
     groups: () => [], //group ids
     ownedGroups: () => [], //id group
     reviews: () => [], // id of reviews

@@ -26,7 +26,7 @@ const Footer = (props) => {
                         <h2 className="ftco-heading-2">Links</h2>
                         <ul className="list-unstyled">
                           <li><NavLink to="/"  className="a"><span className="fa fa-long-arrow-right"></span> Home</NavLink></li>
-                          <li><NavLink to="/resturants"  className="a"><span className="fa fa-long-arrow-right"></span> All Restaurant</NavLink></li>
+                          <li><NavLink to="/restaurants"  className="a"><span className="fa fa-long-arrow-right"></span> All Restaurant</NavLink></li>
                           <li><NavLink to="/contact"  className="a"><span className="fa fa-long-arrow-right"> </span> Contact Us</NavLink></li>
                         </ul>
                       </div>

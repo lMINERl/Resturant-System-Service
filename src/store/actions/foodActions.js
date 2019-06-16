@@ -6,7 +6,7 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const GET_ITEMS = 'GET_ITEMS';
 export const GET_ITEM_BY_ID = 'GET_ITEM_BY_ID';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
-export const GET_RESTURANT_MENU = 'GET_RESTURANT_MENU';
+export const GET_RESTAURANT_MENU = 'GET_RESTAURANT_MENU';
 export const SET_SIZE = 'SET_SIZE';
 export const SET_AMOUNT = 'SET_AMOUNT';
 export const SET_RATING = 'SET_RATING';
@@ -15,7 +15,7 @@ export const ERROR = 'ERROR';
 export const getRestaurantMenuDispatch = (restaurantId) => {
 
     return dispatch => {
-        foodAPI.getResturantMenu(restaurantId)
+        foodAPI.getRestaurantMenu(restaurantId)
             .then(
                 v => {
                     const list = v.map(el => { return { ...el, amount: 0, size: 0 } });
@@ -66,7 +66,7 @@ export const getItemById = (itemId) => {
 }
 export const getRestaurantMenu = (list) => {
     return {
-        type: GET_RESTURANT_MENU,
+        type: GET_RESTAURANT_MENU,
         payload: list
     }
 }
