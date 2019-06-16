@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { bindActionCreators } from 'redux'
-import {connect} from 'react-redux';
-import {deleteFromCart, updateItemUnits} from '../../store/actions/cartActions';
+import { connect } from 'react-redux';
+import { deleteFromCart, updateItemUnits } from '../../store/actions/cartActions';
 import CartItem from "../cartItem/cartItem";
 
 class Cart extends React.Component {
@@ -14,29 +14,32 @@ class Cart extends React.Component {
         );
     }
     handleDeleteFromCart(_id) {
-        
+
         this.props.deleteFromCart(_id)
     }
-    handleDeductUnit(_id) {
-        let amount= -1;
-        this.props.updateItemUnits(_id, amount)
+    handleDeductUnit(item) {
+        this.props.updateItemUnits({
+            ...item,
+            nAmount: -1
+        })
     }
-    handleAddUnit(_id) {
-        let amount = 1;
-        this.props.updateItemUnits(_id, amount)
+    handleAddUnit(item) {
+        this.props.updateItemUnits({
+            ...item,
+            nAmount: 1
+        })
     }
 
     cartList() {
-        
         return (
             this.props.cart.map(cartItem => {
-              return (
-                  <CartItem key={cartItem._id}
-                            cartItem={cartItem}
-                            onAddUnit={this.handleAddUnit.bind(this, cartItem._id)}
-                            onDeductUnit={this.handleDeductUnit.bind(this, cartItem._id)}
-                            handleDeleteFromCart={this.handleDeleteFromCart.bind(this, cartItem._id)} />
-              );
+                return (
+                    <CartItem key={cartItem._id}
+                        cartItem={cartItem}
+                        onAddUnit={this.handleAddUnit.bind(this, cartItem)}
+                        onDeductUnit={this.handleDeductUnit.bind(this, cartItem)}
+                        handleDeleteFromCart={this.handleDeleteFromCart.bind(this, cartItem)} />
+                );
             })
         );
     }
@@ -50,37 +53,38 @@ class Cart extends React.Component {
                     </Col>
                 </Row> */}
                 <div className="row">
-                        <div className="col-md-12">
-                            <div className="order-bill__check">
-                                <div className="order-bill__check-info">
-                                    <span className="order-bill__check-subtotal">TotalPrice</span>
-                                    <span className="order-bill__check-dash"></span>
-                                    <span className="order-bill__check-price">{this.totalAmount(this.props.cart)}</span>
-                                </div>
-                                <button className="button button--primary button--block-btn button--small-btn">Confirm</button>
+                    <div className="col-md-12">
+                        <div className="order-bill__check">
+                            <div className="order-bill__check-info">
+                                <span className="order-bill__check-subtotal">TotalPrice</span>
+                                <span className="order-bill__check-dash"></span>
+                                <span className="order-bill__check-price">{this.totalAmount(this.props.cart)}</span>
                             </div>
+                            <button className="button button--primary button--block-btn button--small-btn">Confirm</button>
                         </div>
                     </div>
+                </div>
             </div>
         );
     }
-    totalAmount(cartArray) {
-        return cartArray.reduce((acum, item) => {
+    totalAmount(cart) {
+
+        return cart.reduce((acum, item) => {
             acum += item.price * item.amount;
             return acum;
         }, 0);
     }
-    totalCount(cartArray) {
-      return cartArray.reduce((tcount, item) => {
-          tcount += item.amount;
-          return tcount;
-      }, 0);
-  }
+    totalCount(cart) {
+        return cart.reduce((tcount, item) => {
+            tcount += item.amount;
+            return tcount;
+        }, 0);
+    }
 
     render() {
         if (this.props.cart.length !== 0) {
             return (
-                <aside className='cart'>
+                <aside className='cart position-absolute'>
                     {this.renderCart()}
                     {this.cartTotal()}
                 </aside>
@@ -88,14 +92,14 @@ class Cart extends React.Component {
         }
 
         return (
-            <aside className='cart'>cart empty</aside>
+            <></>
         );
     }
 }
 
 function mapStateToProps(state) {
     return {
-        cart: state.cart
+        cart: state.cart.cart
     }
 }
 function mapActionsToProps(dispatch) {

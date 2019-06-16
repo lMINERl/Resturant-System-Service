@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CardFood from '../../components/CardFood/index';
-import Cart from '../../components/OrderBill/OrderBill';
+// import Cart from '../../components/OrderBill/OrderBill';
 import { connect } from 'react-redux';
 import { getRestaurantMenuDispatch, setSize, setRating, setAmount } from '../../store/actions/foodActions';
 import { addToCart } from '../../store/actions/cartActions';
@@ -57,14 +57,13 @@ class CardListing extends Component {
             {menuListing}
           </div>
         </div>
-        <Cart />
+        {/* <Cart /> */}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state.food.foods);
   return {
     data: state.food.foods,
   }

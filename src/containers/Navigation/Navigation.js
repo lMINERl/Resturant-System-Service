@@ -1,14 +1,26 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import Cart from '../../components/OrderBill';
 class Navigation extends React.Component {
-   totalCount(cartArray) {
-    return cartArray.reduce((tcount, item) => {
-        tcount += item.amount;
-        return tcount;
+  state = {
+    isCart: false
+  }
+
+  totalCount({cart}) {
+    return cart.reduce((tcount, item) => {
+      tcount += item.amount;
+      return tcount;
     }, 0);
-}
+  }
+  toggleCart(isCart) {
+    this.setState({
+      ...this.state,
+      isCart: isCart
+    })
+  }
   render() {
+    const cartBill = this.state.isCart ? <Cart /> : <></>;
     return (
       <div className="container-fluid fixed-top">
         <div className="row">
@@ -50,21 +62,24 @@ class Navigation extends React.Component {
                       </NavLink>
                     </li>
                     <li className="nav-item dropdown ">
-                      <NavLink
-                        to="/"
+                      <button
+                        // to="#"
+                        className="button"
+                        onClick={() => this.toggleCart(!this.state.isCart)}
                         id="dropdownMenu2"
                         data-toggle="dropdown"
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
                         <i className="fa fa-shopping-cart cart-icon" />
-                      </NavLink>
-                      <span className="cart-icon__orders">{this.totalCount(this.props.tamount)}</span>
+                      </button>
+                      <span className="cart-icon__orders">{this.totalCount(this.props.cart)}</span>
                       <div
                         className="dropdown-menu"
                         aria-labelledby="dropdownMenu2"
                       />
                     </li>
+                      {cartBill}
                     <li className="nav-item">
                       <NavLink to="/profile">
                         <i className="fa fa-user-circle" />
@@ -111,9 +126,9 @@ class Navigation extends React.Component {
     );
   }
 }
-const mapStateToProps= (state)=>{
-return{
-  tamount:state.cart
-}
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart
+  }
 }
 export default connect(mapStateToProps)(Navigation);
