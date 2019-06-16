@@ -68,9 +68,9 @@ class Cart extends React.Component {
         );
     }
     totalAmount(cart) {
-
+        
         return cart.reduce((acum, item) => {
-            acum += item.price * item.amount;
+            acum += item.price[item.size] * item.amount;
             return acum;
         }, 0);
     }

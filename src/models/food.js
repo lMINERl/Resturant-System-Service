@@ -2,7 +2,7 @@ export default Object.freeze({
     _id:null,
     name: null,
     discountPrice: 0,
-    price: 0,
+    price: [],
     avgRating: 0,
     sizes: () => [],
     ingredients: () => [],

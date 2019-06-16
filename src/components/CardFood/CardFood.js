@@ -36,7 +36,7 @@ const CardFood = (props) => {
             <span className="menu-card__price-before">${props.data.discountPrice}
               <span className="menu-card__dashed"></span>
             </span>
-            <span className="menu-card__price">${props.data.price}</span>
+            <span className="menu-card__price">${props.data.price[props.data.size]}</span>
           </div>
           <span className="menu-card__border"></span>
         </div>

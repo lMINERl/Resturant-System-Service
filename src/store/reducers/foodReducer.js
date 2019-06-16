@@ -8,7 +8,7 @@ const initialState = {
         name: 'Fish',
         discountPrice: 160.00,
         discountPercent: 50,
-        price: 54.00,
+        price: [100.00,200,300,400],
         img: null,
         rating: 2,
         size: 0,
