@@ -1,9 +1,11 @@
+/* eslint-disable react/no-typos */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import StarRating from '../../components/StarRating';
 import SelectSize from '../../components/SelectSize';
 
 const CardFood = (props) => {
+  
   return (
     <div className="col-md-3">
       <div className="menu-card__item">
@@ -48,7 +50,7 @@ const CardFood = (props) => {
             names={props.data.sizes}
             select={(size) => props.setsize(props.data._id, size)}
           />
-
+      
         </div>
         <div className="menu-card__size-info">
           <span onClick={() => props.setamount(props.data._id, props.data.amount - 1)} className="menu-card__size-info-left"><i className="fa fa-minus"></i></span>
@@ -60,7 +62,6 @@ const CardFood = (props) => {
     </div>
 
   );
-
 }
 
 export default CardFood;

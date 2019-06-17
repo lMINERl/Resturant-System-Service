@@ -34,7 +34,7 @@ class Cart extends React.Component {
         return (
             this.props.cart.map(cartItem => {
                 return (
-                    <CartItem key={cartItem._id}
+                    <CartItem key={`${cartItem._id}+${cartItem.size}`}
                         cartItem={cartItem}
                         onAddUnit={this.handleAddUnit.bind(this, cartItem)}
                         onDeductUnit={this.handleDeductUnit.bind(this, cartItem)}
