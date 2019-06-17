@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import { paginate } from "../../utils/paginate";
 import SideBar from "../../components/SideBar";
 import { bindActionCreators } from "redux";
-
 import {
   deleteItem,
-  changePage
+  changePage,
+  setRating
 } from "../../store/actions/restaurantActions";
 
 const mapStateToProps = state => {
@@ -23,7 +23,8 @@ const mapActionsToProps = dispatch => {
   return bindActionCreators(
     {
       deleteItem,
-      changePage
+      changePage,
+      setRating
     },
     dispatch
   );
@@ -40,6 +41,7 @@ const RestaurantListing = props => {
       <CardRestaurant
         key={r._id}
         restaurant={r}
+        setrating={(id, rating) => props.setRating(id, rating)}
         delete={() => props.deleteItem(r._id)}
       />
     );

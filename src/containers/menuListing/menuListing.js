@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import CardFood from "../../components/CardFood/index";
 import Cart from "../../components/OrderBill/OrderBill";
 import { connect } from "react-redux";
