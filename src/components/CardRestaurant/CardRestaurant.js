@@ -1,6 +1,6 @@
-import React from 'react';
-import StarRating from '../../components/StarRating';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import StarRating from "../../components/StarRating";
+import { NavLink } from "react-router-dom";
 const CardRestaurant = props => {
   return (
     <div className="col-md-6">
@@ -23,13 +23,15 @@ const CardRestaurant = props => {
             </NavLink>
             <div className="menu-card__edit-delete-fav">
               <i className="fa fa-pencil" />
-              <i className="fa fa-trash" />
+              <i onClick={() => props.delete()} className="fa fa-trash" />
               <i className="fa fa-heart-o" />
             </div>
             <div className="star-rating">
               <ul className="list-inline">
                 <StarRating
-                  setRate={(rating) => props.setrating(props.restaurant._id, rating)}
+                  setRate={rating =>
+                    props.setrating(props.restaurant._id, rating)
+                  }
                   rating={props.restaurant.rating}
                   outof={5}
                 />
@@ -50,17 +52,13 @@ const CardRestaurant = props => {
               </NavLink>
             </button>
             <button className="button button--black button--small-btn">
-              <NavLink to="/profile/grouporder">
-                Add to group
-            </NavLink>
+              <NavLink to="/profile/grouporder">Add to group</NavLink>
             </button>
           </div>
         </div>
       </div>
     </div>
-
   );
-
 };
 
 export default CardRestaurant;

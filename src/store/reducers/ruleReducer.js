@@ -1,4 +1,4 @@
-import * as actions from '../actions/ruleActions';
+import * as actionTypes from '../actions/ruleActions';
 import ruleModel from '../../models/rule';
 
 const initialState = {
@@ -9,12 +9,12 @@ const initialState = {
 const ruleReducer = (state = initialState, action) => {
     let { rule, userRules } = { ...state };
     switch (action.type) {
-        case actions.ADD_ITEM:
+        case actionTypes.ADD_ITEM:
             const data = { ...action.payload };
             rule.push(data);
             break;
 
-        case actions.UPDATE_ITEM:
+        case actionTypes.UPDATE_ITEM:
             const updatedItem = { ...action.payload };
             const index = rule.findIndex(el => el._id === updatedItem._id);
             if (index !== -1)
@@ -22,14 +22,14 @@ const ruleReducer = (state = initialState, action) => {
 
             break;
 
-        case actions.DELETE_ITEM:
+        case actionTypes.DELETE_ITEM:
             const id = action.payload;
             const itemIndex = rule.findIndex(el => el._id === id);
             if (itemIndex !== -1)
                 rule = [].concat(rule.slice(0, itemIndex), rule.slice(itemIndex, rule.length));
             break;
             
-        case actions.GET_ITEM_BY_ID:
+        case actionTypes.GET_ITEM_BY_ID:
             const _id = action.payload;
             const itemindex = rule.findIndex(el => el._id === _id);
             if (itemindex !== -1)

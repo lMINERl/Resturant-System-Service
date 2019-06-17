@@ -1,34 +1,46 @@
 import React from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import CardRestaurant from "../../components/CardRestaurant";
 import Pagination from "../../components/Common/pagination";
-import { connect } from 'react-redux';
-import { paginate } from '../../utils/paginate'
+import { connect } from "react-redux";
+import { paginate } from "../../utils/paginate";
 import SideBar from "../../components/SideBar";
+import { bindActionCreators } from "redux";
 
-const mapStateToProps = (state) => {
+import {
+  deleteItem,
+  changePage
+} from "../../store/actions/restaurantActions";
+
+const mapStateToProps = state => {
   return {
     restaurants: state.restaurant.restaurants,
     pageSize: state.restaurant.pageSize,
-    currentPage: state.restaurant.currentPage,
-  }
-}
-const mapDispatchToProps = dispatch => {
-  return {
-    onPageChange: (currentPage) =>
-      dispatch({
-        type: "CHANGECURRENT",
-        payload: currentPage
-      })
-  }
-}
+    currentPage: state.restaurant.currentPage
+  };
+};
+const mapActionsToProps = dispatch => {
+  return bindActionCreators(
+    {
+      deleteItem,
+      changePage
+    },
+    dispatch
+  );
+};
+
 const RestaurantListing = props => {
-  const Restaurants = paginate(props.restaurants, props.currentPage, props.pageSize)
+  const Restaurants = paginate(
+    props.restaurants,
+    props.currentPage,
+    props.pageSize
+  );
   let restaurantList = Restaurants.map(r => {
     return (
-      <CardRestaurant      
+      <CardRestaurant
         key={r._id}
         restaurant={r}
+        delete={() => props.deleteItem(r._id)}
       />
     );
   });
@@ -38,14 +50,17 @@ const RestaurantListing = props => {
       <div className="h-100 mt-5 mb-5" />
       <div className="h-100 mt-5 mb-5" />
       <div className="h-100 mt-5 mb-5" />
-      
+
       <div className="">
         <div className="d-flex justify-content-between container mt-5 mb-5 listing-header listing-header--with-margin">
           All Restaurants
-        <NavLink to="/restaurantform" className="badge badge-warning listing-header__btn ">
+          <NavLink
+            to="/restaurantform"
+            className="badge badge-warning listing-header__btn "
+          >
             <i className="fa fa-plus-square" />
             Add Restaurant
-        </NavLink>
+          </NavLink>
         </div>
         <div className="menu-card">
           <div className="container">
@@ -57,11 +72,19 @@ const RestaurantListing = props => {
                 {restaurantList}
               </div>
             </div>
-            <Pagination itemCount={props.restaurants.length} pageSize={props.pageSize} currentPage={props.currentPage} onPageChange={props.onPageChange} />
+            <Pagination
+              itemCount={props.restaurants.length}
+              pageSize={props.pageSize}
+              currentPage={props.currentPage}
+              onPageChange={props.onPageChange}
+            />
           </div>
         </div>
       </div>
     </>
   );
 };
-export default connect(mapStateToProps, mapDispatchToProps)(RestaurantListing);
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(RestaurantListing);
