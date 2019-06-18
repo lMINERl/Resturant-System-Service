@@ -6,21 +6,30 @@ const initialState = {
   restaurants: [
     {
       _id: "5cf92b292a79451758f83c1c",
-      name: "restaurant1",
+      name: "MAC",
       imgUrl: null,
       rating: 4,
       location: "cairo",
       description:
-        "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
+        "Our menu is simple yet delicious with a variety of \"MACS\" available."
     },
     {
       _id: "5cf92b292a79451758f83c1c2",
-      name: "restaurant2",
+      name: "KFC",
       imgUrl: null,
-      rating: 4,
-      location: "casdiasd2",
+      rating: 2,
+      location: "ismailia",
       description:
         "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c3",
+      name: "MAC",
+      imgUrl: null,
+      rating: 3,
+      location: "suez",
+      description:
+        "Our menu is simple yet delicious with a variety of \"MACS\" available."
     }
   ],
   selectedRestaurant: {
@@ -39,7 +48,8 @@ const initialState = {
   },
   restaurantMenu: ["5cf929e62a79451758f83c1b"],
   pageSize: 5,
-  currentPage: 1
+  currentPage: 1,
+  rests: null
 };
 
 const restaurantReducer = (state = initialState, action) => {
@@ -96,6 +106,8 @@ const restaurantReducer = (state = initialState, action) => {
         }
       }
       break;
+      case actions.GET_RESTAURANTS_BYNAME:
+      return { ...state, rests: action.payload}  
     case action.ERROR:
       break;
     default:

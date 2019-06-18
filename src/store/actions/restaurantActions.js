@@ -5,7 +5,7 @@ export const GET_ITEMS = 'GET_ITEMS';
 export const GET_ITEM_BY_ID = 'GET_ITEM_BY_ID';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const SET_RATING = 'SET_RATING';
-
+export const GET_RESTAURANTS_BYNAME = 'GET_RESTAURANTS_BYNAME';
 
 // export const getItemByIdDispatch = id => {
 //     return dispatch =>
@@ -59,5 +59,11 @@ export const getItemById = (item) => {
     return {
         type: GET_ITEM_BY_ID,
         payload: item
+    }
+}
+export const getRestaurantsByname = (rests) => {
+    return {
+        type: GET_RESTAURANTS_BYNAME,
+        payload: rests
     }
 }

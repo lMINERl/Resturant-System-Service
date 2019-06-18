@@ -25,26 +25,29 @@ export class AutocompleteComponent extends Component {
   static propTypes = {};
   handleSubmit(e) {
     e.preventDefault();
-    if (this.state.userInput) {
-      const { restaurants } = this.props;
-      const res = restaurants.find(r => r.location === this.state.userInput.toLowerCase());
-      // this.props.history.replace("/restaurants");
-      if (res) {
-        this.setState({
-          submitted: true,
-          res: res
-        });
-      } else {
-        alert("cannot find this city");
-      }
+    if(this.state.userInput){
+      const {restaurants}=this.props;
+      
+        const res = restaurants.find(r=>r.location===this.state.userInput.toLowerCase());
+       
+        // this.props.history.replace("/restaurants");
+        if(res){
 
-    } else {
-      alert('please enter a city');
+          this.setState({
+            submitted:true,
+            res:res
+          });
+        }else{
+          alert("cannot find this city");
+        }
     }
+    else{
+      alert('please enter a city');
+  }
   }
   onChange = (e) => {
     const { suggestions } = this.props;
-    const userInput = e.currentTarget.value;
+    const userInput = e.target.value;
 
     const filteredSuggestions = suggestions.filter(
       (suggestion) =>
@@ -57,7 +60,7 @@ export class AutocompleteComponent extends Component {
       showSuggestions: true,
       userInput: e.currentTarget.value
     });
-  }
+    }
   onClick = (e) => {
     this.setState({
       activeSuggestion: 0,
@@ -67,6 +70,7 @@ export class AutocompleteComponent extends Component {
     });
   };
   onKeyDown = e => {
+    
     const { activeSuggestion, filteredSuggestions } = this.state;
 
     if (e.keyCode === 13) {
@@ -133,9 +137,9 @@ export class AutocompleteComponent extends Component {
           <input
             className="filter-search form-control input-search mr-0 "
             type="search"
-            placeholder="Enter City To Find Restaurants" onChange={onChange}
+            placeholder={this.props.placeholder} onChange={onChange}
             onKeyDown={onKeyDown}
-            value={userInput} />
+            value={userInput}/>
 
           <button
             // to={`restaurant/${this.state.userInput}`}
@@ -144,7 +148,6 @@ export class AutocompleteComponent extends Component {
             </button>
           {suggestionsListComponent}
         </form>
-
       </React.Fragment>
     )
   }
