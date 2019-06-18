@@ -11,6 +11,7 @@ class HomePage extends Component {
 
 
 render(){
+  const cities=[];
   return (
     <div>
       {/* <!-- Start sliders --> */}
@@ -25,7 +26,17 @@ render(){
                     <h3 className="caption">Order Your Food Online For <br/>
                       Take Away, Home Delivery</h3>
                   </div>
-                  <AutoComplete suggestions={['Cairo', 'Ismailia', 'Alex', 'Suez', 'Arish', 'Damitte']} {...this.props}/>
+                  
+                  {
+                   
+                    this.props.restaurants.forEach(r=>{
+                      if(!cities.includes(r.location)){
+
+                        cities.push(r.location)
+                      }
+                  })}
+                  <AutoComplete suggestions={cities} {...this.props} placeholder="Enter City To Find Restaurants"/>
+                
                 </div>
               </div>
             </div>
@@ -243,7 +254,8 @@ render(){
 }}
 const mapStateToProps = (state)=>{
   return{
-    comments:state.user.comments
+    comments:state.user.comments,
+    restaurants:state.restaurant.restaurants
   }
 }
 export default connect(mapStateToProps)(HomePage);
