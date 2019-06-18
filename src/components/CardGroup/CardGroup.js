@@ -1,6 +1,15 @@
-import React from 'react';
-import {NavLink} from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import OrderBill from '../OrderBill';
+
 const CardGroup = (props) => {
+  const [view, setView] = useState(false);
+
+  let Cart = (view) ?
+    (
+      <OrderBill
+      />
+    ) : (<React.Fragment></React.Fragment>);
 
   return (
     <div className="menu-card__item  menu-border">
@@ -10,7 +19,8 @@ const CardGroup = (props) => {
         </div>
         <h3 className="menu-card__heading--black text-center">{props.data.name}</h3>
         <div className="menu-card__fav">
-          <i className="fa fa-shopping-cart fa-lg"></i>
+          <i onClick={() => setView(!view)} className="fa fa-shopping-cart fa-lg"></i>
+          {Cart}
         </div>
         <span className="menu-card__border-primary"></span>
       </div>

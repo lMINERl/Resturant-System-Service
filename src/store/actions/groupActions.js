@@ -4,6 +4,7 @@ export const ADD_ITEM = 'ADD_ITEM';
 export const GET_ITEMS = 'GET_ITEMS';
 export const GET_ITEM_BY_ID = 'GET_ITEM_BY_ID';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
+export const ADD_RESTAURANT_TO_GROUP = 'ADD_RESTAURANT_TO_GROUP';
 
 export const changePage = (pageNumber) => {
     return {
@@ -40,5 +41,11 @@ export const getItemById = (itemId) => {
     return {
         type: GET_ITEM_BY_ID,
         payload: itemId
+    }
+}
+export const addRestaurantToGroup = (restaurant) => {
+    return {
+        type: ADD_RESTAURANT_TO_GROUP,
+        payload: restaurant
     }
 }

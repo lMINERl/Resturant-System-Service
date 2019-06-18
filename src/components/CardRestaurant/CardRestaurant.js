@@ -1,6 +1,12 @@
 import React from "react";
 import StarRating from "../../components/StarRating";
 import { NavLink } from "react-router-dom";
+import { addRestaurantToGroup } from '../../store/actions/groupActions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+
+
 const CardRestaurant = props => {
   return (
     <div className="col-md-6">
@@ -51,7 +57,7 @@ const CardRestaurant = props => {
                 View Menu
               </NavLink>
             </button>
-            <button className="button button--black button--small-btn">
+            <button onClick={() => props.addRestaurantToGroup(props.restaurant)} className="button button--black button--small-btn">
               <NavLink to="/profile/grouporder">Add to group</NavLink>
             </button>
           </div>
@@ -61,4 +67,10 @@ const CardRestaurant = props => {
   );
 };
 
-export default CardRestaurant;
+function mapActionToProps(dispatch) {
+  return bindActionCreators({
+    addRestaurantToGroup
+  }, dispatch);
+}
+
+export default connect(null, mapActionToProps)(CardRestaurant);
