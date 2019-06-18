@@ -13,7 +13,7 @@ import FoodDetails from '../containers/FoodDetails/';
 import {RestaurantDetails} from '../components/RestaurantDetails';
 import CardListing from '../containers/CardListing/';
 import MenuListing from '../containers/menuListing/menuListing';
-import Profile from '../containers/Profile/';
+import Profile from '../components/Profile';
 
 
 import RestaurantListing from '../containers/RestaurantListing';

@@ -3,8 +3,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import SelectSize from "../../components/SelectSize";
+import Proptype from 'prop-types';
 
 const CardFood = props => {
+  let Sale = null;
+  if (props.data.discountPrice > 0) {
+    Sale = (<div className="menu-card__sale">{props.data.discountPercent}</div>);
+  }
   return (
     <div className="col-md-3">
       <div className="menu-card__item">
@@ -20,7 +25,7 @@ const CardFood = props => {
               alt="logo"
               src="images/services/logo.jpg"
             />
-            <div className="menu-card__sale">{props.data.discountPercent}</div>
+            {Sale}
           </div>
           <NavLink to="/fooddetails">
             <h3 className="menu-card__heading text-center">
@@ -68,7 +73,7 @@ const CardFood = props => {
             type="number"
             className="menu-card__size-info-medium"
             value={props.data.amount}
-            onChange={() => {}}
+            onChange={() => { }}
           />
           <span
             onClick={() =>
@@ -89,5 +94,30 @@ const CardFood = props => {
     </div>
   );
 };
+
+CardFood.proptype = {
+  data: Proptype.shape({
+    _id: Proptype.string.isRequired,
+    name: Proptype.string.isRequired,
+    rating: Proptype.number.isRequired,
+    discountPercent: Proptype.number,
+    discountPrice: Proptype.number,
+    amount: Proptype.number,
+    size: Proptype.number.isRequired,
+    sizes: Proptype.arrayOf(Proptype.string).isRequired,
+    price: Proptype.arrayOf(Proptype.number).isRequired,
+  }).isRequired,
+  handleOnAdd: Proptype.func.isRequired,
+  delete: Proptype.func.isRequired,
+  setsize: Proptype.func.isRequired,
+  setamount: Proptype.func.isRequired,
+  setrating: Proptype.func.isRequired,
+}
+
+CardFood.defaultProps = {
+  discountPercent: 0,
+  discountPrice: 0,
+  amount: 0,
+}
 
 export default CardFood;

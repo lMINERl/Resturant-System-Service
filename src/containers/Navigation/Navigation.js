@@ -55,7 +55,7 @@ class Navigation extends React.Component {
                   <ul className="nav d-flex flex-direction-row justify-content-between align-items-start">
                     <li className="nav-item">
                       <NavLink
-                        to="/grouporder"
+                        to="/profile/grouporder"
                         className="button button--transparent  button--border--sm button--small-btn nav-btn"
                       >
                         Group Ordering
