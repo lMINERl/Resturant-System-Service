@@ -30,6 +30,24 @@ const initialState = {
       location: "suez",
       description:
         "Our menu is simple yet delicious with a variety of \"MACS\" available."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c4",
+      name: "Cook Door",
+      imgUrl: null,
+      rating: 2,
+      location: "alex",
+      description:
+        "Our menu is simple yet delicious."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c5",
+      name: "Pizza Hut",
+      imgUrl: null,
+      rating: 1,
+      location: "alex",
+      description:
+        "Our menu is simple yet delicious."
     }
   ],
   selectedRestaurant: {

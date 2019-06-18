@@ -32,12 +32,42 @@ const mapActionsToProps = dispatch => {
     dispatch
   );
 };
-
+const ASC = 'ascending';
+const DSC = 'descending';
 const RestaurantListing = props => {
-  const toggleSort = (e) => {
-    // console.log(e.target.value)
-    //props.restaurants.map
+  const sortText = (e) => {
+    const { restaurants } = props;
+    const rests = restaurants.sort((a, b) => sortByText(a, b, ASC))
+    if (rests.length !== 0 && rests !== null) {
+      props.getRestaurantsByname(rests);
+    }
   }
+  const sortNums = (e) => {
+    const { restaurants } = props;
+    const rests = restaurants.sort((a, b) => sortByNum(a, b, DSC))
+    if (rests.length !== 0 && rests !== null) {
+      props.getRestaurantsByname(rests);
+    }
+  }
+  function sortByNum(a, b, order = ASC) {
+    const diff = a.rating - b.rating;
+
+    if (order === ASC) {
+        return diff;
+    }
+
+    return -1 * diff;
+}
+
+function sortByText(a, b, order = ASC) {
+    const diff = a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+
+    if (order === ASC) {
+        return diff;
+    }
+
+    return -1 * diff;
+}
   const onChange = (e) => {
     const userInput = e.target.value;
     const { restaurants } = props;
@@ -99,7 +129,7 @@ const RestaurantListing = props => {
             </div>
             <div className="col-md-9 d-flex flex-wrap align-content-around">
               <nav
-                className="navbar navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-4 align-items-center">
+                className="navbar navbar-full-width navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-4 align-items-center">
 
                 <form className="form-inline">
                   <input
@@ -114,43 +144,14 @@ const RestaurantListing = props => {
                   aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
                 </button>
-                <ul className="navbar-nav ">
-                  <li className="nav-item dropdown mx-4">
-                    <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Category
-                                        </NavLink>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <NavLink className="dropdown-item">Pizza</NavLink>
-                      <NavLink className="dropdown-item">Sea Food</NavLink>
-                      <NavLink className="dropdown-item">Drinks</NavLink>
-                    </div>
-                  </li>
-                  <li className="nav-item dropdown mx-4">
+                <ul className="navbar-nav">
+                  <li className="nav-item dropdown mx-4" onClick={sortNums}>
                     <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Rating
-                                        </NavLink>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <NavLink className="dropdown-item">Action</NavLink>
-                      <NavLink className="dropdown-item">Another action</NavLink>
-                      <div className="dropdown-divider"></div>
-                      <NavLink className="dropdown-item">Something else here</NavLink>
-                    </div>
+                    </NavLink>
                   </li>
-                  <li className="nav-item dropdown mx-4">
-                    <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Price
-                                        </NavLink>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <NavLink className="dropdown-item">Action</NavLink>
-                      <NavLink className="dropdown-item">Another action</NavLink>
-                      <div className="dropdown-divider"></div>
-                      <NavLink className="dropdown-item">Something else here</NavLink>
-                    </div>
-                  </li>
-                  <li className="nav-item dropdown mx-4" onClick={toggleSort}>
+                  <li className="nav-item dropdown mx-4" onClick={sortText}>
                     <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       A_Z
