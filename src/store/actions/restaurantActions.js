@@ -6,6 +6,7 @@ export const GET_ITEM_BY_ID = 'GET_ITEM_BY_ID';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const SET_RATING = 'SET_RATING';
 export const GET_RESTAURANTS_BYNAME = 'GET_RESTAURANTS_BYNAME';
+export const SORT_RESTAURANTS = 'SORT_RESTAURANTS';
 
 // export const getItemByIdDispatch = id => {
 //     return dispatch =>
@@ -61,9 +62,19 @@ export const getItemById = (item) => {
         payload: item
     }
 }
-export const getRestaurantsByname = (rests) => {
+export const getRestaurantsByname = (restaurantName) => {
     return {
         type: GET_RESTAURANTS_BYNAME,
-        payload: rests
+        payload: restaurantName
+    }
+}
+export const sortRestaurants = (sortMethod, data) => {
+    return {
+        type: SORT_RESTAURANTS,
+        payload:
+        {
+            isAsc: (sortMethod || 0),
+            property: data
+        }
     }
 }

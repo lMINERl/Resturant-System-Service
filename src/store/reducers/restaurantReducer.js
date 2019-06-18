@@ -30,6 +30,24 @@ const initialState = {
       location: "suez",
       description:
         "Our menu is simple yet delicious with a variety of \"MACS\" available."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c4",
+      name: "Cook Door",
+      imgUrl: null,
+      rating: 2,
+      location: "alex",
+      description:
+        "Our menu is simple yet delicious."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c5",
+      name: "Pizza Hut",
+      imgUrl: null,
+      rating: 1,
+      location: "alex",
+      description:
+        "Our menu is simple yet delicious."
     }
   ],
   selectedRestaurant: {
@@ -49,7 +67,7 @@ const initialState = {
   restaurantMenu: ["5cf929e62a79451758f83c1b"],
   pageSize: 5,
   currentPage: 1,
-  filteredRestaurants:null,
+  filteredRestaurants: null,
 };
 
 const restaurantReducer = (state = initialState, action) => {
@@ -112,6 +130,17 @@ const restaurantReducer = (state = initialState, action) => {
         filteredRestaurants = restaurants.filter(r => r.name.toLowerCase().startsWith(userInput.toLowerCase()));
       }
       break;
+    case actions.SORT_RESTAURANTS: {
+
+      const { isAsc, property } = action.payload;
+      const checker = (isAsc) ? (a, b) => a[property] > b[property] : (a, b) => a[property] < b[property];
+      if (!filteredRestaurants)
+        filteredRestaurants = [...restaurants];
+
+      filteredRestaurants = filteredRestaurants.sort(checker);
+
+    }
+      break;
     case action.ERROR:
       break;
     default:
@@ -124,7 +153,7 @@ const restaurantReducer = (state = initialState, action) => {
     restaurantMenu: restaurantMenu,
     pageSize: pageSize,
     currentPage: currentPage,
-    filteredRestaurants:filteredRestaurants
+    filteredRestaurants: filteredRestaurants
   };
 };
 

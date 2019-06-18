@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import CardRestaurant from "../../components/CardRestaurant";
 import Pagination from "../../components/Common/pagination";
@@ -10,7 +10,8 @@ import { getRestaurantsByname } from '../../store/actions/restaurantActions';
 import {
   deleteItem,
   changePage,
-  setRating
+  setRating,
+  sortRestaurants
 } from "../../store/actions/restaurantActions";
 
 const mapStateToProps = state => {
@@ -26,19 +27,22 @@ const mapActionsToProps = dispatch => {
       deleteItem,
       changePage,
       setRating,
-      getRestaurantsByname
+      getRestaurantsByname,
+      sortRestaurants
     },
     dispatch
   );
 };
 
 const RestaurantListing = props => {
-
   // didmount
   const { getRestaurantsByname } = props;
   useEffect(() => {
     getRestaurantsByname("");
   }, [getRestaurantsByname]);
+
+  const [sortName, setSortName] = useState(false);
+  const [sortRating, setSortRating] = useState(false);
 
 
   const Restaurants = paginate(
@@ -47,13 +51,10 @@ const RestaurantListing = props => {
     props.pageSize
   );
 
-  const toggleSort = (e) => {
-    // console.log(e.target.value)
-    //props.restaurants.map
-  }
   const onChange = (e) => {
     props.getRestaurantsByname(e.target.value);
   }
+
   if (props.restaurants) {
 
     let restaurantList = props.rests ? props.rests.map(r => {
@@ -102,7 +103,7 @@ const RestaurantListing = props => {
                 </div>
                 <div className="col-md-9 d-flex flex-wrap align-content-around">
                   <nav
-                    className="navbar navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-4 align-items-center">
+                    className="navbar navbar-full-width navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-4 align-items-center">
 
                     <form className="form-inline">
                       <input
@@ -117,43 +118,21 @@ const RestaurantListing = props => {
                       aria-expanded="false" aria-label="Toggle navigation">
                       <span className="navbar-toggler-icon"></span>
                     </button>
-                    <ul className="navbar-nav ">
-                      <li className="nav-item dropdown mx-4">
-                        <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Category
-                                        </NavLink>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <NavLink className="dropdown-item">Pizza</NavLink>
-                          <NavLink className="dropdown-item">Sea Food</NavLink>
-                          <NavLink className="dropdown-item">Drinks</NavLink>
-                        </div>
-                      </li>
-                      <li className="nav-item dropdown mx-4">
+                    <ul className="navbar-nav">
+
+                      <li className="nav-item dropdown mx-4" onClick={() => {
+                        props.sortRestaurants(sortRating, "rating");
+                        setSortRating(!sortRating);
+                      }}>
                         <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Rating
-                                        </NavLink>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <NavLink className="dropdown-item">Action</NavLink>
-                          <NavLink className="dropdown-item">Another action</NavLink>
-                          <div className="dropdown-divider"></div>
-                          <NavLink className="dropdown-item">Something else here</NavLink>
-                        </div>
+                    </NavLink>
                       </li>
-                      <li className="nav-item dropdown mx-4">
-                        <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Price
-                                        </NavLink>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <NavLink className="dropdown-item">Action</NavLink>
-                          <NavLink className="dropdown-item">Another action</NavLink>
-                          <div className="dropdown-divider"></div>
-                          <NavLink className="dropdown-item">Something else here</NavLink>
-                        </div>
-                      </li>
-                      <li className="nav-item dropdown mx-4" onClick={toggleSort}>
+                      <li className="nav-item dropdown mx-4" onClick={() => {
+                        props.sortRestaurants(sortName, "name");
+                        setSortName(!sortName);
+                      }}>
                         <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           A_Z
