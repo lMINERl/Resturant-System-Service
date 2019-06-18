@@ -49,7 +49,7 @@ const initialState = {
   restaurantMenu: ["5cf929e62a79451758f83c1b"],
   pageSize: 5,
   currentPage: 1,
-  rests: null
+  filteredRestaurants:null,
 };
 
 const restaurantReducer = (state = initialState, action) => {
@@ -58,7 +58,7 @@ const restaurantReducer = (state = initialState, action) => {
   let pageSize = state.pageSize;
   let currentPage = state.currentPage;
   let restaurantMenu = [...state.restaurantMenu];
-
+  let filteredRestaurants = null;
   switch (action.type) {
     case actions.ADD_ITEM:
       {
@@ -95,7 +95,7 @@ const restaurantReducer = (state = initialState, action) => {
       }
       break;
     case actions.CHANGE_PAGE:
-        currentPage = action.payload;
+      currentPage = action.payload;
       break;
     case actions.SET_RATING:
       {
@@ -106,8 +106,12 @@ const restaurantReducer = (state = initialState, action) => {
         }
       }
       break;
-      case actions.GET_RESTAURANTS_BYNAME:
-      return { ...state, rests: action.payload}  
+    case actions.GET_RESTAURANTS_BYNAME:
+      {
+        const userInput = action.payload;
+        filteredRestaurants = restaurants.filter(r => r.name.toLowerCase().startsWith(userInput.toLowerCase()));
+      }
+      break;
     case action.ERROR:
       break;
     default:
@@ -119,7 +123,8 @@ const restaurantReducer = (state = initialState, action) => {
     selectedRestaurant: selectedRestaurant,
     restaurantMenu: restaurantMenu,
     pageSize: pageSize,
-    currentPage: currentPage
+    currentPage: currentPage,
+    filteredRestaurants:filteredRestaurants
   };
 };
 
