@@ -35,7 +35,7 @@ const Footer = (props) => {
                       <div className="ftco-footer ftco-footer-widget mb-4">
                         <h2 className="f-heading-2">Services</h2>
                         <ul className="list_unstyled">
-                          <li><NavLink to="/grouporder" className="a"><span className="fa fa-long-arrow-right mr-2"></span> Group Ordering</NavLink></li>
+                          <li><NavLink to="/profile/grouporder" className="a"><span className="fa fa-long-arrow-right mr-2"></span> Group Ordering</NavLink></li>
                         </ul>
                       </div>
                     </div>

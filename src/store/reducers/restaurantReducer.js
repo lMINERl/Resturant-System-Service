@@ -69,7 +69,7 @@ const restaurantReducer = (state = initialState, action) => {
     case actions.UPDATE_ITEM:
       {
         const updatedItem = { ...action.payload };
-        const index = restaurants.findIndex(el => el.__id === updatedItem.__id);
+        const index = restaurants.findIndex(el => el._id === updatedItem._id);
         if (index !== -1) restaurants[index] = updatedItem;
       }
       break;
