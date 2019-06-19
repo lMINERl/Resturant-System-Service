@@ -9,6 +9,7 @@ const MenuListing = props => {
   let menuListing = props.menus ? (
     props.menus.map((v, index) => {
       return (
+        <div className="col-md-3" key={v._id}>
         <CardFood
           handleOnAdd={() => props.addToCart(v)}
           data={v}
@@ -18,6 +19,7 @@ const MenuListing = props => {
           setamount={(id, amount) => { props.setAmount(id, amount) }}
           key={v._id}
         />
+        </div>
       );
     })
   ) : (
@@ -25,7 +27,7 @@ const MenuListing = props => {
     );
 
   return (
-    <div className="menu-card">
+    <div className="menu-card mt-5">
       <div className="container">
         <div className="row">{menuListing}</div>
       </div>
