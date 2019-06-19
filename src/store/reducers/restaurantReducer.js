@@ -6,21 +6,48 @@ const initialState = {
   restaurants: [
     {
       _id: "5cf92b292a79451758f83c1c",
-      name: "restaurant1",
+      name: "MAC",
       imgUrl: null,
       rating: 4,
       location: "cairo",
       description:
-        "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
+        "Our menu is simple yet delicious with a variety of \"MACS\" available."
     },
     {
       _id: "5cf92b292a79451758f83c1c2",
-      name: "restaurant2",
+      name: "KFC",
       imgUrl: null,
-      rating: 4,
-      location: "casdiasd2",
+      rating: 2,
+      location: "ismailia",
       description:
         "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c3",
+      name: "MAC",
+      imgUrl: null,
+      rating: 3,
+      location: "suez",
+      description:
+        "Our menu is simple yet delicious with a variety of \"MACS\" available."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c4",
+      name: "Cook Door",
+      imgUrl: null,
+      rating: 2,
+      location: "alex",
+      description:
+        "Our menu is simple yet delicious."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c5",
+      name: "Pizza Hut",
+      imgUrl: null,
+      rating: 1,
+      location: "alex",
+      description:
+        "Our menu is simple yet delicious."
     }
   ],
   selectedRestaurant: {
@@ -39,7 +66,8 @@ const initialState = {
   },
   restaurantMenu: ["5cf929e62a79451758f83c1b"],
   pageSize: 5,
-  currentPage: 1
+  currentPage: 1,
+  filteredRestaurants: null,
 };
 
 const restaurantReducer = (state = initialState, action) => {
@@ -48,7 +76,7 @@ const restaurantReducer = (state = initialState, action) => {
   let pageSize = state.pageSize;
   let currentPage = state.currentPage;
   let restaurantMenu = [...state.restaurantMenu];
-
+  let filteredRestaurants = null;
   switch (action.type) {
     case actions.ADD_ITEM:
       {
@@ -59,7 +87,7 @@ const restaurantReducer = (state = initialState, action) => {
     case actions.UPDATE_ITEM:
       {
         const updatedItem = { ...action.payload };
-        const index = restaurants.findIndex(el => el.__id === updatedItem.__id);
+        const index = restaurants.findIndex(el => el._id === updatedItem._id);
         if (index !== -1) restaurants[index] = updatedItem;
       }
       break;
@@ -96,6 +124,23 @@ const restaurantReducer = (state = initialState, action) => {
         }
       }
       break;
+    case actions.GET_RESTAURANTS_BYNAME:
+      {
+        const userInput = action.payload;
+        filteredRestaurants = restaurants.filter(r => r.name.toLowerCase().startsWith(userInput.toLowerCase()));
+      }
+      break;
+    case actions.SORT_RESTAURANTS: {
+
+      const { isAsc, property } = action.payload;
+      const checker = (isAsc) ? (a, b) => a[property] > b[property] : (a, b) => a[property] < b[property];
+      if (!filteredRestaurants)
+        filteredRestaurants = [...restaurants];
+
+      filteredRestaurants = filteredRestaurants.sort(checker);
+
+    }
+      break;
     case action.ERROR:
       break;
     default:
@@ -107,7 +152,8 @@ const restaurantReducer = (state = initialState, action) => {
     selectedRestaurant: selectedRestaurant,
     restaurantMenu: restaurantMenu,
     pageSize: pageSize,
-    currentPage: currentPage
+    currentPage: currentPage,
+    filteredRestaurants: filteredRestaurants
   };
 };
 

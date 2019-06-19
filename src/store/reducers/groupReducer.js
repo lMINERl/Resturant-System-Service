@@ -1,47 +1,97 @@
-import * as actions from '../actions/groupActions';
-import groupsModel from '../../models/group';
+import * as actionTypes from '../actions/groupActions';
 
 const initialState = {
-    groups: [groupsModel],
+    groups: [
+        {
+            _id: "a287319",
+            name: 'KFC3',
+            day: 'Friday',
+            date: '22/4/2019',
+            time: '01:00AM'
+        },
+        {
+            _id: "a287311239",
+            name: 'Group',
+            day: '-',
+            date: '-/-/-',
+            time: '-:-'
+        },
+        {
+            _id: "a212387319",
+            name: 'KFC',
+            day: 'Monday',
+            date: '23/4/2019',
+            time: '04:00AM'
+        }
+    ],
     selectedGroup: 0,
     pageSize: 5,
     currentPage: 1
 }
 
 const groupsReducer = (state = initialState, action) => {
-    let { groups, selectedGroup, pageSize, currentPage } = { ...state };
+    let groups = [...state.groups];
+    let selectedGroup = state.selectedGroup;
+    let pageSize = state.pageSize;
+    let currentPage = state.pageSize;
     switch (action.type) {
-        case actions.ADD_ITEM:
+        case actionTypes.ADD_ITEM: {
             const data = { ...action.payload };
             groups.push(data);
+        }
             break;
 
-        case actions.UPDATE_ITEM:
+        case actionTypes.UPDATE_ITEM: {
             const updatedItem = { ...action.payload };
             const index = groups.findIndex(el => el._id === updatedItem._id);
-            if (index !== -1)
-                groups[index] = updatedItem;
-
+            if (index !== -1) groups[index] = updatedItem;
+        }
             break;
 
-        case actions.DELETE_ITEM:
-            const id = action.payload;
-            const itemIndex = groups.findIndex(el => el._id === id);
-            if (itemIndex !== -1)
-                groups = [].concat(groups.slice(0, itemIndex), groups.slice(itemIndex, groups.length));
+        case actionTypes.DELETE_ITEM:
+            {
+                const _id = action.payload;
+                const itemIndex = groups.findIndex(el => el._id === _id);
+                if (itemIndex !== -1) {
+                    groups = [].concat(
+                        groups.slice(0, itemIndex),
+                        groups.slice(itemIndex + 1, groups.length)
+                    );
+                }
+            }
             break;
 
-        case actions.GET_ITEM_BY_ID:
-            const _id = action.payload;
-            const itemindex = groups.findIndex(el => el._id === _id);
-            if (itemindex !== -1)
-                selectedGroup = itemindex;
+        case actionTypes.GET_ITEM_BY_ID:
+            {
+                const _id = action.payload;
+                const itemindex = groups.findIndex(el => el._id === _id);
+                if (itemindex !== -1)
+                    selectedGroup = itemindex;
+            }
             break;
-            
-        case actions.CHANGE_PAGE:
+        case actionTypes.ADD_RESTAURANT_TO_GROUP: {
+            const { _id, name } = { ...action.payload };
+            const index = groups.findIndex((g) => g._id === _id);
+            if (_id && index === -1) {
+
+                const date = new Date();
+                const [dayStr] = date.toDateString().split(' ');
+                const time = date.toLocaleTimeString();
+                const numeralDate = date.toLocaleDateString();
+
+                groups.push({
+                    _id: _id,
+                    name: name,
+                    day: dayStr,
+                    date: numeralDate,
+                    time: time
+                });
+            }
+        }
+            break;
+        case actionTypes.CHANGE_PAGE:
             currentPage = action.payload;
             break;
-
         case action.ERROR:
             break;
         default:

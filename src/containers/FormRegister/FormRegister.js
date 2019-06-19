@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { userAPI } from "../../api/userAPI";
+//import { userAPI } from "../../api/userAPI";
 
 class FormRegister extends Component {
   state = {
@@ -32,7 +32,7 @@ class FormRegister extends Component {
 
   registerHandler = async e => {
     e.preventDefault();
-    const res = await userAPI.register(this.state.user);
+    //const res = await userAPI.register(this.state.user);
     this.setState({
       isnNew: false,
       ismNew: false,

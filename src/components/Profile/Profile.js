@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
-import GroupOrder from '../GroupOrder/index';
-import ProfileFavRestaurants from '../ProfileFavRestaurants/index';
-import ProfileFavCuisins from '../ProfileFavCuisins/index';
-import ProfileSideBar from '../../components/ProfileSideBar/index';
+import GroupOrder from '../../components/GroupOrder';
+import ProfileFavRestaurants from '../../containers/ProfileFavRestaurants';
+import ProfileFavCuisins from '../../containers/ProfileFavCuisins';
+import ProfileSideBar from '../ProfileSideBar';
 
 const Profile = (props) => {
   

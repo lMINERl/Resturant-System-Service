@@ -1,9 +1,13 @@
 import React from "react";
 import CardFood from "../../components/CardFood/index";
-import Cart from "../../components/OrderBill/OrderBill";
 import { connect } from "react-redux";
 import { addToCart } from "../../store/actions/cartActions";
-import { deleteItem } from "../../store/actions/foodActions";
+import {
+  deleteItem,
+  setSize,
+  setRating,
+  setAmount
+} from "../../store/actions/foodActions";
 import { bindActionCreators } from "redux";
 
 const MenuListing = props => {
@@ -14,6 +18,11 @@ const MenuListing = props => {
           handleOnAdd={() => props.addToCart(v)}
           data={v}
           delete={() => props.deleteItem(v._id)}
+          setsize={(id, size) => props.setSize(id, size)}
+          setrating={(id, rating) => props.setRating(id, rating)}
+          setamount={(id, amount) => {
+            props.setAmount(id, amount);
+          }}
           key={v._id}
         />
       );
@@ -30,7 +39,6 @@ const MenuListing = props => {
           {menuListing}
         </div>
       </div>
-      <Cart />
     </div>
   );
 };
@@ -38,7 +46,10 @@ function mapActionsToProps(dispatch) {
   return bindActionCreators(
     {
       addToCart,
-      deleteItem
+      deleteItem,
+      setSize,
+      setRating,
+      setAmount
     },
     dispatch
   );
