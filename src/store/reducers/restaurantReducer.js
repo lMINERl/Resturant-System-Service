@@ -85,7 +85,7 @@ const restaurantReducer = (state = initialState, action) => {
       }
       break;
     case actions.CHANGE_PAGE:
-        currentPage = action.payload;
+      currentPage = action.payload;
       break;
     case actions.SET_RATING:
       {

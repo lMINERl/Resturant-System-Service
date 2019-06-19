@@ -21,11 +21,14 @@ const MenuListing = props => {
   ) : (
     <div>not found</div>
   );
-
   return (
     <div className="menu-card">
       <div className="container">
-        <div className="row">{menuListing}</div>
+        <div className="row">
+          <div className="col-3" />
+          <div />
+          {menuListing}
+        </div>
       </div>
       <Cart />
     </div>

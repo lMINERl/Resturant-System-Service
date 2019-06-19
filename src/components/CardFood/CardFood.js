@@ -6,8 +6,8 @@ import SelectSize from "../../components/SelectSize";
 
 const CardFood = props => {
   return (
-    <div className="col-md-3">
-      <div className="menu-card__item">
+    <div className="col-md-4">
+      <div className="menu-card__item mb-5">
         <div className="menu-card__edit-delete-fav">
           <i className="fa fa-pencil" />
           <i onClick={() => props.delete()} className="fa fa-trash" />

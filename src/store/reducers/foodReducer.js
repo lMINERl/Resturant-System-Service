@@ -10,6 +10,59 @@ const initialState = {
       discountPercent: 50,
       price: [100.0, 200, 300, 400],
       img: null,
+      category: "category1",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b2",
+      name: "Fish",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category2",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b3",
+      name: "Fish",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category1",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b4",
+      name: "Fish",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category2",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b5",
+      name: "Fish",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category3",
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
@@ -22,6 +75,7 @@ const initialState = {
     discountPrice: 160.0,
     discountPercent: 50,
     price: 85.0,
+    category: "category1",
     rating: 4,
     size: 0,
     sizes: [`small`, `meduim`, `large`, `x-large`],
@@ -31,7 +85,8 @@ const initialState = {
     tags: [`tag1`, `tag2`]
   },
   currentPage: 1,
-  pageSize: 5
+  pageSize: 5,
+  filteredlist:[]
 };
 
 const foodReducer = (state = initialState, action) => {
@@ -119,7 +174,14 @@ const foodReducer = (state = initialState, action) => {
         }
       }
       break;
-
+    case actions.GET_FILTERED_ITEMS:
+      {
+        debugger;
+        for (var [key, value] of action.payload) {
+          
+        }   
+      }
+      break;
     case action.ERROR:
       break;
     default:
