@@ -56,10 +56,10 @@ export const getItems = () => {
         payload: null
     }
 }
-export const getItemById = (item) => {
+export const getItemById = (itemId) => {
     return {
         type: GET_ITEM_BY_ID,
-        payload: item
+        payload: itemId
     }
 }
 export const getRestaurantsByname = (restaurantName) => {
