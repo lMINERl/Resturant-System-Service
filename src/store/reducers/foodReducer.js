@@ -5,11 +5,64 @@ const initialState = {
   foods: [
     {
       _id: "5cf929e62a79451758f83c1b",
-      name: "Fish",
+      name: "category1",
       discountPrice: 160.0,
       discountPercent: 50,
       price: [100.0, 200, 300, 400],
       img: null,
+      category: "category1",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b2",
+      name: "category2",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category2",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b3",
+      name: "category1",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category1",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b4",
+      name: "category2",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category2",
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1b5",
+      name: "category3",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [100.0, 200, 300, 400],
+      img: null,
+      category: "category3",
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
@@ -46,6 +99,7 @@ const initialState = {
     discountPrice: 160.0,
     discountPercent: 50,
     price: 85.0,
+    category: "category1",
     rating: 4,
     size: 0,
     sizes: [`small`, `meduim`, `large`, `x-large`],
@@ -55,7 +109,8 @@ const initialState = {
     tags: [`tag1`, `tag2`]
   },
   currentPage: 1,
-  pageSize: 5
+  pageSize: 5,
+  filteredlist: []
 };
 
 const foodReducer = (state = initialState, action) => {
@@ -63,6 +118,7 @@ const foodReducer = (state = initialState, action) => {
   let nselectedFood = { ...state.selectedFood };
   let ncurrentPage = state.currentPage;
   let npageSize = state.pageSize;
+  let filteredlist = [...state.filteredlist];
   switch (action.type) {
     case actions.ADD_ITEM:
       {
@@ -102,7 +158,8 @@ const foodReducer = (state = initialState, action) => {
       }
       break;
     case actions.GET_RESTAURANT_MENU:
-      nfoods = [...action.payload];
+      // nfoods = [...action.payload]; is this a must if you use dispach the return is a list of foods
+      filteredlist = [...nfoods];
       break;
 
     case actions.CHANGE_PAGE:
@@ -143,7 +200,22 @@ const foodReducer = (state = initialState, action) => {
         }
       }
       break;
-
+    case actions.GET_FILTERED_ITEMS:
+      {
+        const getAll = action.payload.getAll;
+        const listOfCategories = [...action.payload.listOfCategories];
+        if (!getAll && listOfCategories.length) {
+          const property = action.payload.property;
+          // debugger;
+          // const checker = obj => obj[property].startsWith(propertyValue);
+          filteredlist = filteredlist.filter(v =>
+            listOfCategories.includes(v[property])
+          );
+        } else {
+          filteredlist = [...nfoods];
+        }
+      }
+      break;
     case action.ERROR:
       break;
     default:
@@ -154,7 +226,8 @@ const foodReducer = (state = initialState, action) => {
     foods: nfoods,
     selectedFood: nselectedFood,
     pageSize: npageSize,
-    currentPage: ncurrentPage
+    currentPage: ncurrentPage,
+    filteredlist: filteredlist
   };
 };
 
