@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import Cart from "../../components/OrderBill";
 class Navigation extends React.Component {
   state = {
-    isCart: false
+    isCart: false,
+    isMenu: false
   };
 
   totalCount({ cart }) {
@@ -95,10 +96,18 @@ class Navigation extends React.Component {
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <i className="fa fa-ellipsis-v setting_icon" />
+                        <i
+                          className="fa fa-ellipsis-v setting_icon"
+                          onClick={() =>
+                            this.setState({
+                              ...this.state,
+                              isMenu: !this.state.isMenu
+                            })
+                          }
+                        />
                       </NavLink>
                       <div
-                        className="dropdown-menu1"
+                        className={this.state.isMenu?"dropdown-menu1":"dropdown-menu1 d-none" }
                         aria-labelledby="dropdownMenu2"
                       >
                         <button class="dropdown-item" type="button">
@@ -107,7 +116,13 @@ class Navigation extends React.Component {
                           </NavLink>
                         </button>
                         <button className="dropdown-item" type="button">
-                          <NavLink className="dropdownNav"> My Groups</NavLink>
+                          <NavLink
+                            className="dropdownNav"
+                            to="/profile/grouporder"
+                          >
+                            {" "}
+                            My Groups
+                          </NavLink>
                         </button>
                         <button className="dropdown-item" type="button">
                           <NavLink className="dropdownNav">
@@ -115,7 +130,9 @@ class Navigation extends React.Component {
                           </NavLink>
                         </button>
                         <button className="dropdown-item" type="button">
-                          <NavLink className="dropdownNav">Settings</NavLink>
+                          <NavLink className="dropdownNav" to="/profile/edit">
+                            Settings
+                          </NavLink>
                         </button>
                         <button className="dropdown-item" type="button">
                           <NavLink className="dropdownNav">Log Out</NavLink>
