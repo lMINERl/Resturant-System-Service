@@ -114,7 +114,7 @@ const RestaurantListing = props => {
                         props.sortRestaurants(sortRating, "rating");
                         setSortRating(!sortRating);
                       }}>
-                        <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        <NavLink to="/restaurants" className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Rating
                     </NavLink>
@@ -123,7 +123,7 @@ const RestaurantListing = props => {
                         props.sortRestaurants(sortName, "name");
                         setSortName(!sortName);
                       }}>
-                        <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        <NavLink to="/restaurants" className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           A_Z
                     </NavLink>

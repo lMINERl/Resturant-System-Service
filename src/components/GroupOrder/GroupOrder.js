@@ -11,7 +11,7 @@ const GroupOrder = (props) => {
   
   const CardGroupList = props.groups.map((v) => {
     return (
-      <div key={v._id} className="col-md-3">
+      <div key={v._id} className="col-md-4">
         <CardGroup
           delitem={() => props.deleteItem(v._id)}
           data={v}
@@ -25,7 +25,7 @@ const GroupOrder = (props) => {
       <div className="container">
         <div className="row">
           {CardGroupList}
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div className="menu-card__item  menu-border">
               <div className="menu-card__item-add text-center">
                 <p>Add Restaurant</p>

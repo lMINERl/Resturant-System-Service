@@ -11,7 +11,6 @@ const CardFood = props => {
     Sale = (<div className="menu-card__sale">{props.data.discountPercent}</div>);
   }
   return (
-    <div className="col-md-3">
       <div className="menu-card__item">
         <div className="menu-card__edit-delete-fav">
           <i className="fa fa-pencil" />
@@ -91,7 +90,7 @@ const CardFood = props => {
           Add To Cart
         </button>
       </div>
-    </div>
+   
   );
 };
 
