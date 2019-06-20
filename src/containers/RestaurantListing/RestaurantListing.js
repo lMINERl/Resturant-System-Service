@@ -6,12 +6,12 @@ import { connect } from "react-redux";
 import { paginate } from "../../utils/paginate";
 import SideBar from "../../components/SideBar";
 import { bindActionCreators } from "redux";
-import { getRestaurantsByname } from '../../store/actions/restaurantActions';
 import {
   deleteItem,
   changePage,
   setRating,
-  sortRestaurants
+  sortRestaurants,
+  getRestaurantsByname
 } from "../../store/actions/restaurantActions";
 
 const mapStateToProps = state => {
@@ -56,8 +56,7 @@ const RestaurantListing = props => {
   }
 
   if (props.restaurants) {
-
-    let restaurantList = props.rests ? props.rests.map(r => {
+    let restaurantList = props.restaurants ? props.restaurants.map(r => {
       return (
         <CardRestaurant
           key={r._id}
@@ -66,16 +65,7 @@ const RestaurantListing = props => {
           delete={() => props.deleteItem(r._id)}
         />
       );
-    }) : Restaurants.map(r => {
-      return (
-        <CardRestaurant
-          key={r._id}
-          restaurant={r}
-          setrating={(id, rating) => props.setRating(id, rating)}
-          delete={() => props.deleteItem(r._id)}
-        />
-      );
-    });
+    }) : <div>No Restaurants</div>;
 
     return (
       <>
@@ -124,7 +114,7 @@ const RestaurantListing = props => {
                         props.sortRestaurants(sortRating, "rating");
                         setSortRating(!sortRating);
                       }}>
-                        <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        <NavLink to="/restaurants" className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Rating
                     </NavLink>
@@ -133,7 +123,7 @@ const RestaurantListing = props => {
                         props.sortRestaurants(sortName, "name");
                         setSortName(!sortName);
                       }}>
-                        <NavLink className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                        <NavLink to="/restaurants" className="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           A_Z
                     </NavLink>

@@ -14,6 +14,7 @@ const MenuListing = props => {
   let menuListing = props.menus ? (
     props.menus.map((v, index) => {
       return (
+        <div className="col-md-3" key={v._id}>
         <CardFood
           handleOnAdd={() => props.addToCart(v)}
           data={v}
@@ -25,13 +26,14 @@ const MenuListing = props => {
           }}
           key={v._id}
         />
+        </div>
       );
     })
   ) : (
     <div>not found</div>
   );
   return (
-    <div className="menu-card">
+    <div className="menu-card mt-5">
       <div className="container">
         <div className="row">
           <div className="col-3" />

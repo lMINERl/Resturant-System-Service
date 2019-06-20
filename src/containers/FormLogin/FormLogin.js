@@ -85,7 +85,7 @@ class LoginPage extends Component {
                     </p>
                     <p
                       className="form-style__body--signup  d-flex flex-direction-row justify-content-center align-items-center">
-                      Don't have an account ? <NavLink>Signup</NavLink>
+                      Don't have an account ? <NavLink to="/register">Signup</NavLink>
                     </p>
                   </div>
                 </div>

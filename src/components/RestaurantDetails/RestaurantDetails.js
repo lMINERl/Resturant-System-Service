@@ -24,7 +24,7 @@ const RestaurantDetailsComponent = props => {
   }
 
   return (
-    <div className="menu-card">
+    <div className="menu-card mt-5">
       <div className="container">
         <div className="row">{restaurants}</div>
       </div>

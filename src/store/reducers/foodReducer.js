@@ -67,6 +67,30 @@ const initialState = {
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
       amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1d",
+      name: "Pizza",
+      discountPrice: 60.0,
+      discountPercent: 50,
+      price: [44.0, 100, 300, 400],
+      img: null,
+      rating: 3,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
+    },
+    {
+      _id: "5cf929e62a79451758f83c1c",
+      name: "Chicken",
+      discountPrice: 160.0,
+      discountPercent: 50,
+      price: [80, 120, 160, 200],
+      img: null,
+      rating: 2,
+      size: 0,
+      sizes: [`small`, `meduim`, `large`, `x-large`],
+      amount: 0
     }
   ],
   selectedFood: {

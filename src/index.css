@@ -935,7 +935,7 @@ a:hover {
 
 .container-color {
   background-color: #222222;
-  padding-top: 20rem; }
+  padding-top: 0rem; }
 
 .footer {
   background-color: #141414;
@@ -1330,3 +1330,24 @@ a:hover {
           width:96%;
           left:1rem
         }
+        .dropdown-menu1 {
+          display: block;
+          width: 120px;
+          font-size: 1.4rem;
+          left: -1rem;
+          line-height: 25px;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          z-index: 1000;
+          float: left;
+          min-width: 10rem;
+          padding: .5rem 0;
+          margin: .125rem 0 0;
+          color: #212529;
+          text-align: left;
+          list-style: none;
+          background-color: #fff;
+          background-clip: padding-box;
+          border: 1px solid rgba(0, 0, 0, 0.15);
+          border-radius: .25rem; }
