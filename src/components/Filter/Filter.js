@@ -3,7 +3,7 @@ import React from "react";
 const Filter = props => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-4 align-items-center">
+      <nav className="col navbar navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-2 align-items-center">
         <form className="form-inline ">
           <input
             className="filter-search form-control p-4 mr-sm-2"

@@ -51,15 +51,15 @@ class CardListing extends Component {
       this.props.data.map((v, index) => {
         return (
           <div className="col-md-3" key={v._id}>
-          <CardFood
-            key={v._id}
-            delete={() => this.props.deleteItem(v._id)}
-            handleOnAdd={this.dispatchAddToCart.bind(this)}
-            data={v}
-            setsize={this.setSize.bind(this)}
-            setrating={this.setRating.bind(this)}
-            setamount={this.setAmount.bind(this)}
-          />
+            <CardFood
+              key={v._id}
+              delete={() => this.props.deleteItem(v._id)}
+              handleOnAdd={this.dispatchAddToCart.bind(this)}
+              data={v}
+              setsize={this.setSize.bind(this)}
+              setrating={this.setRating.bind(this)}
+              setamount={this.setAmount.bind(this)}
+            />
           </div>
         );
       })

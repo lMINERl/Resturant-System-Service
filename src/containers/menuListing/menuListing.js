@@ -14,18 +14,18 @@ const MenuListing = props => {
   let menuListing = props.menus ? (
     props.menus.map((v, index) => {
       return (
-        <div className="col-md-3" key={v._id}>
-        <CardFood
-          handleOnAdd={() => props.addToCart(v)}
-          data={v}
-          delete={() => props.deleteItem(v._id)}
-          setsize={(id, size) => props.setSize(id, size)}
-          setrating={(id, rating) => props.setRating(id, rating)}
-          setamount={(id, amount) => {
-            props.setAmount(id, amount);
-          }}
-          key={v._id}
-        />
+        <div className="col-md-3 mb-4" key={v._id}>
+          <CardFood
+            handleOnAdd={() => props.addToCart(v)}
+            data={v}
+            delete={() => props.deleteItem(v._id)}
+            setsize={(id, size) => props.setSize(id, size)}
+            setrating={(id, rating) => props.setRating(id, rating)}
+            setamount={(id, amount) => {
+              props.setAmount(id, amount);
+            }}
+            key={v._id}
+          />
         </div>
       );
     })

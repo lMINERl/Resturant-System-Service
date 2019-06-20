@@ -757,7 +757,7 @@ a:hover {
   .order-bill__dash {
     position: relative;
     top: -0.5rem;
-    width: 15rem;
+    width: 8rem;
     height: 0.1rem;
     background-color: #d8d5d5;
     display: inline-block; }
@@ -1371,3 +1371,8 @@ a:hover {
 .profile-tab p {
   font-weight: 600;
   color: #fb5858; }
+
+  .orderbill-container{
+    z-index: 999;
+    background-color: white;
+  }
