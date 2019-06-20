@@ -55,7 +55,7 @@ class LoginPage extends Component {
                   alt="Background for register form"
                   className="form-style__img"
                 />
-                <NavLink className="form-style__close"><i className="fa fa-times-circle d-flex justify-content-end"></i></NavLink>
+                <NavLink to="/"className="form-style__close"><i className="fa fa-times-circle d-flex justify-content-end"></i></NavLink>
                 <div className="row">
                   <div className="col-md-12 col-sm-6 form-style__body">
                     <h2 className="form-style__body__title">Log in</h2>
@@ -81,7 +81,7 @@ class LoginPage extends Component {
                     </form>
                     <p
                       className="form-style__body--forget  d-flex flex-direction-row justify-content-center align-items-center">
-                      <NavLink>Forget Password</NavLink>
+                      <NavLink to="/">Forget Password</NavLink>
                     </p>
                     <p
                       className="form-style__body--signup  d-flex flex-direction-row justify-content-center align-items-center">

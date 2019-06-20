@@ -15,6 +15,11 @@ const authReducer = (state = initialState, action) => {
             return { ...state, attempting: false, isAuth: false, error: action.payload }
         case 'PROFILE_FETCHED':
             return { ...state, profile: action.payload }
+        case 'USER_LOGGEDOUT':
+        return {...state,attempting:false,isAuth:false,profile:{}}
+        case 'USER_REGISTER':
+        console.log(state.user);
+        return {...state,user:action.payload}
         default:
             return state;
     }
