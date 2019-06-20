@@ -11,7 +11,7 @@ export const SET_SIZE = "SET_SIZE";
 export const SET_AMOUNT = "SET_AMOUNT";
 export const SET_RATING = "SET_RATING";
 export const ERROR = "ERROR";
-export const GET_FILTERED_ITEMS ="GET_FILTERED_ITEMS";
+export const GET_FILTERED_ITEMS = "GET_FILTERED_ITEMS";
 
 export const getRestaurantMenuDispatch = restaurantId => {
   return dispatch => {
@@ -94,9 +94,9 @@ export const riseError = msg => {
     payload: msg
   };
 };
-export const getFilteredItems=(checkedlist)=>{
-  return{
-    type:GET_FILTERED_ITEMS,
-    payload:checkedlist
-  }
-}
+export const getFilteredItems = (listOfCategories, property, getAll) => {
+  return {
+    type: GET_FILTERED_ITEMS,
+    payload: { listOfCategories, property, getAll }
+  };
+};

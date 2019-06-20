@@ -5,7 +5,7 @@ const initialState = {
   foods: [
     {
       _id: "5cf929e62a79451758f83c1b",
-      name: "Fish",
+      name: "category1",
       discountPrice: 160.0,
       discountPercent: 50,
       price: [100.0, 200, 300, 400],
@@ -18,7 +18,7 @@ const initialState = {
     },
     {
       _id: "5cf929e62a79451758f83c1b2",
-      name: "Fish",
+      name: "category2",
       discountPrice: 160.0,
       discountPercent: 50,
       price: [100.0, 200, 300, 400],
@@ -31,7 +31,7 @@ const initialState = {
     },
     {
       _id: "5cf929e62a79451758f83c1b3",
-      name: "Fish",
+      name: "category1",
       discountPrice: 160.0,
       discountPercent: 50,
       price: [100.0, 200, 300, 400],
@@ -44,7 +44,7 @@ const initialState = {
     },
     {
       _id: "5cf929e62a79451758f83c1b4",
-      name: "Fish",
+      name: "category2",
       discountPrice: 160.0,
       discountPercent: 50,
       price: [100.0, 200, 300, 400],
@@ -57,7 +57,7 @@ const initialState = {
     },
     {
       _id: "5cf929e62a79451758f83c1b5",
-      name: "Fish",
+      name: "category3",
       discountPrice: 160.0,
       discountPercent: 50,
       price: [100.0, 200, 300, 400],
@@ -86,7 +86,7 @@ const initialState = {
   },
   currentPage: 1,
   pageSize: 5,
-  filteredlist:[]
+  filteredlist: []
 };
 
 const foodReducer = (state = initialState, action) => {
@@ -94,6 +94,7 @@ const foodReducer = (state = initialState, action) => {
   let nselectedFood = { ...state.selectedFood };
   let ncurrentPage = state.currentPage;
   let npageSize = state.pageSize;
+  let filteredlist = [...state.filteredlist];
   switch (action.type) {
     case actions.ADD_ITEM:
       {
@@ -133,7 +134,8 @@ const foodReducer = (state = initialState, action) => {
       }
       break;
     case actions.GET_RESTAURANT_MENU:
-      nfoods = [...action.payload];
+      // nfoods = [...action.payload]; is this a must if you use dispach the return is a list of foods
+      filteredlist = [...nfoods];
       break;
 
     case actions.CHANGE_PAGE:
@@ -176,10 +178,18 @@ const foodReducer = (state = initialState, action) => {
       break;
     case actions.GET_FILTERED_ITEMS:
       {
-        debugger;
-        for (var [key, value] of action.payload) {
-          
-        }   
+        const getAll = action.payload.getAll;
+        const listOfCategories = [...action.payload.listOfCategories];
+        if (!getAll && listOfCategories.length) {
+          const property = action.payload.property;
+          // debugger;
+          // const checker = obj => obj[property].startsWith(propertyValue);
+          filteredlist = filteredlist.filter(v =>
+            listOfCategories.includes(v[property])
+          );
+        } else {
+          filteredlist = [...nfoods];
+        }
       }
       break;
     case action.ERROR:
@@ -192,7 +202,8 @@ const foodReducer = (state = initialState, action) => {
     foods: nfoods,
     selectedFood: nselectedFood,
     pageSize: npageSize,
-    currentPage: ncurrentPage
+    currentPage: ncurrentPage,
+    filteredlist: filteredlist
   };
 };
 

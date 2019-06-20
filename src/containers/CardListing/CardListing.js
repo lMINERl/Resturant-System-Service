@@ -5,7 +5,7 @@ import CardFood from "../../components/CardFood/index";
 import SideBar from "../../components/SideBar/index";
 import { connect } from "react-redux";
 import {
-  getRestaurantMenuDispatch,
+  getRestaurantMenu,
   setSize,
   setRating,
   setAmount,
@@ -19,15 +19,15 @@ class CardListing extends Component {
   // from database
   constructor(props) {
     super(props);
-    this.state = {
-      data: null
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     if (this.props.match.params.id) {
-      this.props.getRestaurantMenuDispatch(this.props.match.params.id);
+      this.props.getRestaurantMenu(this.props.match.params.id);
       // this.props.history.push("/") // notfound
+    } else {
+      this.props.getFilteredItems([], "category", true);
     }
   }
 
@@ -64,40 +64,38 @@ class CardListing extends Component {
     ) : (
       <div>not found</div>
     );
-    let filterListing = ()=>{this.props.getFilteredItems (this.props.checkedlist)}
     return (
       <>
-      <div className="h-100 mt-5 mb-5" />
-      <div className="h-100 mt-5 mb-5" />
-      <div className="h-100 mt-5 mb-5" />
-      <div className="h-100 mt-5 mb-5" />
+        <div className="h-100 mt-5 mb-5" />
+        <div className="h-100 mt-5 mb-5" />
+        <div className="h-100 mt-5 mb-5" />
+        <div className="h-100 mt-5 mb-5" />
 
-      <div className="">
-        <div className="d-flex justify-content-between container mt-5 mb-5 listing-header listing-header--with-margin">
-        Domino's Pizza Menu
-          <NavLink
-            to="/foodform"
-            className="badge badge-warning listing-header__btn "
-          >
-            <i className="fa fa-plus-square" />
-            Add Food
-          </NavLink>
-        </div>
-        </div>
-      <div className="menu-card">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-3">
-              <SideBar />
-            </div>
-            <div className="col-md-9 d-flex flex-wrap align-content-around">
-              {menuListing}
-              
-            </div>
+        <div className="">
+          <div className="d-flex justify-content-between container mt-5 mb-5 listing-header listing-header--with-margin">
+            Domino's Pizza Menu
+            <NavLink
+              to="/foodform"
+              className="badge badge-warning listing-header__btn "
+            >
+              <i className="fa fa-plus-square" />
+              Add Food
+            </NavLink>
           </div>
         </div>
-        {/* <Cart /> */}
-      </div>
+        <div className="menu-card">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-3">
+                <SideBar data={this.props.data} />
+              </div>
+              <div className="col-md-9 d-flex flex-wrap align-content-around">
+                {menuListing}
+              </div>
+            </div>
+          </div>
+          {/* <Cart /> */}
+        </div>
       </>
     );
   }
@@ -105,15 +103,15 @@ class CardListing extends Component {
 
 function mapStateToProps(state) {
   return {
-    data: state.food.foods,
-    checkedlist:state.category.checkedlist
+    data: state.food.filteredlist,
+    Categories: state.category.categories
   };
 }
 
 function mapActionsToProps(dispatch) {
   return bindActionCreators(
     {
-      getRestaurantMenuDispatch,
+      getRestaurantMenu,
       addToCart,
       setSize,
       setRating,
