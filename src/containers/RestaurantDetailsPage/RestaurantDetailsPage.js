@@ -38,7 +38,6 @@ class DetailsPage extends Component {
   };
   componentDidMount() {
     if (this.props.match.params.id) {
-      debugger;
       this.props.getRestaurantMenu(this.props.match.params.id);
       //  this.props.history.push("/") // notfound
     }
