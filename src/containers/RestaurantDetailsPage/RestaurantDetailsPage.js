@@ -4,13 +4,13 @@ import CardFood from "../../components/CardFood/CardFood";
 import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
-import { deleteItem } from "../../store/actions/foodActions";
 import { addComment } from "../../store/actions/userActions";
-import {setRating ,getItemById} from "../../store/actions/restaurantActions";
-import {getRestaurantMenu} from '../../store/actions/foodActions';
+import {  getItemById,setRating as restaurantRating } from "../../store/actions/restaurantActions";
+import { getRestaurantMenu,deleteItem,setSize,setRating as foodRating ,setAmount } from '../../store/actions/foodActions';
 import Comment from "../../components/comments/comments";
 import OrderBill from "../../components/OrderBill/OrderBill";
 import StarRating from "../../components/StarRating/StarRating";
+
 class DetailsPage extends Component {
   // state = {
   //   res: null
@@ -40,7 +40,7 @@ class DetailsPage extends Component {
     if (this.props.match.params.id) {
       debugger;
       this.props.getRestaurantMenu(this.props.match.params.id);
-     //  this.props.history.push("/") // notfound
+      //  this.props.history.push("/") // notfound
     }
   }
   render() {
@@ -57,15 +57,15 @@ class DetailsPage extends Component {
                 <i className="fa fa-heart" />
               </span>
               <div className="star-rating">
-              <ul className="list-inline gold-star">
-                <StarRating
-                  setRate={rating =>
-                    this.props.setrating(this.props.restaurant._id, rating)
-                  }
-                  rating={this.props.restaurant.rating}
-                  outof={5}
-                />
-              </ul>
+                <ul className="list-inline gold-star">
+                  <StarRating
+                    setRate={rating =>
+                      this.props.restaurantRating(this.props.restaurant._id, rating)
+                    }
+                    rating={this.props.restaurant.rating}
+                    outof={5}
+                  />
+                </ul>
               </div>
             </div>
           </div>
@@ -250,9 +250,9 @@ class DetailsPage extends Component {
                       handleOnAdd={this.dispatchAddToCart.bind(this)}
                       data={v}
                       delete={() => this.props.deleteItem(v._id)}
-                      setsize={(id, size) => this.setSize(id, size)}
-                      setrating={(id, rating) => this.setRating(id, rating)}
-                      setamount={(id, amount) => this.setAmount(id, amount)}
+                      setsize={(id, size) => this.props.setSize(id, size)}
+                      setrating={(id, rating) => this.props.foodRating(id, rating)}
+                      setamount={(id, amount) => this.props.setAmount(id, amount)}
                       key={v._id}
                     />
                   );
@@ -261,9 +261,9 @@ class DetailsPage extends Component {
               <OrderBill />
               <div className="testimonials">
                 <div className="row">
-                  {this.props.restaurant.comments.map(c => {
+                  {/* {this.props.restaurant.comments.map(c => {
                     return <Comment data={c} key={c.userId} />;
-                  })}
+                  })} */}
                 </div>
                 <div className="add-comments">
                   <div className="row">
@@ -316,15 +316,15 @@ class DetailsPage extends Component {
         </div>
       </section>
     ) : (
-      <div style={{ marginTop: "10rem" }}>no res to fetch</div>
-    );
+        <div style={{ marginTop: "10rem" }}>no res to fetch</div>
+      );
     return <div>{Restaurant}</div>;
   }
 }
 const mapStateToProps = state => {
   return {
     restaurant: state.restaurant.selectedRestaurant,
-    restaurantMenu:state.food.foods
+    restaurantMenu: state.food.foods
   };
 };
 function mapActionsToProps(dispatch) {
@@ -333,7 +333,10 @@ function mapActionsToProps(dispatch) {
       addToCart,
       addComment,
       deleteItem,
-      setRating,
+      foodRating,
+      restaurantRating,
+      setAmount,
+      setSize,
       getItemById,
       getRestaurantMenu,
     },

@@ -96,7 +96,7 @@ class Navigation extends React.Component {
                         <i className="fa fa-ellipsis-v setting_icon" />
                       </NavLink>
                       <div className="dropdown-menu1" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">
+                    <button className="dropdown-item" type="button">
                       Profile
                     </button>
                     <button className="dropdown-item" type="button">
