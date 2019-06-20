@@ -98,11 +98,11 @@ const foodReducer = (state = initialState, action) => {
       {
         const _id = action.payload;
         const itemindex = findIndex(nfoods, _id);
-        if (itemindex !== -1) nselectedFood = itemindex;
+        if (itemindex !== -1) nselectedFood = {...nfoods[itemindex]};
       }
       break;
     case actions.GET_RESTAURANT_MENU:
-      nfoods = [...action.payload];
+      nfoods = [...nfoods];
       break;
 
     case actions.CHANGE_PAGE:
