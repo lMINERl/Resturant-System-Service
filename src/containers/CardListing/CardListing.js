@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import CardFood from "../../components/CardFood/index";
+// import Cart from '../../components/OrderBill/OrderBill';
+import SideBar from "../../components/SideBar/index";
 import { connect } from "react-redux";
 import {
-  getRestaurantMenuDispatch,
+  getRestaurantMenu,
   setSize,
   setRating,
   setAmount,
-  deleteItem
+  deleteItem,
+  getFilteredItems
 } from "../../store/actions/foodActions";
 import { addToCart } from "../../store/actions/cartActions";
 import { bindActionCreators } from "redux";
@@ -15,15 +19,15 @@ class CardListing extends Component {
   // from database
   constructor(props) {
     super(props);
-    this.state = {
-      data: null
-    };
+    this.state = {};
   }
 
   componentDidMount() {
     if (this.props.match.params.id) {
-      this.props.getRestaurantMenuDispatch(this.props.match.params.id);
+      this.props.getRestaurantMenu(this.props.match.params.id);
       // this.props.history.push("/") // notfound
+    } else {
+      this.props.getFilteredItems([], "category", true);
     }
   }
 
@@ -46,7 +50,7 @@ class CardListing extends Component {
     let menuListing = this.props.data ? (
       this.props.data.map((v, index) => {
         return (
-          <div className="col-md-3">
+          <div className="col-md-3" key={v._id}>
           <CardFood
             key={v._id}
             delete={() => this.props.deleteItem(v._id)}
@@ -62,33 +66,60 @@ class CardListing extends Component {
     ) : (
       <div>not found</div>
     );
-
     return (
-      <div className="menu-card mt-5">
-        <div className="container">
-          <div className="row">{menuListing}</div>
+      <>
+        <div className="h-100 mt-5 mb-5" />
+        <div className="h-100 mt-5 mb-5" />
+        <div className="h-100 mt-5 mb-5" />
+        <div className="h-100 mt-5 mb-5" />
+
+        <div className="">
+          <div className="d-flex justify-content-between container mt-5 mb-5 listing-header listing-header--with-margin">
+            Domino's Pizza Menu
+            <NavLink
+              to="/foodform"
+              className="badge badge-warning listing-header__btn "
+            >
+              <i className="fa fa-plus-square" />
+              Add Food
+            </NavLink>
+          </div>
         </div>
-        {/* <Cart /> */}
-      </div>
+        <div className="menu-card mt-5">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-3">
+                <SideBar data={this.props.data} />
+              </div>
+              <div className="col-md-9 d-flex flex-wrap align-content-around">
+                {menuListing}
+              </div>
+            </div>
+          </div>
+          {/* <Cart /> */}
+        </div>
+      </>
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    data: state.food.foods
+    data: state.food.filteredlist,
+    Categories: state.category.categories
   };
 }
 
 function mapActionsToProps(dispatch) {
   return bindActionCreators(
     {
-      getRestaurantMenuDispatch,
+      getRestaurantMenu,
       addToCart,
       setSize,
       setRating,
       setAmount,
-      deleteItem
+      deleteItem,
+      getFilteredItems
     },
     dispatch
   );

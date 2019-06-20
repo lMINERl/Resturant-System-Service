@@ -136,7 +136,7 @@ class HomePage extends Component {
                 data-wow-delay=""
               >
                 <span>
-                  <span class="big-cart-now">Now </span>It's Easy To Make A
+                  <span className="big-cart-now">Now </span>It's Easy To Make A
                   Group Order <br />
                   With Your Friends In Few Steps …{" "}
                 </span>
