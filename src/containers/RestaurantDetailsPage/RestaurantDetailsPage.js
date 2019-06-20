@@ -4,15 +4,21 @@ import CardFood from "../../components/CardFood/CardFood";
 import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
-import { deleteItem } from "../../store/actions/foodActions";
 import { addComment } from "../../store/actions/userActions";
+import {  getItemById,setRating as restaurantRating } from "../../store/actions/restaurantActions";
+import { getRestaurantMenu,deleteItem,setSize,setRating as foodRating ,setAmount } from '../../store/actions/foodActions';
 import Comment from "../../components/comments/comments";
 import OrderBill from "../../components/OrderBill/OrderBill";
-class DetailsPage extends Component {
-  state = {
-    res: null
-  };
+import StarRating from "../../components/StarRating/StarRating";
 
+class DetailsPage extends Component {
+  // state = {
+  //   res: null
+  // };
+
+  dispatchAddToCart(cardItem) {
+    this.props.addToCart(cardItem);
+  }
   handleSubmit = e => {
     e.preventDefault();
     const { id } = this.state.res;
@@ -30,83 +36,20 @@ class DetailsPage extends Component {
       alert("please enter your name and comment");
     }
   };
-  setAmount = (id, amount) => {
-    if (amount < 10 && amount > -1) {
-      const index = this.state.menus.findIndex(v => {
-        return v.id === id;
-      });
-      const nArray = [...this.state.menus];
-      nArray[index] = {
-        ...this.state.menus[index],
-        amount: amount
-      };
-      this.setState({
-        ...this.state,
-        menu: nArray
-      });
-    }
-  };
-
-  setRating = (id, rating) => {
-    const index = this.state.menus.findIndex(v => {
-      return v.id === id;
-    });
-
-    if (
-      this.state.menus[index].rating > -1 &&
-      this.state.menus[index].rating < 5
-    ) {
-      const nArray = [...this.state.menus];
-      nArray[index] = {
-        ...this.state.menus[index],
-        rating: rating
-      };
-      this.setState({
-        ...this.state,
-        menu: nArray
-      });
-    }
-  };
-  setSize = (id, size) => {
-    const index = this.state.menus.findIndex(v => {
-      return v.id === id;
-    });
-    const nArray = [...this.state.menus];
-    nArray[index] = {
-      ...this.state.menus[index],
-      size: size
-    };
-    this.setState({
-      ...this.state,
-      menu: nArray
-    });
-  };
-  dispatchAddToCart(cardItem) {
-    this.props.addToCart(cardItem);
-  }
   componentDidMount() {
     if (this.props.match.params.id) {
-      if (!this.state.res || this.state.res.id !== this.state.match.params.id) {
-        const res = this.props.restaurants.find(
-          r => r.id === this.props.match.params.id
-        );
-        if (res) {
-          this.setState({
-            res: res
-          });
-        } else {
-          this.props.history.push("/");
-        }
-      }
+      debugger;
+      this.props.getRestaurantMenu(this.props.match.params.id);
+      //  this.props.history.push("/") // notfound
     }
   }
   render() {
-    let Restaurant = this.state.res ? (
+    let Restaurant = this.props.restaurant ? (
       <section className="Restaurant" style={{ paddingTop: "100px" }}>
         <div className="container">
           <div className="Restaurant__photo d-flex justify-content-center align-items-center">
             <div className="text-center">
-              <h3>{this.state.res.name}</h3>
+              <h3>{this.props.restaurant.name}</h3>
               <span className="edit-icon">
                 <i className="fa fa-pencil" />
               </span>
@@ -115,28 +58,20 @@ class DetailsPage extends Component {
               </span>
               <div className="star-rating">
                 <ul className="list-inline gold-star">
-                  <li className="list-inline-item">
-                    <i className="fa fa-star" />
-                  </li>
-                  <li className="list-inline-item">
-                    <i className="fa fa-star" />
-                  </li>
-                  <li className="list-inline-item">
-                    <i className="fa fa-star" />
-                  </li>
-                  <li className="list-inline-item">
-                    <i className="fa fa-star" />
-                  </li>
-                  <li className="list-inline-item">
-                    <i className="fa fa-star-o" />
-                  </li>
+                  <StarRating
+                    setRate={rating =>
+                      this.props.restaurantRating(this.props.restaurant._id, rating)
+                    }
+                    rating={this.props.restaurant.rating}
+                    outof={5}
+                  />
                 </ul>
               </div>
             </div>
           </div>
 
           <div className="Restaurant__details p-5">
-            <p>{this.state.res.description}</p>
+            <p>{this.props.restaurant.description}</p>
           </div>
 
           <div className="Restaurant__categories">
@@ -174,7 +109,7 @@ class DetailsPage extends Component {
               <div className="row ">
                 <div className="col-md-12">
                   <h2 className="listing-header">
-                    {this.state.res.name} Menu
+                    {this.props.restaurant.name} Menu
                     <NavLink
                       to="/foodform"
                       className="badge badge-warning listing-header__btn btn--right text-white p-3"
@@ -309,15 +244,15 @@ class DetailsPage extends Component {
               {/* <!--end filter-nav--> */}
 
               <div className="row">
-                {this.state.res.menu.map(v => {
+                {this.props.restaurantMenu.map(v => {
                   return (
                     <CardFood
                       handleOnAdd={this.dispatchAddToCart.bind(this)}
                       data={v}
                       delete={() => this.props.deleteItem(v._id)}
-                      setsize={(id, size) => this.setSize(id, size)}
-                      setrating={(id, rating) => this.setRating(id, rating)}
-                      setamount={(id, amount) => this.setAmount(id, amount)}
+                      setsize={(id, size) => this.props.setSize(id, size)}
+                      setrating={(id, rating) => this.props.foodRating(id, rating)}
+                      setamount={(id, amount) => this.props.setAmount(id, amount)}
                       key={v._id}
                     />
                   );
@@ -326,9 +261,9 @@ class DetailsPage extends Component {
               <OrderBill />
               <div className="testimonials">
                 <div className="row">
-                  {this.state.res.comments.map(c => {
+                  {/* {this.props.restaurant.comments.map(c => {
                     return <Comment data={c} key={c.userId} />;
-                  })}
+                  })} */}
                 </div>
                 <div className="add-comments">
                   <div className="row">
@@ -381,14 +316,15 @@ class DetailsPage extends Component {
         </div>
       </section>
     ) : (
-      <div style={{ marginTop: "10rem" }}>no res to fetch</div>
-    );
+        <div style={{ marginTop: "10rem" }}>no res to fetch</div>
+      );
     return <div>{Restaurant}</div>;
   }
 }
 const mapStateToProps = state => {
   return {
-    restaurants: state.restaurant.restaurants
+    restaurant: state.restaurant.selectedRestaurant,
+    restaurantMenu: state.food.foods
   };
 };
 function mapActionsToProps(dispatch) {
@@ -396,7 +332,13 @@ function mapActionsToProps(dispatch) {
     {
       addToCart,
       addComment,
-      deleteItem
+      deleteItem,
+      foodRating,
+      restaurantRating,
+      setAmount,
+      setSize,
+      getItemById,
+      getRestaurantMenu,
     },
     dispatch
   );

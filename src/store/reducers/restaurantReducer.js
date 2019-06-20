@@ -105,9 +105,11 @@ const restaurantReducer = (state = initialState, action) => {
 
     case actions.GET_ITEM_BY_ID:
       {
+      
         const _id = action.payload;
-        const itemindex = restaurants.findIndex(el => el._id === _id);
-        if (itemindex !== -1) selectedRestaurant = itemindex;
+        const itemindex = restaurants.findIndex(el => el._id === _id); 
+         debugger;
+        if (itemindex !== -1) selectedRestaurant = {...restaurants[itemindex]};
       }
       break;
     case actions.CHANGE_PAGE:
