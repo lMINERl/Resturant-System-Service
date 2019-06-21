@@ -6,8 +6,8 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerDispatch } from "../../store/actions/userActions";
-
 import { bindActionCreators } from "redux";
+// import register from "../../assets/register.png";
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
@@ -23,6 +23,9 @@ const mapStateToProps = state => {
     // error: auth.error
   };
 };
+
+
+// Images
 
 class SignupComponent extends Component {
   componentDidUpdate() {
@@ -76,7 +79,7 @@ class SignupComponent extends Component {
           }) => (
             <div className="container form-style d-flex flex-direction-row justify-content-center align-items-center">
               <img
-                src="../../assets/login.png"
+                // src={register}
                 alt="Background for register form"
                 className="form-style__img"
               />

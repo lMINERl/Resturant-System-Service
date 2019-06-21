@@ -6,7 +6,9 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { loginDispatch } from "../../store/actions/userActions";
 import { bindActionCreators } from "redux";
+// import loginBG from "../../assets/login.png";
 
+// Images
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
@@ -21,6 +23,7 @@ const mapStateToProps = state => {
     isAuth: state.user.isLogedIn
   };
 };
+
 
 class LoginPage extends Component {
   componentDidUpdate() {
@@ -68,7 +71,7 @@ class LoginPage extends Component {
           }) => (
             <div className="container form-style d-flex flex-direction-row justify-content-center align-items-center">
               <img
-                src="../../assets/login.png"
+                // src={loginBG}
                 alt="Background for register form"
                 className="form-style__img"
               />
