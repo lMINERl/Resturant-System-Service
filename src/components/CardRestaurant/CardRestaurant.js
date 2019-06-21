@@ -2,7 +2,7 @@ import React from "react";
 import StarRating from "../../components/StarRating";
 import { NavLink } from "react-router-dom";
 import { addRestaurantToGroup } from '../../store/actions/groupActions';
-import { getItemById } from '../../store/actions/restaurantActions';
+import { getRestaurantById } from '../../store/actions/restaurantActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -22,7 +22,7 @@ const CardRestaurant = props => {
           </div>
           <div className="menu-card__menu-data">
             <NavLink 
-            onClick={()=>props.getItemById(props.restaurant._id)}
+            onClick={()=>props.getRestaurantById(props.restaurant._id)}
               to={`/restaurants/details/${props.restaurant._id}`}
             >
               <h3 className="menu-card__heading">{props.restaurant.name}</h3>
@@ -71,7 +71,7 @@ const CardRestaurant = props => {
 function mapActionToProps(dispatch) {
   return bindActionCreators({
     addRestaurantToGroup,
-    getItemById
+    getRestaurantById
   }, dispatch);
 }
 

@@ -6,8 +6,7 @@ const initialState = {
     {
       _id: "5cf929e62a79451758f83c1b",
       name: "category1",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 50,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category1",
@@ -20,8 +19,7 @@ const initialState = {
     {
       _id: "5cf929e62a79451758f83c1b2",
       name: "category2",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 50,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category2",
@@ -34,8 +32,7 @@ const initialState = {
     {
       _id: "5cf929e62a79451758f83c1b3",
       name: "category1",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 51,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category1",
@@ -48,8 +45,7 @@ const initialState = {
     {
       _id: "5cf929e62a79451758f83c1b4",
       name: "category2",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 50,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category2",
@@ -62,8 +58,7 @@ const initialState = {
     {
       _id: "5cf929e62a79451758f83c1b5",
       name: "category3",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 53.0,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category3",
@@ -77,7 +72,6 @@ const initialState = {
       _id: "5cf929e62a79451758f83c1d",
       name: "Pizza",
       discountPrice: 60.0,
-      discountPercent: 50,
       price: [44.0, 100, 300, 400],
       img: null,
       rating: 3,
@@ -89,8 +83,7 @@ const initialState = {
     {
       _id: "5cf929e62a79451758f83c1c",
       name: "Chicken",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 40.0,
       price: [80, 120, 160, 200],
       img: null,
       rating: 2,
@@ -105,7 +98,7 @@ const initialState = {
     name: "Fish",
     discountPrice: 160.0,
     discountPercent: 50,
-    price: 85.0,
+    price: [85.0,100,200,300,550],
     category: "category1",
     rating: 4,
     size: 0,
@@ -131,6 +124,7 @@ const foodReducer = (state = initialState, action) => {
     case actions.ADD_ITEM:
       {
         const data = { ...action.payload };
+
         nfoods.push(data);
       }
       break;
