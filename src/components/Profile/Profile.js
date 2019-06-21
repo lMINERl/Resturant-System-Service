@@ -72,7 +72,7 @@ const Profile = props => {
       </>
     );
   } else {
-    return <div className="container mt-5 mb-5">you need to login</div>;
+    return <h1 className="d-flex justify-content-center m-5" style={{height:"100vh"}} >you need to login</h1>;
   }
 };
 function mapStateToProps(state) {
