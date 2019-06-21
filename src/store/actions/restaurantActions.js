@@ -2,7 +2,7 @@ export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const ADD_ITEM = 'ADD_ITEM';
 export const GET_ITEMS = 'GET_ITEMS';
-export const GET_ITEM_BY_ID = 'GET_ITEM_BY_ID';
+export const GET_RESTAURANT_BY_ID = 'GET_RESTAURANT_BY_ID';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const SET_RATING = 'SET_RATING';
 export const GET_RESTAURANTS_BYNAME = 'GET_RESTAURANTS_BYNAME';
@@ -56,9 +56,9 @@ export const getItems = () => {
         payload: null
     }
 }
-export const getItemById = (itemId) => {
+export const getRestaurantById = (itemId) => {
     return {
-        type: GET_ITEM_BY_ID,
+        type: GET_RESTAURANT_BY_ID,
         payload: itemId
     }
 }

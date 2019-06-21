@@ -3,12 +3,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import SelectSize from "../../components/SelectSize";
+import { getItemById } from "../../store/actions/foodActions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import Proptype from "prop-types";
 
 const CardFood = props => {
   let Sale = null;
   if (props.data.discountPrice > 0) {
-    Sale = <div className="menu-card__sale">{props.data.discountPercent}</div>;
+    Sale = <div className="menu-card__sale d-flex justify-content-center ">{props.data.discountPrice}%</div>;
   }
   return (
     <div className="menu-card__item">
@@ -26,7 +29,10 @@ const CardFood = props => {
           />
           {Sale}
         </div>
-        <NavLink to="/fooddetails">
+        <NavLink
+          to="/fooddetails"
+          onClick={() => props.getItemById(props.data._id)}
+        >
           <h3 className="menu-card__heading text-center">{props.data.name}</h3>
         </NavLink>
         <div className="star-rating text-center">
@@ -39,10 +45,6 @@ const CardFood = props => {
           </ul>
         </div>
         <div className="menu-card__price-data">
-          <span className="menu-card__price-before">
-            ${props.data.discountPrice}
-            <span className="menu-card__dashed" />
-          </span>
           <span className="menu-card__price">
             ${props.data.price[props.data.size]}
           </span>
@@ -65,7 +67,7 @@ const CardFood = props => {
           <i className="fa fa-minus" />
         </span>
         <input
-          type="number"
+          type="text"
           className="menu-card__size-info-medium"
           value={props.data.amount}
           onChange={() => {}}
@@ -112,4 +114,15 @@ CardFood.defaultProps = {
   amount: 0
 };
 
-export default CardFood;
+function mapActionToProps(dispatch) {
+  return bindActionCreators(
+    {
+      getItemById
+    },
+    dispatch
+  );
+}
+export default connect(
+  null,
+  mapActionToProps
+)(CardFood);

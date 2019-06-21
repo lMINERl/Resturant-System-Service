@@ -6,91 +6,91 @@ const initialState = {
     {
       _id: "5cf929e62a79451758f83c1b",
       name: "category1",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 50,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category1",
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b2",
       name: "category2",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 50,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category2",
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b3",
       name: "category1",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 51,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category1",
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b4",
       name: "category2",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 50,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category2",
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b5",
       name: "category3",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 53.0,
       price: [100.0, 200, 300, 400],
       img: null,
       category: "category3",
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1d",
       name: "Pizza",
       discountPrice: 60.0,
-      discountPercent: 50,
       price: [44.0, 100, 300, 400],
       img: null,
       rating: 3,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1c",
       name: "Chicken",
-      discountPrice: 160.0,
-      discountPercent: 50,
+      discountPrice: 40.0,
       price: [80, 120, 160, 200],
       img: null,
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     }
   ],
   selectedFood: {
@@ -98,7 +98,7 @@ const initialState = {
     name: "Fish",
     discountPrice: 160.0,
     discountPercent: 50,
-    price: 85.0,
+    price: [85.0,100,200,300,550],
     category: "category1",
     rating: 4,
     size: 0,
@@ -106,7 +106,8 @@ const initialState = {
     amount: 0,
     comments: [{ userId: "5cf92f1c2a79451758f83c2a", number: 0 }],
     ingredients: [`a`, `b`, `c`],
-    tags: [`tag1`, `tag2`]
+    tags: [`tag1`, `tag2`],
+    description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
   },
   currentPage: 1,
   pageSize: 5,
@@ -123,6 +124,7 @@ const foodReducer = (state = initialState, action) => {
     case actions.ADD_ITEM:
       {
         const data = { ...action.payload };
+
         nfoods.push(data);
       }
       break;

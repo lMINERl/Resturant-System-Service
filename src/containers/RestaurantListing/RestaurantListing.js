@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import CardRestaurant from "../../components/CardRestaurant";
 import Pagination from "../../components/Common/pagination";
 import { connect } from "react-redux";
-import { paginate } from "../../utils/paginate";
+// import { paginate } from "../../utils/paginate";
 import SideBar from "../../components/SideBar";
 import { bindActionCreators } from "redux";
 import {
@@ -35,7 +35,6 @@ const mapActionsToProps = dispatch => {
 };
 
 const RestaurantListing = props => {
-  // didmount
   const { getRestaurantsByname } = props;
   useEffect(() => {
     getRestaurantsByname("");
@@ -45,11 +44,11 @@ const RestaurantListing = props => {
   const [sortRating, setSortRating] = useState(false);
 
 
-  const Restaurants = paginate(
-    props.restaurants,
-    props.currentPage,
-    props.pageSize
-  );
+  // const Restaurants = paginate(
+  //   props.restaurants,
+  //   props.currentPage,
+  //   props.pageSize
+  // );
 
   const onChange = (e) => {
     props.getRestaurantsByname(e.target.value);

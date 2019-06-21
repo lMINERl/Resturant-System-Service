@@ -5,20 +5,12 @@ import findIndex from "../../helpers/findIndex";
 const initialState = {
   restaurants: [
     {
-      _id: "5cf92b292a79451758f83c1c",
-      name: "MAC",
-      imgUrl: null,
-      rating: 4,
-      location: "cairo",
-      description:
-        'Our menu is simple yet delicious with a variety of "MACS" available.'
-    },
-    {
       _id: "5cf92b292a79451758f83c1c2",
       name: "KFC",
       imgUrl: null,
       rating: 2,
       location: "ismailia",
+      categories: ["category1", "category2"],
       description:
         "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
     },
@@ -28,6 +20,7 @@ const initialState = {
       imgUrl: null,
       rating: 3,
       location: "suez",
+      categories: ["category1", "category2"],
       description:
         'Our menu is simple yet delicious with a variety of "MACS" available.'
     },
@@ -37,6 +30,7 @@ const initialState = {
       imgUrl: null,
       rating: 2,
       location: "alex",
+      categories: ["category1", "category2"],
       description: "Our menu is simple yet delicious."
     },
     {
@@ -45,23 +39,25 @@ const initialState = {
       imgUrl: null,
       rating: 1,
       location: "alex",
+      categories: ["category1", "category2"],
       description: "Our menu is simple yet delicious."
+    },
+    {
+      _id: "5cf92b292a79451758f83c1c",
+      name: "restaurant1",
+      email: "me@example.com",
+      phone: "+201023522342",
+      foodids: ["5cf929e62a79451758f83c1b"],
+      tags: ["tag1", "tag2"],
+      categories: ["category1", "category2"],
+      location: "cairo",
+      rating: 4,
+      comments: [{ userId: "5cf92f1c2a79451758f83c2a", number: 0 }],
+      description:
+        "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
     }
   ],
-  selectedRestaurant: {
-    _id: "5cf92b292a79451758f83c1c",
-    name: "restaurant1",
-    email: "me@example.com",
-    phone: "+201023522342",
-    foodids: ["5cf929e62a79451758f83c1b"],
-    tags: ["tag1", "tag2"],
-    categories: ["category1", "category2"],
-    location: "cairo",
-    rating: 4,
-    comments: [{ userId: "5cf92f1c2a79451758f83c2a", number: 0 }],
-    description:
-      "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
-  },
+  selectedRestaurant: {},
   restaurantMenu: ["5cf929e62a79451758f83c1b"],
   pageSize: 5,
   currentPage: 1,
@@ -103,12 +99,12 @@ const restaurantReducer = (state = initialState, action) => {
       }
       break;
 
-    case actions.GET_ITEM_BY_ID:
+    case actions.GET_RESTAURANT_BY_ID:
       {
-      
         const _id = action.payload;
-        const itemindex = restaurants.findIndex(el => el._id === _id); 
-        if (itemindex !== -1) selectedRestaurant = {...restaurants[itemindex]};
+        const itemindex = restaurants.findIndex(el => el._id === _id);
+        if (itemindex !== -1)
+          selectedRestaurant = { ...restaurants[itemindex] };
       }
       break;
     case actions.CHANGE_PAGE:

@@ -34,12 +34,8 @@ const MenuListing = props => {
   );
   return (
     <div className="menu-card mt-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-3" />
-          <div />
-          {menuListing}
-        </div>
+      <div className="container d-flex justify-content-between flex-wrap">
+        <div className="row">{menuListing}</div>
       </div>
     </div>
   );

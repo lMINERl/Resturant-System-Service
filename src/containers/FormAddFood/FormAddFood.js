@@ -1,50 +1,130 @@
 import React from "react";
 import { connect } from "react-redux";
-import * as actionTypes from "../../store/actions/userActions";
+import { addItem, updateItem } from "../../store/actions/foodActions";
+import { getRestaurantById } from "../../store/actions/restaurantActions";
 import { Link } from "react-router-dom";
+import { bindActionCreators } from "redux";
+
+const mapStateToProps = state => {
+  return {
+    restaurant: state.restaurant.selectedRestaurant,
+    foodToEditInRestaurant: state.food.selectedFood
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      addItem,
+      updateItem,
+      getRestaurantById
+    },
+    dispatch
+  );
+};
+
 class FormAddFood extends React.Component {
   state = {
-    name: " ",
-    size: [],
-    description: " ",
-    price: { small: null, meduim: null, large: null },
-    discount: null,
-    categorySelected: " ",
-    tags: [],
-    priceSize: [false, false, false, false]
+    _id: "",
+    name: "",
+    discountPrice: 0,
+    price: [],
+    category: "",
+    sizes: [],
+    description: "",
+
+    isSale: false
   };
 
-  // category = ['meat' , chicken', 'pizza']
-  // food =[]
-  x = true;
+  componentDidMount() {
+    if (this.props.match.params.restaurantId)
+      this.props.getRestaurantById(this.props.match.params.restaurantId);
+  }
   submitHandler = event => {
     event.preventDefault();
-    if (
-      isNaN(this.state.name) &&
-      isNaN(this.state.description) &&
-      !isNaN(this.state.price.small) &&
-      !isNaN(this.state.price.large) &&
-      !isNaN(this.state.price.meduim) &&
-      !isNaN(this.state.discount)
-    ) {
-      //  this.food.push(this.state);
-      this.props.add(this.state);
-    } else {
-      this.x = false;
+    if (this.props.match.params.restaurantId) {
+      const isPrices = this.state.price.every(v => v > 0);
+      if (this.state.category && this.state.sizes.length && isPrices) {
+        this.props.addItem({
+          ...this.state,
+          _id: Date.now().toString(),
+          amount: 0,
+          size: 0,
+          rating: 0
+        });
+        this.props.history.replace(
+          `/restaurants/details/${this.props.match.params.restaurantId}`
+        );
+      }
     }
   };
+  deleteSize(index) {
+    let nSizes = [...this.state.sizes];
+    let nPrice = [...this.state.price];
+    nSizes = [].concat(
+      nSizes.slice(0, index),
+      nSizes.slice(index + 1, nSizes.length)
+    );
+    nPrice = [].concat(
+      nPrice.slice(0, index),
+      nPrice.slice(index + 1, nPrice.length)
+    );
+    this.setState({ ...this.state, sizes: nSizes, price: nPrice });
+  }
+  addSize() {
+    const nSizes = [...this.state.sizes];
+    const nPrice = [...this.state.price];
+    nSizes.push("");
+    nPrice.push(0);
+    this.setState({ ...this.state, sizes: nSizes, price: nPrice });
+  }
+  editSize(index, name) {
+    if (name && name.length < 6) {
+      const nSizes = [...this.state.sizes];
+      nSizes[index] = name;
+      this.setState({ ...this.state, sizes: nSizes });
+    }
+  }
+  editPrice(index, value) {
+    if (!isNaN(Number(value))) {
+      const nPrice = [...this.state.price];
+      nPrice[index] = Number(value);
+      this.setState({ ...this.state, price: nPrice });
+    }
+  }
+  setSale(value) {
+    if (!isNaN(Number(value)) && value <= 100 && value >= 0) {
+      this.setState({ ...this.state, discountPrice: value });
+    }
+  }
+
   displayPrice(event, id) {
-    const npricesize = [...this.state.priceSize];
-    npricesize[id] = !npricesize[id];
+    const nprice = [...this.state.price];
+    nprice[id] = !nprice[id];
     this.setState({
       ...this.state,
-      priceSize: npricesize
+      price: nprice
     });
   }
+
   render() {
+    if (
+      !this.props.match.params.restaurantId ||
+      !this.props.restaurant.categories
+    ) {
+      return (
+        <h1
+          className="d-flex justify-content-center"
+          style={{ height: "100vh" }}
+        >
+          This Menu You Want To Add Does Not Belong To Any Restaurant :)
+        </h1>
+      );
+    }
+
     let options = (
       <>
-        {this.props.category.map((category, index) => {
+        {this.props.restaurant.categories.map((category, index) => {
           return (
             <option key={index} value={category}>
               {category}
@@ -53,6 +133,37 @@ class FormAddFood extends React.Component {
         })}
       </>
     );
+    const SizesInput = this.state.sizes.map((v, i) => {
+      return (
+        <div className="input-group col" key={i}>
+          <div className="input-group-prepend">
+            <span className="input-group-text label label--size">
+              <input
+                type="text"
+                placeholder="size"
+                className="text-center form-control form-control--inputs w-100 h-100"
+                value={v || ""}
+                onChange={event => this.editSize(i, event.target.value)}
+              />
+            </span>
+          </div>
+          <input
+            className="form-control col-6 form-control--inputs"
+            type="text"
+            placeholder="size price"
+            aria-label="Recipient's "
+            aria-describedby="my-addon"
+            value={this.state.price[i]}
+            onChange={event => this.editPrice(i, event.target.value)}
+          />
+          <i
+            className="fa fa-trash d-flex align-items-center ml-2"
+            onClick={() => this.deleteSize(i)}
+          />
+        </div>
+      );
+    });
+
     return (
       <div className="container form-container form-separator">
         <h3 className="head-title col text-center">Add food to Menu</h3>
@@ -104,10 +215,13 @@ class FormAddFood extends React.Component {
                   <select
                     className="form-control form-control--inputs"
                     onChange={event =>
-                      this.setState({ categorySelected: event.target.value })
+                      this.setState({ category: event.target.value })
                     }
                     id="exampleFormControlSelect1"
                   >
+                    <option selected defaultValue="">
+                      Choose...{" "}
+                    </option>
                     {options}
                   </select>
                 </div>
@@ -123,161 +237,40 @@ class FormAddFood extends React.Component {
                       Size
                     </span>
                   </div>
-
-                  <div className="custom-control custom-checkbox ml-5">
-                    <input
-                      id="my-input-small"
-                      checked={!this.state.priceSize[0]}
-                      onChange={() => {}}
-                      onClick={event => {
-                        this.displayPrice(event, 0);
-                      }}
-                      className="custom-control-input"
-                      type="checkbox"
-                      name=""
-                      value="true"
-                    />
-                    <label
-                      htmlFor="my-input-small"
-                      className="button button--secondary button--small-btn1 custom-control-label"
-                    >
-                      Small
-                    </label>
-                  </div>
-                  <div className="custom-control custom-checkbox mr-5 ml-5">
-                    <input
-                      id="my-input-meduim"
-                      checked={!this.state.priceSize[1]}
-                      onChange={() => {}}
-                      onClick={event => {
-                        this.displayPrice(event, 1);
-                      }}
-                      className="custom-control-input"
-                      type="checkbox"
-                      name=""
-                      value="true"
-                    />
-                    <label
-                      htmlFor="my-input-meduim"
-                      className="button button--secondary button--small-btn1 custom-control-label"
-                    >
-                      Meduim
-                    </label>
-                  </div>
-                  <div className="custom-control custom-checkbox mr-5">
-                    <input
-                      id="my-input-large"
-                      checked={!this.state.priceSize[2]}
-                      onChange={() => {}}
-                      onClick={event => {
-                        this.displayPrice(event, 2);
-                      }}
-                      className="custom-control-input"
-                      type="checkbox"
-                      name=""
-                      value="true"
-                    />
-                    <label
-                      htmlFor="my-input-large"
-                      className="button button--secondary button--small-btn1 custom-control-label"
-                    >
-                      Large
-                    </label>
-                  </div>
-                  <div className="custom-control custom-checkbox mr-auto">
-                    <input
-                      id="my-input-sale"
-                      checked={!this.state.priceSize[3]}
-                      onChange={() => {}}
-                      onClick={event => {
-                        this.displayPrice(event, 3);
-                      }}
-                      className="custom-control-input"
-                      type="checkbox"
-                      name=""
-                      value="true"
-                    />
-                    <label
-                      htmlFor="my-input-sale"
-                      className="button button--secondary button--small-btn1 custom-control-label"
-                    >
-                      isSale
-                    </label>
-                  </div>
-                  <input
-                    disabled={this.state.priceSize[3]}
-                    onChange={e => {
-                      this.setState({ discount: e.target.value });
-                    }}
-                    id="my-input-sale-price"
-                    className="form-control form-control--size text-center"
-                    type="text"
-                    name=""
-                    placeholder="discount"
-                  />
+                  <button
+                    type="button"
+                    className="btn button--small-btn"
+                    onClick={() => this.addSize()}
+                  >
+                    <i className="fa fa-plus" />
+                  </button>
                 </div>
+                {SizesInput}
 
-                {/* <!-- Prices --> */}
-                <div className="form-separator" />
                 <div className="input-group col">
                   <div className="input-group-prepend">
-                    <span
+                    <button
+                      type="button"
+                      onClick={() =>
+                        this.setState({ isSale: !this.state.isSale })
+                      }
                       className="input-group-text label label--size"
-                      id="food-size"
                     >
-                      Price
-                    </span>
+                      Sale
+                    </button>
                   </div>
                   <input
-                    disabled={this.state.priceSize[0]}
-                    className="form-control form-control--inputs col-3 ml-auto"
-                    id="price-small"
-                    type="text"
-                    name="Small"
-                    placeholder="small price"
-                    onChange={e =>
-                      this.setState({
-                        price: {
-                          small: e.target.value,
-                          meduim: this.state.price.meduim,
-                          Large: this.state.price.large
-                        }
-                      })
+                    className={
+                      this.state.isSale
+                        ? "form-control col form-control--inputs"
+                        : "d-none"
                     }
-                  />
-                  <input
-                    disabled={this.state.priceSize[1]}
-                    className="form-control form-control--inputs col-3 ml-5 mr-5"
-                    id="price-meduim"
                     type="text"
-                    name="Meduim"
-                    placeholder="meduim price"
-                    onChange={e =>
-                      this.setState({
-                        price: {
-                          meduim: e.target.value,
-                          small: this.state.price.small,
-                          Large: this.state.price.large
-                        }
-                      })
-                    }
-                  />
-                  <input
-                    disabled={this.state.priceSize[2]}
-                    className="form-control form-control--inputs col-3 mr-auto"
-                    id="price-large"
-                    type="text"
-                    name="Large"
-                    placeholder="large price"
-                    onChange={e =>
-                      this.setState({
-                        price: {
-                          large: e.target.value,
-                          meduim: this.state.price.meduim,
-                          small: this.state.price.small
-                        }
-                      })
-                    }
+                    placeholder="Food Name"
+                    aria-label="Recipient's "
+                    value={this.state.discountPrice}
+                    aria-describedby="my-addon"
+                    onChange={event => this.setSale(event.target.value)}
                   />
                 </div>
 
@@ -311,16 +304,6 @@ class FormAddFood extends React.Component {
                   <Link className="button button--secondary" to="/">
                     Cancel
                   </Link>
-                  {!this.x ? (
-                    <div>
-                      <ul>
-                        <li>name must be string</li>
-                        <li>description must be string</li>
-                        <li>price must be number</li>
-                        <li>discount must be number</li>
-                      </ul>
-                    </div>
-                  ) : null}
                 </div>
               </div>
             </form>
@@ -343,39 +326,6 @@ class FormAddFood extends React.Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    category: state.user.category,
-    food: state.user.food
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    add: ({
-      name,
-      description,
-      price,
-      priceSize,
-      discount,
-      categorySelected,
-      size
-    }) =>
-      dispatch({
-        type: actionTypes.ADDFOOD,
-        foodData: {
-          name: name,
-          description: description,
-          price: price,
-          priceSize: priceSize,
-          discount: discount,
-          categorySelected: categorySelected,
-          size: size
-        }
-      })
-  };
-};
 
 export default connect(
   mapStateToProps,
