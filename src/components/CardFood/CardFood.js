@@ -8,7 +8,7 @@ import Proptype from "prop-types";
 const CardFood = props => {
   let Sale = null;
   if (props.data.discountPrice > 0) {
-    Sale = <div className="menu-card__sale">{props.data.discountPercent}</div>;
+    Sale = <div className="menu-card__sale d-flex justify-content-center ">{props.data.discountPrice}%</div>;
   }
   return (
     <div className="menu-card__item">
@@ -39,10 +39,14 @@ const CardFood = props => {
           </ul>
         </div>
         <div className="menu-card__price-data">
-          <span className="menu-card__price-before">
-            ${props.data.discountPrice}
-            <span className="menu-card__dashed" />
-          </span>
+          {props.data.discountPrice ? (
+            <span className="menu-card__price-before">
+              ${props.data.discountPrice}
+              <span className="menu-card__dashed" />
+            </span>
+          ) : (
+            <React.Fragment />
+          )}
           <span className="menu-card__price">
             ${props.data.price[props.data.size]}
           </span>
@@ -65,7 +69,7 @@ const CardFood = props => {
           <i className="fa fa-minus" />
         </span>
         <input
-          type="number"
+          type="text"
           className="menu-card__size-info-medium"
           value={props.data.amount}
           onChange={() => {}}

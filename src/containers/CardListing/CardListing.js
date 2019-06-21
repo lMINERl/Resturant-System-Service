@@ -105,7 +105,6 @@ class CardListing extends Component {
 }
 
 function mapStateToProps(state) {
-  debugger;
   return {
     data: state.food.filteredlist,
     Categories: state.category.categories

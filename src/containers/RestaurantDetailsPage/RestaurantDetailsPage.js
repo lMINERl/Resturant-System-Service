@@ -5,9 +5,18 @@ import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
 import { addComment } from "../../store/actions/userActions";
-import {  getItemById,setRating as restaurantRating } from "../../store/actions/restaurantActions";
-import { getRestaurantMenu,deleteItem,setSize,setRating as foodRating ,setAmount } from '../../store/actions/foodActions';
-import Comment from "../../components/comments/comments";
+import {
+  setRating as restaurantRating,
+  getRestaurantById,
+} from "../../store/actions/restaurantActions";
+import {
+  getRestaurantMenu,
+  deleteItem,
+  setSize,
+  setRating as foodRating,
+  setAmount
+} from "../../store/actions/foodActions";
+// import Comment from "../../components/comments/comments";
 import OrderBill from "../../components/OrderBill/OrderBill";
 import StarRating from "../../components/StarRating/StarRating";
 
@@ -37,12 +46,26 @@ class DetailsPage extends Component {
     }
   };
   componentDidMount() {
-    if (this.props.match.params.id) {
-      this.props.getRestaurantMenu(this.props.match.params.id);
-      //  this.props.history.push("/") // notfound
+    if (this.props.match.params.restaurantId) {
+      this.props.getRestaurantById(this.props.match.params.restaurantId);
+      if (this.props.restaurant)
+        this.props.getRestaurantMenu(this.props.match.params.restaurantId);
+    } else {
+      this.props.history.push("/"); // notfound
     }
   }
   render() {
+    if (!this.props.match.params.restaurantId || !this.props.restaurant._id) {
+      return (
+        <h1
+          className="d-flex justify-content-center"
+          style={{ height: "100vh" }}
+        >
+          This Restaurant Does Not Exist
+        </h1>
+      );
+    }
+
     let Restaurant = this.props.restaurant ? (
       <section className="Restaurant" style={{ paddingTop: "100px" }}>
         <div className="container">
@@ -59,7 +82,10 @@ class DetailsPage extends Component {
                 <ul className="list-inline gold-star">
                   <StarRating
                     setRate={rating =>
-                      this.props.restaurantRating(this.props.restaurant._id, rating)
+                      this.props.restaurantRating(
+                        this.props.restaurant._id,
+                        rating
+                      )
                     }
                     rating={this.props.restaurant.rating}
                     outof={5}
@@ -110,7 +136,7 @@ class DetailsPage extends Component {
                   <h2 className="listing-header">
                     {this.props.restaurant.name} Menu
                     <NavLink
-                      to="/foodform"
+                      to={`/foodform/${this.props.match.params.restaurantId}`}
                       className="badge badge-warning listing-header__btn btn--right text-white p-3"
                     >
                       <i className="fa fa-plus-square" />
@@ -250,8 +276,12 @@ class DetailsPage extends Component {
                       data={v}
                       delete={() => this.props.deleteItem(v._id)}
                       setsize={(id, size) => this.props.setSize(id, size)}
-                      setrating={(id, rating) => this.props.foodRating(id, rating)}
-                      setamount={(id, amount) => this.props.setAmount(id, amount)}
+                      setrating={(id, rating) =>
+                        this.props.foodRating(id, rating)
+                      }
+                      setamount={(id, amount) =>
+                        this.props.setAmount(id, amount)
+                      }
                       key={v._id}
                     />
                   );
@@ -315,8 +345,8 @@ class DetailsPage extends Component {
         </div>
       </section>
     ) : (
-        <div style={{ marginTop: "10rem" }}>no res to fetch</div>
-      );
+      <div style={{ marginTop: "10rem" }}>no res to fetch</div>
+    );
     return <div>{Restaurant}</div>;
   }
 }
@@ -336,8 +366,8 @@ function mapActionsToProps(dispatch) {
       restaurantRating,
       setAmount,
       setSize,
-      getItemById,
-      getRestaurantMenu,
+      getRestaurantById,
+      getRestaurantMenu
     },
     dispatch
   );

@@ -110,7 +110,7 @@ class Navigation extends React.Component {
                         className={this.state.isMenu?"dropdown-menu1":"dropdown-menu1 d-none" }
                         aria-labelledby="dropdownMenu2"
                       >
-                        <button class="dropdown-item" type="button">
+                        <button className="dropdown-item" type="button">
                           <NavLink className="dropdownNav" to="/profile">
                             Profile
                           </NavLink>
