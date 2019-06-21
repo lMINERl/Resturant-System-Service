@@ -48,7 +48,7 @@ class HomePage extends Component {
                         className="carousel-description p-0 wow fadeInLeft"
                         data-wow-duration="1s"
                       >
-                        <h3 className="caption" style={{ color: "black" }}>
+                        <h3 className="caption">
                           Order Your Food Online For <br />
                           Take Away, Home Delivery
                         </h3>
