@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import Cart from "../../components/OrderBill";
+
 class Navigation extends React.Component {
   state = {
     isCart: false,
@@ -25,11 +26,11 @@ class Navigation extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-12 col-sm-4 nopadding">
+          <div className="col-md-12 col-sm-4 nopadding fixed-top">
             <div className="navigation__secondary d-flex justify-content-end">
               <div className="login">
-                <NavLink to="/login">Login</NavLink>|
-                <NavLink to="/register">Register</NavLink>
+                <NavLink to="/login">Login</NavLink> |
+                <NavLink to="/register"> Register</NavLink>
               </div>
             </div>
             <div className="navigation__basic navbar navbar-dark">
@@ -107,7 +108,11 @@ class Navigation extends React.Component {
                         />
                       </NavLink>
                       <div
-                        className={this.state.isMenu?"dropdown-menu1":"dropdown-menu1 d-none" }
+                        className={
+                          this.state.isMenu
+                            ? "dropdown-menu1"
+                            : "dropdown-menu1 d-none"
+                        }
                         aria-labelledby="dropdownMenu2"
                       >
                         <button class="dropdown-item" type="button">

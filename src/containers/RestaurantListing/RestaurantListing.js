@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { paginate } from "../../utils/paginate";
 import SideBar from "../../components/SideBar";
 import { bindActionCreators } from "redux";
+
+
 import {
   deleteItem,
   changePage,

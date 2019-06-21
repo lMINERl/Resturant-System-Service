@@ -1,0 +1,11 @@
+.listing-header__btn {
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+}
+.listing-header__btn i {
+  padding-right: 10px;
+}
+.carousel {
+  margin: 0rem;
+}
