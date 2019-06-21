@@ -2,8 +2,8 @@ import React from "react";
 
 const Filter = props => {
   return (
-    <>
-      <nav className="col navbar navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-2 align-items-center">
+    <div className="row">
+      <nav className="col navbar navbar-expand-lg navbar-light bg-light justify-content-between mb-4 py-3 align-items-center">
         <form className="form-inline ">
           <input
             className="filter-search form-control p-4 mr-sm-2"
@@ -28,7 +28,7 @@ const Filter = props => {
         <ul className="navbar-nav ">
           <li className="nav-item dropdown mx-4">
             <a
-               className="nav-link dropdown-toggle"
+              className="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
               role="button"
@@ -127,7 +127,7 @@ const Filter = props => {
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   );
 };
 
