@@ -4,7 +4,7 @@ import CardFood from "../../components/CardFood/CardFood";
 import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
-import { addComment } from "../../store/actions/userActions";
+// import { addComment } from "../../store/actions/userActions";
 import {
   getItemById,
   setRating as restaurantRating
@@ -16,7 +16,7 @@ import {
   setRating as foodRating,
   setAmount
 } from "../../store/actions/foodActions";
-import Comment from "../../components/comments/comments";
+// import Comment from "../../components/comments/comments";
 import OrderBill from "../../components/OrderBill/OrderBill";
 import StarRating from "../../components/StarRating/StarRating";
 
@@ -24,27 +24,26 @@ class DetailsPage extends Component {
   dispatchAddToCart(cardItem) {
     this.props.addToCart(cardItem);
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    const { id } = this.state.res;
-    if (
-      this.refs.author.value !== "" &&
-      isNaN(this.refs.author.value) &&
-      this.refs.comment.value !== "" &&
-      isNaN(this.refs.author.value)
-    ) {
-      const author = this.refs.author.value;
-      const comment = this.refs.comment.value;
-      const rating = this.refs.rating.value;
-      this.props.addComment(id, comment, rating, author);
-    } else {
-      alert("please enter your name and comment");
-    }
-  };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const { id } = this.state.res;
+  //   if (
+  //     this.refs.author.value !== "" &&
+  //     isNaN(this.refs.author.value) &&
+  //     this.refs.comment.value !== "" &&
+  //     isNaN(this.refs.author.value)
+  //   ) {
+  //     const author = this.refs.author.value;
+  //     const comment = this.refs.comment.value;
+  //     const rating = this.refs.rating.value;
+  //     this.props.addComment(id, comment, rating, author);
+  //   } else {
+  //     alert("please enter your name and comment");
+  //   }
+  // };
   componentDidMount() {
     if (this.props.match.params.id) {
       this.props.getRestaurantMenu(this.props.match.params.id);
-      //  this.props.history.push("/") // notfound
     }
   }
   render() {
@@ -55,9 +54,9 @@ class DetailsPage extends Component {
             <div className="text-center">
               <h3>{this.props.restaurant.name}</h3>
               <span className="edit-icon">
-              <NavLink to="/restaurantform">
-                <i className="fa fa-pencil" />
-              </NavLink>    
+                <NavLink to="/restaurantform">
+                  <i className="fa fa-pencil" />
+                </NavLink>
               </span>
               <span className="love-icon">
                 <i className="fa fa-heart" />
@@ -97,16 +96,10 @@ class DetailsPage extends Component {
             </div>
 
             <div className="tags w-50">
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
+              <span className="tags__item">Pizza</span>
+              <span className="tags__item">Burger</span>
+              <span className="tags__item">Pasta</span>
+              <span className="tags__item">Sea Food</span>
             </div>
           </div>
         </div>
@@ -272,11 +265,11 @@ class DetailsPage extends Component {
                 })}
               </div>
               <OrderBill />
-              <div className="testimonials">
+              {/* <div className="testimonials">
                 <div className="row">
-                  {/* {this.props.restaurant.comments.map(c => {
+                  {this.props.restaurant.comments.map(c => {
                     return <Comment data={c} key={c.userId} />;
-                  })} */}
+                  })}
                 </div>
                 <div className="add-comments">
                   <div className="row">
@@ -323,7 +316,7 @@ class DetailsPage extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>
@@ -344,7 +337,6 @@ function mapActionsToProps(dispatch) {
   return bindActionCreators(
     {
       addToCart,
-      addComment,
       deleteItem,
       foodRating,
       restaurantRating,

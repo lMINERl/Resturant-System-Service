@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
-import { addComment } from "../../store/actions/userActions";
+// import { addComment } from "../../store/actions/userActions";
 import { setRating as foodRating } from "../../store/actions/foodActions";
-import Comment from "../../components/comments/comments";
+// import Comment from "../../components/comments/comments";
 import StarRating from "../../components/StarRating/StarRating";
 
 class FoodDetails extends React.Component {
@@ -26,12 +26,6 @@ class FoodDetails extends React.Component {
       alert("please enter your name and comment");
     }
   };
-  componentDidMount() {
-    if (this.props.match.params.id) {
-      this.props.getRestaurantMenu(this.props.match.params.id);
-      //  this.props.history.push("/") // notfound
-    }
-  }
   render() {
     let Food= this.props.food ? (
       <section className="Restaurant" style={{ paddingTop: "100px" }}>
@@ -79,25 +73,19 @@ class FoodDetails extends React.Component {
             </div>
 
             <div className="tags w-50">
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
+              <span className="tags__item">Cheese</span>
+              <span className="tags__item">Pasta</span>
+              <span className="tags__item">Eggs</span>
+              <span className="tags__item">Milk</span>
             </div>
           </div>
         </div>
 
-        <div className="testimonials">
+        {/* <div className="testimonials">
           <div className="row">
-            {/* {this.props.restaurant.comments.map(c => {
+            {this.props.restaurant.comments.map(c => {
                     return <Comment data={c} key={c.userId} />;
-                  })} */}
+                  })}
           </div>
           <div className="add-comments">
             <div className="row">
@@ -144,7 +132,7 @@ class FoodDetails extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
     ) : (
       <div style={{ marginTop: "10rem" }}>no food to fetch</div>
@@ -161,7 +149,6 @@ function mapActionsToProps(dispatch) {
   return bindActionCreators(
     {
       addToCart,
-      addComment,
       foodRating
     },
     dispatch
