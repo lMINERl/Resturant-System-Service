@@ -741,10 +741,10 @@ a:hover {
   .order-bill__total {
     position: relative;
     left: 6rem;
-    font-size: 2rem;
-    font-weight: bold; }
+    font-size: 1.5rem;
+    font-weight: normal; 
+  margin-right: 10px;}
   .order-bill__order {
-    margin: 0 1rem;
     font-size: 2rem;
     font-weight: bold; }
   .order-bill__size {
@@ -980,13 +980,17 @@ a:hover {
 
 .footer {
   background-color: #141414;
-  height: 6.7rem;
-  margin-top: 8rem; }
+  height: 3rem;
+   }
   .footer__content {
     font-family: "Roboto";
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #ffc107;
-    font-weight: 100; }
+    margin : 0;
+    font-weight: lighter;
+    letter-spacing: 1px;
+  }
+
 
 .form-separator {
   padding-top: 2.5rem; }
@@ -1130,8 +1134,8 @@ a:hover {
       .navigation__basic .nav-content ul li a:hover:after,
       .navigation__basic .nav-content ul li a.active:after {
         width: 100%;
-        background: transparent;
-        transition: all 0s ease; }
+        background: transparent
+        }
     .navigation__basic .nav-extras {
       width: 30%; }
       .navigation__basic .nav-extras .nav li a {
@@ -1142,16 +1146,22 @@ a:hover {
       .navigation__basic .nav-extras .nav-item .cart-icon {
         position: relative;
         cursor: pointer; }
+        .navigation__basic .nav-extras .nav-item .cart-icon:focus{
+          outline: none;
+        }
+        .nav-item .button:focus {
+          outline:none;
+        } 
         .navigation__basic .nav-extras .nav-item .cart-icon__orders {
           background-color: red;
           line-height: 3px;
-          height: 13px;
-          width: 13px;
+          height: 15px;
+          width: 15px;
           border-radius: 50%;
-          padding: 5px 3px 5px;
+          padding: 6px 4px;
           color: white;
-          font-size: 1.2rem;
-          font-weight: bold;
+          font-size: 1.1rem;
+          font-weight: normal;
           position: absolute;
           top: -3px;
           right: 3px; }
@@ -1376,3 +1386,24 @@ a:hover {
     z-index: 999;
     background-color: white;
   }
+  .container-color {
+    padding: 4rem 0 0 !important;
+  }
+  .ftco-heading-2 {
+    color: #d39e00;
+
+  }
+  .about-content{
+    line-height: 25px;
+  }
+  .a {
+    padding: 7px;
+    display: block;
+    transition: all 0.4s ease-in-out;
+  }
+  .a:hover {
+    background-color: #d39e00;
+  }
+
+  
+  
