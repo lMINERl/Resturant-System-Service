@@ -13,8 +13,7 @@ class SignupComponent extends Component {
         if(error && this.bag){
             this.bag.setSubmitting(false);
         }
-        console.log(user);
-        if(user){
+        if(user&&!error){
             this.props.history.push('/login');
         }
     }
@@ -34,7 +33,7 @@ class SignupComponent extends Component {
   render() {
     return (
       <div style={{padding:20}}>
-        {/* {this._renderErrorIfAny()} */}
+        {this._renderErrorIfAny()}
         <Formik
             initialValues = {{email:'',password:'',name:''}}
             onSubmit = {this.handleFormSubmit.bind(this)}
