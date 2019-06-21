@@ -6,9 +6,10 @@ import ProfileFavCuisins from '../../containers/ProfileFavCuisins';
 import ProfileSideBar from '../ProfileSideBar';
 import profileData from '../profileData/profileData';
 import profileEdit from '../profileEdit/profileEdit';
-
+import {connect} from 'react-redux';
 const Profile = (props) => {
 
+ if(props.isAuth){
   return (
     <>
     <div className="container user-profile">
@@ -43,7 +44,16 @@ const Profile = (props) => {
     </div>
     </>
   );
+ }else {
+   return(
+    <div className="container mt-5 mb-5">you need to login</div>
+   )
+ }
 }
-
-export default Profile;
+function mapStateToProps({auth}){
+  return{
+   isAuth:auth.isAuth
+  }
+}
+export default connect(mapStateToProps)(Profile);
 

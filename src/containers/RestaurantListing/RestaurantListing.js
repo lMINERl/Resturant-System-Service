@@ -15,7 +15,6 @@ import {
 } from "../../store/actions/restaurantActions";
 
 const mapStateToProps = state => {
-  debugger;
   return {
     restaurants: state.restaurant.filteredRestaurants,
     pageSize: state.restaurant.pageSize,

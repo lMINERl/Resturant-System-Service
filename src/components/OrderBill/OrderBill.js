@@ -53,8 +53,8 @@ class Cart extends React.Component {
                     </Col>
                 </Row> */}
                 <div className="row">
-                    <div className="col-md-12">
-                        <div className="order-bill__check">
+                    <div className="col-md-12 align-self-end">
+                        <div className="order-bill__check ">
                             <div className="order-bill__check-info">
                                 <span className="order-bill__check-subtotal">TotalPrice</span>
                                 <span className="order-bill__check-dash"></span>
@@ -84,7 +84,7 @@ class Cart extends React.Component {
     render() {
         if (this.props.cart.length !== 0) {
             return (
-                <aside className='cart position-absolute'>
+            <aside className='cart position-absolute orderbill-container'>
                     {this.renderCart()}
                     {this.cartTotal()}
                 </aside>

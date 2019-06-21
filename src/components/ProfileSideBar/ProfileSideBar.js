@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-
+import {connect} from 'react-redux';
 const ProfileSideBar = (props) => {
   return (
        
@@ -14,7 +14,7 @@ const ProfileSideBar = (props) => {
                 </div>
             </div>
         
-            <h2 className="username">Ahmed Hatem</h2>
+            <h2 className="username">{props.profile.name}</h2>
 
             <div className="alert alert-primary link__info">
               <button className="btn link__copy ml-1">Copy Link</button>
@@ -73,5 +73,10 @@ const ProfileSideBar = (props) => {
    
             );
 };
-
-export default ProfileSideBar;
+function mapStateToProps({auth}){
+  return{
+   isAuth:auth.isAuth,
+   profile:auth.profile
+  }
+}
+export default connect(mapStateToProps)(ProfileSideBar);

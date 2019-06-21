@@ -1,13 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from 'react-redux';
-import Cart from '../../components/OrderBill';
+import { connect } from "react-redux";
+import Cart from "../../components/OrderBill";
+import { logUserOut } from '../../store/actions/userActions';
 class Navigation extends React.Component {
   state = {
-    isCart: false
-  }
+    isCart: false,
+    isMenu: false
+  };
 
-  totalCount({cart}) {
+  totalCount({ cart }) {
     return cart.reduce((tcount, item) => {
       tcount += item.amount;
       return tcount;
@@ -17,7 +19,7 @@ class Navigation extends React.Component {
     this.setState({
       ...this.state,
       isCart: isCart
-    })
+    });
   }
   render() {
     const cartBill = this.state.isCart ? <Cart /> : <></>;
@@ -44,10 +46,10 @@ class Navigation extends React.Component {
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/restaurants" >Restaurants</NavLink>
+                      <NavLink to="/restaurants">Restaurants</NavLink>
                     </li>
                     <li>
-                      <NavLink to="/menus" >Menus</NavLink>
+                      <NavLink to="/menus">Menus</NavLink>
                     </li>
                   </ul>
                 </div>
@@ -73,13 +75,15 @@ class Navigation extends React.Component {
                       >
                         <i className="fa fa-shopping-cart cart-icon" />
                       </button>
-                      <span className="cart-icon__orders">{this.totalCount(this.props.cart)}</span>
+                      <span className="cart-icon__orders">
+                        {this.totalCount(this.props.cart)}
+                      </span>
                       <div
                         className="dropdown-menu"
                         aria-labelledby="dropdownMenu2"
                       />
                     </li>
-                      {cartBill}
+                    {cartBill}
                     <li className="nav-item">
                       <NavLink to="/profile">
                         <i className="fa fa-user-circle" />
@@ -93,25 +97,49 @@ class Navigation extends React.Component {
                         aria-haspopup="true"
                         aria-expanded="false"
                       >
-                        <i className="fa fa-ellipsis-v setting_icon" />
+                        <i
+                          className="fa fa-ellipsis-v setting_icon"
+                          onClick={() =>
+                            this.setState({
+                              ...this.state,
+                              isMenu: !this.state.isMenu
+                            })
+                          }
+                        />
                       </NavLink>
-                      <div className="dropdown-menu1" aria-labelledby="dropdownMenu2">
-                    <button className="dropdown-item" type="button">
-                      Profile
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      My Groups
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      My Favourite
-                    </button>
-                    <button className="dropdown-item" type="button">
-                      Settings
-                    </button>
-                    <button className="dropdown-item" type="button" onClick={()=> logUserOut()}>
-                      Log Out
-                    </button>
-                  </div> </li>
+                      <div
+                        className={this.state.isMenu?"dropdown-menu1":"dropdown-menu1 d-none" }
+                        aria-labelledby="dropdownMenu2"
+                      >
+                        <button className="dropdown-item" type="button">
+                          <NavLink className="dropdownNav" to="/profile">
+                            Profile
+                          </NavLink>
+                        </button>
+                        <button className="dropdown-item" type="button">
+                          <NavLink
+                            className="dropdownNav"
+                            to="/profile/grouporder"
+                          >
+                            {" "}
+                            My Groups
+                          </NavLink>
+                        </button>
+                        <button className="dropdown-item" type="button">
+                          <NavLink to=""className="dropdownNav">
+                            My Favourite
+                          </NavLink>
+                        </button>
+                        <button className="dropdown-item" type="button">
+                          <NavLink className="dropdownNav" to="/profile/edit">
+                            Settings
+                          </NavLink>
+                        </button>
+                        <button className="dropdown-item" type="button" onClick={()=> logUserOut()}>
+                          <NavLink className="dropdownNav"to="">Log Out</NavLink>
+                        </button>
+                      </div>{" "}
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -122,9 +150,9 @@ class Navigation extends React.Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     cart: state.cart
-  }
-}
-export default connect(mapStateToProps)(Navigation);
+  };
+};
+export default connect(mapStateToProps,{logUserOut})(Navigation);
