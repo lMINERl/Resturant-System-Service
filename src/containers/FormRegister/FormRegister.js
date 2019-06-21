@@ -10,11 +10,15 @@ import { signUp } from "../../store/actions/userActions";
 // Images
 import register from "../../assets/register.png";
 class SignupComponent extends Component {
-  componentDidUpdate() {
-    //console.log(this.props);
-    const { error, user } = this.props;
-    if (error && this.bag) {
-      this.bag.setSubmitting(false);
+    componentDidUpdate(){
+        //console.log(this.props);
+        const {error,user} = this.props;
+        if(error && this.bag){
+            this.bag.setSubmitting(false);
+        }
+        if(user&&!error){
+            this.props.history.push('/login');
+        }
     }
     console.log(user);
     if (user) {
@@ -34,8 +38,8 @@ class SignupComponent extends Component {
   }
   render() {
     return (
-      <div style={{ padding: 20 }}>
-        {/* {this._renderErrorIfAny()} */}
+      <div style={{padding:20}}>
+        {this._renderErrorIfAny()}
         <Formik
           initialValues={{ email: "", password: "", name: "" }}
           onSubmit={this.handleFormSubmit.bind(this)}

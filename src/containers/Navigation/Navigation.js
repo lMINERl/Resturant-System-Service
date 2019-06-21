@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import Cart from "../../components/OrderBill";
-
+import { logUserOut } from "../../store/actions/userActions";
 class Navigation extends React.Component {
   state = {
     isCart: false,
@@ -115,7 +115,7 @@ class Navigation extends React.Component {
                         }
                         aria-labelledby="dropdownMenu2"
                       >
-                        <button class="dropdown-item" type="button">
+                        <button className="dropdown-item" type="button">
                           <NavLink className="dropdownNav" to="/profile">
                             Profile
                           </NavLink>
@@ -130,7 +130,7 @@ class Navigation extends React.Component {
                           </NavLink>
                         </button>
                         <button className="dropdown-item" type="button">
-                          <NavLink className="dropdownNav">
+                          <NavLink to="" className="dropdownNav">
                             My Favourite
                           </NavLink>
                         </button>
@@ -139,8 +139,14 @@ class Navigation extends React.Component {
                             Settings
                           </NavLink>
                         </button>
-                        <button className="dropdown-item" type="button">
-                          <NavLink className="dropdownNav">Log Out</NavLink>
+                        <button
+                          className="dropdown-item"
+                          type="button"
+                          onClick={() => logUserOut()}
+                        >
+                          <NavLink className="dropdownNav" to="">
+                            Log Out
+                          </NavLink>
                         </button>
                       </div>{" "}
                     </li>
@@ -159,4 +165,7 @@ const mapStateToProps = state => {
     cart: state.cart
   };
 };
-export default connect(mapStateToProps)(Navigation);
+export default connect(
+  mapStateToProps,
+  { logUserOut }
+)(Navigation);

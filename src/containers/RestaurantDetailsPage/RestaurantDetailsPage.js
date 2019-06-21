@@ -4,10 +4,10 @@ import CardFood from "../../components/CardFood/CardFood";
 import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
-// import { addComment } from "../../store/actions/userActions";
+import { addComment } from "../../store/actions/userActions";
 import {
-  getItemById,
-  setRating as restaurantRating
+  setRating as restaurantRating,
+  getRestaurantById,
 } from "../../store/actions/restaurantActions";
 import {
   getRestaurantMenu,
@@ -42,11 +42,26 @@ class DetailsPage extends Component {
   //   }
   // };
   componentDidMount() {
-    if (this.props.match.params.id) {
-      this.props.getRestaurantMenu(this.props.match.params.id);
+    if (this.props.match.params.restaurantId) {
+      this.props.getRestaurantById(this.props.match.params.restaurantId);
+      if (this.props.restaurant)
+        this.props.getRestaurantMenu(this.props.match.params.restaurantId);
+    } else {
+      this.props.history.push("/"); // notfound
     }
   }
   render() {
+    if (!this.props.match.params.restaurantId || !this.props.restaurant._id) {
+      return (
+        <h1
+          className="d-flex justify-content-center"
+          style={{ height: "100vh" }}
+        >
+          This Restaurant Does Not Exist
+        </h1>
+      );
+    }
+
     let Restaurant = this.props.restaurant ? (
       <section className="Restaurant" style={{ paddingTop: "100px" }}>
         <div className="container">
@@ -113,7 +128,7 @@ class DetailsPage extends Component {
                   <h2 className="listing-header">
                     {this.props.restaurant.name} Menu
                     <NavLink
-                      to="/foodform"
+                      to={`/foodform/${this.props.match.params.restaurantId}`}
                       className="badge badge-warning listing-header__btn btn--right text-white p-3"
                     >
                       <i className="fa fa-plus-square" />
@@ -342,7 +357,7 @@ function mapActionsToProps(dispatch) {
       restaurantRating,
       setAmount,
       setSize,
-      getItemById,
+      getRestaurantById,
       getRestaurantMenu
     },
     dispatch
