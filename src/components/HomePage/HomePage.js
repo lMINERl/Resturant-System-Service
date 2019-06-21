@@ -3,6 +3,7 @@ import { AutoComplete } from "../AutoComplete/AutoComplete";
 // import { Autocomplete } from '../AutoComplete/AutoComplete';
 import Carousel from "../slider/slider";
 import { connect } from "react-redux";
+import {NavLink} from "react-router-dom";
 import WOW from "wowjs";
 
 class HomePage extends Component {
@@ -141,13 +142,15 @@ class HomePage extends Component {
                   With Your Friends In Few Steps …{" "}
                 </span>
               </div>
-              <button
+              <NavLink to="/groupform">
+               <button
                 className="button button-createGroup button--border wow fadeInUp"
                 data-wow-duration="1s"
                 data-wow-delay=".5s"
               >
                 Creat Your Group Now
-              </button>
+              </button>               
+              </NavLink>
             </div>
             <div
               className="big-cart-img col-md-4 wow fadeInRight"
