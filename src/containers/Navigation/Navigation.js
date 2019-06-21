@@ -108,7 +108,7 @@ class Navigation extends React.Component {
                     <button className="dropdown-item" type="button">
                       Settings
                     </button>
-                    <button className="dropdown-item" type="button">
+                    <button className="dropdown-item" type="button" onClick={()=> logUserOut()}>
                       Log Out
                     </button>
                   </div> </li>

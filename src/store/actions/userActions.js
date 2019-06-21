@@ -42,6 +42,10 @@ export const fetchProfile = ()=>{
         }
     }
 }
+export const logUserOut =()=>{
+    localStorage.clear();
+    return({type:USER_LOGGEDOUT})
+}
 const success = (token)=>{
     localStorage.setItem(TOKEN_NAME,token);
     return {type:'AUTH_SUCCESS'};
