@@ -162,7 +162,7 @@ const foodReducer = (state = initialState, action) => {
       {
         const _id = action.payload;
         const itemindex = findIndex(nfoods, _id);
-        if (itemindex !== -1) nselectedFood = {...nfoods[itemindex]};
+        if (itemindex !== -1) nselectedFood = { ...nfoods[itemindex] };
       }
       break;
     case actions.GET_RESTAURANT_MENU:
@@ -214,7 +214,7 @@ const foodReducer = (state = initialState, action) => {
         const listOfCategories = [...action.payload.listOfCategories];
         if (!getAll && listOfCategories.length) {
           const property = action.payload.property;
-          // debugger;
+
           // const checker = obj => obj[property].startsWith(propertyValue);
           filteredlist = filteredlist.filter(v =>
             listOfCategories.includes(v[property])

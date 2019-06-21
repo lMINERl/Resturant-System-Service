@@ -1,5 +1,4 @@
-
-import {apiLogin,getProfile} from '../../api/userAPI';
+import {apiLogin,getProfile,apiSignUp} from '../../api/userAPI';
 import AuthHeader from '../../api/setAuthHeader';
 const TOKEN_NAME = 'rest_app_token';
 export const signIn = requset_data =>{
@@ -11,6 +10,23 @@ export const signIn = requset_data =>{
             dispatch(fetchProfile())
             dispatch(success(token));
         }catch(e){
+           const {response:{data}}=e;
+           dispatch(error(data.error))
+        }
+    }
+}
+export const signUp = requset_data =>{
+    return async dispatch=>{
+        dispatch({type:'AUTH_ATTEMPTING'});
+        try{
+            const {data} = await apiSignUp(requset_data);
+           console.log(data.user);
+           dispatch({type:'USER_REGISTER',payload:data.user})
+            
+        }catch(e){
+
+            //console.error(e.response);
+           // dispatch(error(e.response.data.error))
            const {response:{data}}=e;
            dispatch(error(data.error))
         }
