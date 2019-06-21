@@ -5,17 +5,22 @@ import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
 import { addComment } from "../../store/actions/userActions";
-import {  getItemById,setRating as restaurantRating } from "../../store/actions/restaurantActions";
-import { getRestaurantMenu,deleteItem,setSize,setRating as foodRating ,setAmount } from '../../store/actions/foodActions';
+import {
+  getItemById,
+  setRating as restaurantRating
+} from "../../store/actions/restaurantActions";
+import {
+  getRestaurantMenu,
+  deleteItem,
+  setSize,
+  setRating as foodRating,
+  setAmount
+} from "../../store/actions/foodActions";
 import Comment from "../../components/comments/comments";
 import OrderBill from "../../components/OrderBill/OrderBill";
 import StarRating from "../../components/StarRating/StarRating";
 
 class DetailsPage extends Component {
-  // state = {
-  //   res: null
-  // };
-
   dispatchAddToCart(cardItem) {
     this.props.addToCart(cardItem);
   }
@@ -38,7 +43,6 @@ class DetailsPage extends Component {
   };
   componentDidMount() {
     if (this.props.match.params.id) {
-      debugger;
       this.props.getRestaurantMenu(this.props.match.params.id);
       //  this.props.history.push("/") // notfound
     }
@@ -51,7 +55,9 @@ class DetailsPage extends Component {
             <div className="text-center">
               <h3>{this.props.restaurant.name}</h3>
               <span className="edit-icon">
+              <NavLink to="/restaurantform">
                 <i className="fa fa-pencil" />
+              </NavLink>    
               </span>
               <span className="love-icon">
                 <i className="fa fa-heart" />
@@ -60,7 +66,10 @@ class DetailsPage extends Component {
                 <ul className="list-inline gold-star">
                   <StarRating
                     setRate={rating =>
-                      this.props.restaurantRating(this.props.restaurant._id, rating)
+                      this.props.restaurantRating(
+                        this.props.restaurant._id,
+                        rating
+                      )
                     }
                     rating={this.props.restaurant.rating}
                     outof={5}
@@ -251,8 +260,12 @@ class DetailsPage extends Component {
                       data={v}
                       delete={() => this.props.deleteItem(v._id)}
                       setsize={(id, size) => this.props.setSize(id, size)}
-                      setrating={(id, rating) => this.props.foodRating(id, rating)}
-                      setamount={(id, amount) => this.props.setAmount(id, amount)}
+                      setrating={(id, rating) =>
+                        this.props.foodRating(id, rating)
+                      }
+                      setamount={(id, amount) =>
+                        this.props.setAmount(id, amount)
+                      }
                       key={v._id}
                     />
                   );
@@ -316,8 +329,8 @@ class DetailsPage extends Component {
         </div>
       </section>
     ) : (
-        <div style={{ marginTop: "10rem" }}>no res to fetch</div>
-      );
+      <div style={{ marginTop: "10rem" }}>no res to fetch</div>
+    );
     return <div>{Restaurant}</div>;
   }
 }
@@ -338,7 +351,7 @@ function mapActionsToProps(dispatch) {
       setAmount,
       setSize,
       getItemById,
-      getRestaurantMenu,
+      getRestaurantMenu
     },
     dispatch
   );

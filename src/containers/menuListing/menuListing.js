@@ -14,18 +14,18 @@ const MenuListing = props => {
   let menuListing = props.menus ? (
     props.menus.map((v, index) => {
       return (
-        <div className="col-md-3" key={v._id}>
-        <CardFood
-          handleOnAdd={() => props.addToCart(v)}
-          data={v}
-          delete={() => props.deleteItem(v._id)}
-          setsize={(id, size) => props.setSize(id, size)}
-          setrating={(id, rating) => props.setRating(id, rating)}
-          setamount={(id, amount) => {
-            props.setAmount(id, amount);
-          }}
-          key={v._id}
-        />
+        <div className="col-md-3 mt-2 mb-3" key={v._id}>
+          <CardFood
+            handleOnAdd={() => props.addToCart(v)}
+            data={v}
+            delete={() => props.deleteItem(v._id)}
+            setsize={(id, size) => props.setSize(id, size)}
+            setrating={(id, rating) => props.setRating(id, rating)}
+            setamount={(id, amount) => {
+              props.setAmount(id, amount);
+            }}
+            key={v._id}
+          />
         </div>
       );
     })
@@ -34,12 +34,8 @@ const MenuListing = props => {
   );
   return (
     <div className="menu-card mt-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-3" />
-          <div />
-          {menuListing}
-        </div>
+      <div className="container d-flex justify-content-between flex-wrap">
+        <div className="row">{menuListing}</div>
       </div>
     </div>
   );

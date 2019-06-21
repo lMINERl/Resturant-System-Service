@@ -15,7 +15,6 @@ import {
 } from "../../store/actions/restaurantActions";
 
 const mapStateToProps = state => {
-  debugger;
   return {
     restaurants: state.restaurant.filteredRestaurants,
     pageSize: state.restaurant.pageSize,
@@ -36,7 +35,6 @@ const mapActionsToProps = dispatch => {
 };
 
 const RestaurantListing = props => {
-  // didmount
   const { getRestaurantsByname } = props;
   useEffect(() => {
     getRestaurantsByname("");
