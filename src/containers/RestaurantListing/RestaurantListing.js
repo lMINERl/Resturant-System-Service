@@ -35,7 +35,6 @@ const mapActionsToProps = dispatch => {
 };
 
 const RestaurantListing = props => {
-  // didmount
   const { getRestaurantsByname } = props;
   useEffect(() => {
     getRestaurantsByname("");

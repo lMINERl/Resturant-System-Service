@@ -21,30 +21,26 @@ import OrderBill from "../../components/OrderBill/OrderBill";
 import StarRating from "../../components/StarRating/StarRating";
 
 class DetailsPage extends Component {
-  // state = {
-  //   res: null
-  // };
-
   dispatchAddToCart(cardItem) {
     this.props.addToCart(cardItem);
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    const { id } = this.state.res;
-    if (
-      this.refs.author.value !== "" &&
-      isNaN(this.refs.author.value) &&
-      this.refs.comment.value !== "" &&
-      isNaN(this.refs.author.value)
-    ) {
-      const author = this.refs.author.value;
-      const comment = this.refs.comment.value;
-      const rating = this.refs.rating.value;
-      this.props.addComment(id, comment, rating, author);
-    } else {
-      alert("please enter your name and comment");
-    }
-  };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const { id } = this.state.res;
+  //   if (
+  //     this.refs.author.value !== "" &&
+  //     isNaN(this.refs.author.value) &&
+  //     this.refs.comment.value !== "" &&
+  //     isNaN(this.refs.author.value)
+  //   ) {
+  //     const author = this.refs.author.value;
+  //     const comment = this.refs.comment.value;
+  //     const rating = this.refs.rating.value;
+  //     this.props.addComment(id, comment, rating, author);
+  //   } else {
+  //     alert("please enter your name and comment");
+  //   }
+  // };
   componentDidMount() {
     if (this.props.match.params.restaurantId) {
       this.props.getRestaurantById(this.props.match.params.restaurantId);
@@ -73,7 +69,9 @@ class DetailsPage extends Component {
             <div className="text-center">
               <h3>{this.props.restaurant.name}</h3>
               <span className="edit-icon">
-                <i className="fa fa-pencil" />
+                <NavLink to="/restaurantform">
+                  <i className="fa fa-pencil" />
+                </NavLink>
               </span>
               <span className="love-icon">
                 <i className="fa fa-heart" />
@@ -113,16 +111,10 @@ class DetailsPage extends Component {
             </div>
 
             <div className="tags w-50">
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
-              <span className="tags__item">aaa</span>
+              <span className="tags__item">Pizza</span>
+              <span className="tags__item">Burger</span>
+              <span className="tags__item">Pasta</span>
+              <span className="tags__item">Sea Food</span>
             </div>
           </div>
         </div>
@@ -288,11 +280,11 @@ class DetailsPage extends Component {
                 })}
               </div>
               <OrderBill />
-              <div className="testimonials">
+              {/* <div className="testimonials">
                 <div className="row">
-                  {/* {this.props.restaurant.comments.map(c => {
+                  {this.props.restaurant.comments.map(c => {
                     return <Comment data={c} key={c.userId} />;
-                  })} */}
+                  })}
                 </div>
                 <div className="add-comments">
                   <div className="row">
@@ -339,7 +331,7 @@ class DetailsPage extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>
@@ -360,7 +352,6 @@ function mapActionsToProps(dispatch) {
   return bindActionCreators(
     {
       addToCart,
-      addComment,
       deleteItem,
       foodRating,
       restaurantRating,

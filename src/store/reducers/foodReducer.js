@@ -13,7 +13,8 @@ const initialState = {
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b2",
@@ -25,7 +26,8 @@ const initialState = {
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b3",
@@ -37,7 +39,8 @@ const initialState = {
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b4",
@@ -49,7 +52,8 @@ const initialState = {
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1b5",
@@ -61,7 +65,8 @@ const initialState = {
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1d",
@@ -72,7 +77,8 @@ const initialState = {
       rating: 3,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     },
     {
       _id: "5cf929e62a79451758f83c1c",
@@ -83,7 +89,8 @@ const initialState = {
       rating: 2,
       size: 0,
       sizes: [`small`, `meduim`, `large`, `x-large`],
-      amount: 0
+      amount: 0,
+      description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
     }
   ],
   selectedFood: {
@@ -99,7 +106,8 @@ const initialState = {
     amount: 0,
     comments: [{ userId: "5cf92f1c2a79451758f83c2a", number: 0 }],
     ingredients: [`a`, `b`, `c`],
-    tags: [`tag1`, `tag2`]
+    tags: [`tag1`, `tag2`],
+    description:"4 Pieces of chicken, 1 small French fries, 1 small coleslaw salad and a bun"
   },
   currentPage: 1,
   pageSize: 5,

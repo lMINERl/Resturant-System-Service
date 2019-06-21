@@ -36,7 +36,7 @@ class HomePage extends Component {
                         className="carousel-description p-0 wow fadeInLeft"
                         data-wow-duration="1s"
                       >
-                        <h3 className="caption">
+                        <h3 className="caption" style={{ color: "black" }}>
                           Order Your Food Online For <br />
                           Take Away, Home Delivery
                         </h3>
@@ -142,9 +142,9 @@ class HomePage extends Component {
                 </span>
               </div>
               <button
-                className="button button-createGroup button--border wow bounceInUp"
-                data-wow-duration="2s"
-                data-wow-delay=".5"
+                className="button button-createGroup button--border wow fadeInUp"
+                data-wow-duration="1s"
+                data-wow-delay=".5s"
               >
                 Creat Your Group Now
               </button>
@@ -168,7 +168,11 @@ class HomePage extends Component {
                 <h1 className="big-title">EASY ORDER IN 3 STEPS</h1>
                 <br />
                 <div className="carts-container">
-                  <div className="cart">
+                  <div
+                    className="cart wow fadeIn"
+                    data-wow-duration=".5s"
+                    data-wow-delay=".5s"
+                  >
                     <div className="cart-img">
                       <img className="img2" src="./assets/dsfg-1.jpg" alt="" />
                     </div>
@@ -179,7 +183,11 @@ class HomePage extends Component {
                     <div className="cart-number">1</div>
                   </div>
 
-                  <div className="cart">
+                  <div
+                    className="cart wow fadeIn"
+                    data-wow-duration=".5s"
+                    data-wow-delay="1s"
+                  >
                     <div className="cart-img">
                       <img className="img2" src="./assets/dsfg-1.jpg" alt="" />
                     </div>
@@ -189,7 +197,11 @@ class HomePage extends Component {
                     </div>
                     <div className="cart-number">2</div>
                   </div>
-                  <div className="cart">
+                  <div
+                    className="cart wow fadeIn"
+                    data-wow-duration=".5s"
+                    data-wow-delay="1.5s"
+                  >
                     <div className="cart-img">
                       <img className="img2" src="./assets/dsfg-1.jpg" alt="" />
                     </div>
