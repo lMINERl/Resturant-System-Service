@@ -1,64 +1,63 @@
-import {apiLogin,getProfile,apiSignUp} from '../../api/userAPI';
-import AuthHeader from '../../api/setAuthHeader';
-const TOKEN_NAME = 'rest_app_token';
-export const signIn = requset_data =>{
-    return async dispatch=>{
-        dispatch({type:'AUTH_ATTEMPTING'});
-        try{
-            const {data:{token}} = await apiLogin(requset_data);
-            AuthHeader(token);
-            dispatch(fetchProfile())
-            dispatch(success(token));
-        }catch(e){
-           const {response:{data}}=e;
-           dispatch(error(data.error))
-        }
-    }
-}
-export const signUp = requset_data =>{
-    return async dispatch=>{
-        dispatch({type:'AUTH_ATTEMPTING'});
-        try{
-            const {data} = await apiSignUp(requset_data);
-           console.log(data.user);
-           dispatch({type:'USER_REGISTER',payload:data.user})
-            
-        }catch(e){
+import { userAPI } from "../../api/userAPI";
 
-            //console.error(e.response);
-           // dispatch(error(e.response.data.error))
-           const {response:{data}}=e;
-           dispatch(error(data.error))
-        }
-    }
-}
-export const fetchProfile = ()=>{
-    return async dispatch=>{
-        try{
-            const {data:{user}} = await getProfile();
-            dispatch({type:'PROFILE_FETCHED',payload:user});
-        }catch(e){
-            console.error(e)
-        }
-    }
-}
-const success = (token)=>{
-    localStorage.setItem(TOKEN_NAME,token);
-    return {type:'AUTH_SUCCESS'};
-}
-const error=(error)=>{
-    return {type:'AUTH_FAILED',payload:error}
-}
-export const ADDFOOD = 'ADD_FOOD';
-export const ADDGROUB = 'ADD_GROUB';
-export const CHANGECURRENT = 'CHANGECURRENT';
-export const ADD_COMMENT = 'ADD_COMMENT';
+export const TOKEN_NAME = "token";
+export const ADD_GROUB = "ADD_GROUB";
+export const CHANGE_CURRENT = "CHANGECURRENT";
+export const ADD_COMMENT = "ADD_COMMENT";
 
+export const LOGIN = "LOGIN";
+export const ERROR = "ERROR";
+export const REGISTER = "REGISTER";
 
-export function addComment(resid,comment,rating,userName) {
-    return {
-        type: ADD_COMMENT,
-        payload: {resid,comment,rating,userName}
-    }
+export const loginDispatch = requset_data => {
+  return dispatch => {
+    userAPI
+      .login(requset_data)
+      .then(v => {
+        dispatch(loginUser(v.data));
+      })
+      .catch(err => dispatch(riseError(err)));
+  };
+};
+
+export const registerDispatch = requset_data => {
+  return dispatch => {
+    userAPI
+      .register(requset_data)
+      .then(v => {
+        dispatch(registerUser(v.data));
+      })
+      .catch(err => dispatch(riseError(err)));
+  };
+};
+
+// export const fetchProfile = () => {
+//   debugger;
+//   return async dispatch => {
+//     try {
+//       const {
+//         data: { user }
+//       } = await getProfile();
+//       dispatch({ type: "PROFILE_FETCHED", payload: user });
+//     } catch (e) {
+//       console.error(e);
+//     }
+//   };
+// };
+
+export function addComment(resid, comment, rating, userName) {
+  return {
+    type: ADD_COMMENT,
+    payload: { resid, comment, rating, userName }
+  };
 }
 
+export const loginUser = responseData => {
+  return { type: LOGIN, payload: responseData };
+};
+export const riseError = msg => {
+  return { type: ERROR, payload: msg };
+};
+export const registerUser = responseData => {
+  return { type: REGISTER, payload: responseData };
+};

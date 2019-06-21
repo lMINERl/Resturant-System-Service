@@ -8,7 +8,6 @@ import { deleteItem } from '../../store/actions/groupActions'
 
 
 const GroupOrder = (props) => {
-  
   const CardGroupList = props.groups.map((v) => {
     return (
       <div key={v._id} className="col-md-4">
