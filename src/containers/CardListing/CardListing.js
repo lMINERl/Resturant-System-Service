@@ -23,6 +23,7 @@ class CardListing extends Component {
   }
 
   componentDidMount() {
+
     if (this.props.match.params.id) {
       this.props.getRestaurantMenu(this.props.match.params.id);
       // this.props.history.push("/") // notfound
@@ -104,6 +105,7 @@ class CardListing extends Component {
 }
 
 function mapStateToProps(state) {
+  debugger;
   return {
     data: state.food.filteredlist,
     Categories: state.category.categories
