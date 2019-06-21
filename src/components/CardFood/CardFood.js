@@ -3,6 +3,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import SelectSize from "../../components/SelectSize";
+import { getItemById } from "../../store/actions/foodActions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import Proptype from "prop-types";
 
 const CardFood = props => {
@@ -26,7 +29,10 @@ const CardFood = props => {
           />
           {Sale}
         </div>
-        <NavLink to="/fooddetails">
+        <NavLink
+          to="/fooddetails"
+          onClick={() => props.getItemById(props.data._id)}
+        >
           <h3 className="menu-card__heading text-center">{props.data.name}</h3>
         </NavLink>
         <div className="star-rating text-center">
@@ -112,4 +118,15 @@ CardFood.defaultProps = {
   amount: 0
 };
 
-export default CardFood;
+function mapActionToProps(dispatch) {
+  return bindActionCreators(
+    {
+      getItemById
+    },
+    dispatch
+  );
+}
+export default connect(
+  null,
+  mapActionToProps
+)(CardFood);
