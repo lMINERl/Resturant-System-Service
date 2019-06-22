@@ -829,10 +829,10 @@ a:hover {
 
 .form-style {
   margin-top: 5.7rem;
-  width: 534.5px;
   height: 696px; }
   .form-style__img {
     margin: 0 auto;
+    width: 82%;
     position: relative; }
   .form-style__close {
     color: red;
@@ -1654,4 +1654,27 @@ a:hover {
 {
   color:#FFF;
   margin-top:50px;
+}
+.listing-header__btn {
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+}
+.listing-header__btn i {
+  padding-right: 10px;
+}
+.carousel {
+  margin: 0rem;
+}
+.viewMenu-button {
+  margin-right: 30px;
+}
+.viewMenu-button a:hover {
+  color: #fff !important;
+}
+.custom-btn {
+  background-color: #fb5858;
+}
+.custom-btn a {
+  color: #fff;
 }

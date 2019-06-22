@@ -74,11 +74,8 @@ class LoginPage extends Component {
                 alt="Background for register form"
                 className="form-style__img"
               />
-              <NavLink to="/" className="form-style__close">
-                <i className="fa fa-times-circle d-flex justify-content-end" />
-              </NavLink>
               <div className="row">
-                <div className="col-md-12 col-sm-6 form-style__body">
+                <div className="col-md-12 col-sm-6 form-style__body" style={{top:`25%`}}>
                   <h2 className="form-style__body__title">Log in</h2>
                   <form
                     className="form-style__body__inputs"
