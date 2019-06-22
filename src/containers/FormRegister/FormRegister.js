@@ -5,10 +5,28 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { signUp } from "../../store/actions/userActions";
+import { registerDispatch } from "../../store/actions/userActions";
+import { bindActionCreators } from "redux";
+// import register from "../../assets/register.png";
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      registerDispatch
+    },
+    dispatch
+  );
+};
+const mapStateToProps = state => {
+  return {
+    user: state.user.isRegistered,
+    // error: auth.error
+  };
+};
+
 
 // Images
-import register from "../../assets/register.png";
+
 class SignupComponent extends Component {
   componentDidUpdate() {
     //console.log(this.props);
@@ -23,7 +41,7 @@ class SignupComponent extends Component {
   }
   handleFormSubmit(values, bag) {
     //console.log(values)
-    this.props.signUp(values);
+    this.props.registerDispatch(values);
     this.bag = bag;
   }
   _renderErrorIfAny() {
@@ -61,7 +79,7 @@ class SignupComponent extends Component {
           }) => (
             <div className="container form-style d-flex flex-direction-row justify-content-center align-items-center">
               <img
-                src={register}
+                // src={register}
                 alt="Background for register form"
                 className="form-style__img"
               />
@@ -128,14 +146,9 @@ class SignupComponent extends Component {
     );
   }
 }
-const mapStateToProps = ({ auth }) => {
-  return {
-    user: auth.user,
-    error: auth.error
-  };
-};
+
 const Signup = connect(
   mapStateToProps,
-  { signUp }
+  mapDispatchToProps
 )(SignupComponent);
 export default Signup;

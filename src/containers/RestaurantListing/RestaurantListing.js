@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import CardRestaurant from "../../components/CardRestaurant";
 import Pagination from "../../components/Common/pagination";
 import { connect } from "react-redux";
-import { paginate } from "../../utils/paginate";
+// import { paginate } from "../../utils/paginate";
 import SideBar from "../../components/SideBar";
 import { bindActionCreators } from "redux";
 
@@ -19,7 +19,9 @@ const mapStateToProps = state => {
   return {
     restaurants: state.restaurant.filteredRestaurants,
     pageSize: state.restaurant.pageSize,
-    currentPage: state.restaurant.currentPage
+    currentPage: state.restaurant.currentPage,
+    user: state.user.user,
+    token: state.user.token
   };
 };
 const mapActionsToProps = dispatch => {
@@ -36,6 +38,7 @@ const mapActionsToProps = dispatch => {
 };
 
 const RestaurantListing = props => {
+  
   const { getRestaurantsByname } = props;
   useEffect(() => {
     getRestaurantsByname("");
@@ -43,12 +46,6 @@ const RestaurantListing = props => {
 
   const [sortName, setSortName] = useState(false);
   const [sortRating, setSortRating] = useState(false);
-
-  const Restaurants = paginate(
-    props.restaurants,
-    props.currentPage,
-    props.pageSize
-  );
 
   // const Restaurants = paginate(
   //   props.restaurants,
@@ -75,6 +72,21 @@ const RestaurantListing = props => {
     ) : (
       <div>No Restaurants</div>
     );
+    const isLogedIn = () => {
+      let obj = { addRestaurant: null };
+      if (props.user._id && props.token) {
+        obj.addRestaurant = (
+          <NavLink
+            to="/restaurantform"
+            className="badge badge-warning listing-header__btn "
+          >
+            <i className="fa fa-plus-square" />
+            Add Restaurant
+          </NavLink>
+        );
+      }
+      return obj;
+    };
 
     return (
       <>
@@ -86,13 +98,7 @@ const RestaurantListing = props => {
         <div className="">
           <div className="d-flex justify-content-between container mt-5 mb-5 listing-header listing-header--with-margin">
             All Restaurants
-            <NavLink
-              to="/restaurantform"
-              className="badge badge-warning listing-header__btn "
-            >
-              <i className="fa fa-plus-square" />
-              Add Restaurant
-            </NavLink>
+            {isLogedIn().addRestaurant}
           </div>
           <div className="menu-card">
             <div className="container">

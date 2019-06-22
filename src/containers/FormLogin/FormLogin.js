@@ -4,11 +4,25 @@ import { FormFeedback, Alert, Input } from "reactstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
-import { signIn } from "../../store/actions/userActions";
+import { loginDispatch } from "../../store/actions/userActions";
+import { bindActionCreators } from "redux";
+import loginBG from "../../assets/login.png";
 
 // Images
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      loginDispatch
+    },
+    dispatch
+  );
+};
 
-import loginBG from "../../assets/login.png";
+const mapStateToProps = state => {
+  return {
+    isAuth: state.user.isLogedIn
+  };
+};
 
 class LoginPage extends Component {
   componentDidUpdate() {
@@ -21,7 +35,7 @@ class LoginPage extends Component {
     }
   }
   handleFormSubmit(values, bag) {
-    this.props.signIn(values);
+    this.props.loginDispatch(values);
     this.bag = bag;
   }
   _renderErrorIfAny() {
@@ -118,14 +132,7 @@ class LoginPage extends Component {
     );
   }
 }
-const mapStateToProps = ({ auth }) => {
-  return {
-    attemptting: auth.attemptting,
-    error: auth.error,
-    isAuth: auth.isAuth
-  };
-};
 export default connect(
   mapStateToProps,
-  { signIn }
+  mapDispatchToProps
 )(LoginPage);

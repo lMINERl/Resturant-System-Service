@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/ruleActions';
 import ruleModel from '../../models/rule';
 
 const initialState = {
-    rules: [ruleModel],
+    roles: [ruleModel],
     userRules: ["ids"]
 }
 

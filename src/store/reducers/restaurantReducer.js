@@ -115,7 +115,10 @@ const restaurantReducer = (state = initialState, action) => {
         const { id, rating } = { ...action.payload };
         if (rating < 5 && rating > -1) {
           const index = findIndex(restaurants, id);
-          if (index !== -1) restaurants[index].rating = rating;
+          if (index !== -1) {
+            restaurants[index].rating = rating;
+            filteredRestaurants = [...restaurants];
+          }
         }
       }
       break;

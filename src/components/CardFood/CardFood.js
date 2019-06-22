@@ -9,6 +9,22 @@ import { connect } from "react-redux";
 import Proptype from "prop-types";
 
 import resLogo from "../../assets/white-hat-and-yellow-bread@2x.jpg";
+function mapStateToProps(state) {
+  return {
+    user: state.user.user,
+    token: state.user.token
+  };
+}
+
+function mapActionToProps(dispatch) {
+  return bindActionCreators(
+    {
+      getItemById
+    },
+    dispatch
+  );
+}
+
 const CardFood = props => {
   let Sale = null;
   if (props.data.discountPrice > 0) {
@@ -18,12 +34,31 @@ const CardFood = props => {
       </div>
     );
   }
+
+  const isLogedIn = () => {
+    let obj = {
+      deleteFood: null,
+      editFood: null,
+      favFood: null
+    };
+    if (props.user._id && props.token) {
+      obj.favFood = <i className="fa fa-heart-o" />;
+      if (props.user.roles.some(v => v === "delete"))
+        obj.deleteFood = (
+          <i onClick={() => props.delete()} className="fa fa-trash" />
+        );
+      if (props.user.roles.some(v => v === "edit"))
+        obj.editFood = <i className="fa fa-pencil" />;
+    }
+    return obj;
+  };
+
   return (
     <div className="menu-card__item">
       <div className="menu-card__edit-delete-fav">
-        <i className="fa fa-pencil" />
-        <i onClick={() => props.delete()} className="fa fa-trash" />
-        <i className="fa fa-heart-o" />
+        {isLogedIn().deleteFood}
+        {isLogedIn().editFood}
+        {isLogedIn().favFood}
       </div>
       <div className="menu-card__info">
         <div className="menu-card__image-card">
@@ -115,15 +150,7 @@ CardFood.defaultProps = {
   amount: 0
 };
 
-function mapActionToProps(dispatch) {
-  return bindActionCreators(
-    {
-      getItemById
-    },
-    dispatch
-  );
-}
 export default connect(
-  null,
+  mapStateToProps,
   mapActionToProps
 )(CardFood);

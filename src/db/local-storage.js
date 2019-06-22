@@ -1,12 +1,20 @@
-const accessToken = Object.freeze({
-    authorization: () => {
+const token = Object.freeze({
+    getToken: () => {
         try {
             return localStorage.getItem('authorization');
         } catch (err) {
             return null;
         }
+    },
+    setToken:(token)=>{
+        try{
+            localStorage.setItem("authorization",token);
+            return true;
+        }catch(err){
+            return false;
+        }
     }
 });
 
 
-export default accessToken;
+export default token;
