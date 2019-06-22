@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import OrderBill from "../OrderBill";
 
+import resLogo from "../../assets/white-hat-and-yellow-bread@2x.jpg";
 const CardGroup = props => {
   const [view, setView] = useState(false);
   let Cart = view ? <OrderBill /> : <React.Fragment />;
@@ -10,11 +11,7 @@ const CardGroup = props => {
     <div className="menu-card__item  menu-border">
       <div className="menu-card__info">
         <div className="menu-card__image-card border--primary">
-          <img
-            className="menu-card__image"
-            alt="white hat"
-            src="assets/white-hat-and-yellow-bread-78@2x.jpg"
-          />
+          <img className="menu-card__image" alt="white hat" src={resLogo} />
         </div>
         <h3 className="menu-card__heading--black text-center">
           {props.data.name}

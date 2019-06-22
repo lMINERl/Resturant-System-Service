@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
 import {
   setRating as restaurantRating,
-  getRestaurantById,
+  getRestaurantById
 } from "../../store/actions/restaurantActions";
 import {
   getRestaurantMenu,
@@ -50,6 +50,22 @@ class DetailsPage extends Component {
     }
   }
   render() {
+    const isUserLogin = () => {
+      const obj = { addFood: null };
+      if (this.props.user._id && this.props.token) {
+        obj.addFood = (
+          <NavLink
+            to={`/foodform/${this.props.match.params.restaurantId}`}
+            className="badge badge-warning listing-header__btn btn--right text-white p-3"
+          >
+            <i className="fa fa-plus-square" />
+            Add Meal
+          </NavLink>
+        );
+      }
+      return obj;
+    };
+
     if (!this.props.match.params.restaurantId || !this.props.restaurant._id) {
       return (
         <h1
@@ -126,13 +142,7 @@ class DetailsPage extends Component {
                 <div className="col-md-12">
                   <h2 className="listing-header">
                     {this.props.restaurant.name} Menu
-                    <NavLink
-                      to={`/foodform/${this.props.match.params.restaurantId}`}
-                      className="badge badge-warning listing-header__btn btn--right text-white p-3"
-                    >
-                      <i className="fa fa-plus-square" />
-                      Add Meal
-                    </NavLink>
+                    {isUserLogin().addFood}
                   </h2>
                   <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between py-3 mt-4 align-items-center">
                     <form className="form-inline ">
@@ -278,7 +288,7 @@ class DetailsPage extends Component {
                   );
                 })}
               </div>
-              <OrderBill />
+              {/* <OrderBill /> */}
               {/* <div className="testimonials">
                 <div className="row">
                   {this.props.restaurant.comments.map(c => {
@@ -344,7 +354,9 @@ class DetailsPage extends Component {
 const mapStateToProps = state => {
   return {
     restaurant: state.restaurant.selectedRestaurant,
-    restaurantMenu: state.food.foods
+    restaurantMenu: state.food.foods,
+    user: state.user.user,
+    token: state.user.token
   };
 };
 function mapActionsToProps(dispatch) {

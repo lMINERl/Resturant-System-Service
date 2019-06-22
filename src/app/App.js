@@ -52,7 +52,7 @@ class App extends React.Component {
                   exact
                   component={RestaurantListing}
                 />
-                
+
                 <Route
                   path="/restaurants/:city"
                   exact

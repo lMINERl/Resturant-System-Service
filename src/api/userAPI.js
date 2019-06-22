@@ -1,5 +1,5 @@
-import axios from 'axios';
-import baseURL from '../db/database';
+import axios from "axios";
+import baseURL from "../db/database";
 // import accessToken from '../db/local-storage';
 
 // const instance = axios.create({
@@ -8,20 +8,19 @@ import baseURL from '../db/database';
 // });
 
 export const userAPI = {
-    register(user) {
-        return axios.post(`${baseURL}/users/register`, user).then(res => res.data);
-    }
-}
-//let baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:5030";
-export const apiLogin = request_data => {
-    // return axios.post(`/api/auth`,request_data);
+  register(request_data) {
+    return axios.post(`${baseURL}/users/register`, request_data);
+  },
+  login(request_data) {
     return axios.post(`${baseURL}/users/authentication`, request_data);
-}
-export const apiSignUp = request_data=>{
-    // return axios.post(`/api/register`,request_data);
-    return axios.post(`${baseURL}/users/register`,request_data);
-}
-export const getProfile = () => {
-    // return axios.get(`/api/me`);
+  },
+  check(token) {
+    return axios.get(`${baseURL}/users/`, {
+      headers: { authorization: token }
+    });
+  },
+  getProfile() {
     return axios.get(`${baseURL}/users/profile`);
-}
+  }
+};
+//let baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:5030";

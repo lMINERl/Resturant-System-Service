@@ -6,9 +6,21 @@ import { connect } from "react-redux";
 import {NavLink} from "react-router-dom";
 import WOW from "wowjs";
 
+// images
+import status1 from "../../assets/fact-icon-5@2x.jpg";
+import status2 from "../../assets/fact-icon-3@2x.jpg";
+import status3 from "../../assets/fact-icon4@2x.jpg";
+
+import groupOrder from "../../assets/asset-1@2x.jpg";
+
+import stepsBG from "../../assets/download.jpg";
+import steps from "../../assets/dsfg-1@2x.jpg";
+
+import chef from "../../assets/chef_PNG140@2x.jpg";
+
 class HomePage extends Component {
   style = {
-    backgroundImage: "url('../assets/download.jpg')"
+    backgroundImage: "url('" + stepsBG + "')"
   };
   componentDidMount() {
     new WOW.WOW().init();
@@ -28,31 +40,30 @@ class HomePage extends Component {
             >
               <div className="carousel-inner">
                 <div className="carousel-item active">
-                  <div
-                    className="d-block d-block--first w-100"
-                    alt="First slide"
-                  >
+                  <div className="Header--BG1 w-100" alt="First slide">
                     <div className=" container">
-                      <div
-                        className="carousel-description p-0 wow fadeInLeft"
-                        data-wow-duration="1s"
-                      >
-                        <h3 className="caption" style={{ color: "black" }}>
-                          Order Your Food Online For <br />
-                          Take Away, Home Delivery
-                        </h3>
-                      </div>
+                      <div className="Header__content">
+                        <div
+                          className="carousel-description p-0 wow fadeInLeft"
+                          data-wow-duration="1s"
+                        >
+                          <h3 className="caption">
+                            Order Your Food Online For <br />
+                            Take Away, Home Delivery
+                          </h3>
+                        </div>
 
-                      {this.props.restaurants.forEach(r => {
-                        if (!cities.includes(r.location)) {
-                          cities.push(r.location);
-                        }
-                      })}
-                      <AutoComplete
-                        suggestions={cities}
-                        {...this.props}
-                        placeholder="Enter City To Find Restaurants"
-                      />
+                        {this.props.restaurants.forEach(r => {
+                          if (!cities.includes(r.location)) {
+                            cities.push(r.location);
+                          }
+                        })}
+                        <AutoComplete
+                          suggestions={cities}
+                          {...this.props}
+                          placeholder="Enter City To Find Restaurants"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -87,7 +98,7 @@ class HomePage extends Component {
               <div className="col-sm-4">
                 <div className="status-bar__item d-flex">
                   <div className="status-bar__item__img">
-                    <img src="assets/fact-icon-5@2x.jpg" alt="" />
+                    <img src={status1} alt="" />
                   </div>
 
                   <div className="status__item__description px-4">
@@ -100,12 +111,12 @@ class HomePage extends Component {
               <div className="col-sm-4">
                 <div className="status-bar__item d-flex">
                   <div className="status-bar__item__img">
-                    <img src="assets/fact-icon-3@2x.jpg" alt="" />
+                    <img src={status2} alt="" />
                   </div>
 
                   <div className="status__item__description px-4">
                     <h3 className="m-0"> +137 </h3>
-                    <h4> Restaurants </h4>
+                    <h4> People Served </h4>
                   </div>
                 </div>
               </div>
@@ -113,12 +124,12 @@ class HomePage extends Component {
               <div className="col-sm-4">
                 <div className="status-bar__item d-flex">
                   <div className="status-bar__item__img">
-                    <img src="assets/fact-icon4@2x.jpg" alt="" />
+                    <img src={status3} alt="" />
                   </div>
 
                   <div className="status__item__description px-4">
-                    <h3 className="m-0"> +137 </h3>
-                    <h4> Restaurants </h4>
+                    <h3 className="m-0"> +1500 </h3>
+                    <h4> Order </h4>
                   </div>
                 </div>
               </div>
@@ -139,7 +150,7 @@ class HomePage extends Component {
                 <span>
                   <span className="big-cart-now">Now </span>It's Easy To Make A
                   Group Order <br />
-                  With Your Friends In Few Steps …{" "}
+                  With Your Friends In Few Steps .
                 </span>
               </div>
               <NavLink to="/groupform">
@@ -157,7 +168,7 @@ class HomePage extends Component {
               data-wow-duration=".5s"
               data-wow-delay=".3s"
             >
-              <img className="img2" src="" alt="Group Ordering img" />
+              <img className="img2" src={groupOrder} alt="Group Ordering img" />
             </div>
           </div>
         </div>
@@ -177,7 +188,7 @@ class HomePage extends Component {
                     data-wow-delay=".5s"
                   >
                     <div className="cart-img">
-                      <img className="img2" src="./assets/dsfg-1.jpg" alt="" />
+                      <img className="img2" src={steps} alt="" />
                     </div>
                     <h2 className="cart-title">Explore Restaurants</h2>
                     <div className="cart-descryption">
@@ -192,7 +203,7 @@ class HomePage extends Component {
                     data-wow-delay="1s"
                   >
                     <div className="cart-img">
-                      <img className="img2" src="./assets/dsfg-1.jpg" alt="" />
+                      <img className="img2" src={steps} alt="" />
                     </div>
                     <h2 className="cart-title">Choose Your Meal</h2>
                     <div className="cart-descryption">
@@ -206,7 +217,7 @@ class HomePage extends Component {
                     data-wow-delay="1.5s"
                   >
                     <div className="cart-img">
-                      <img className="img2" src="./assets/dsfg-1.jpg" alt="" />
+                      <img className="img2" src={steps} alt="" />
                     </div>
                     <h2 className="cart-title">CheckOut & Enjoy</h2>
                     <div className="cart-descryption">
@@ -228,7 +239,7 @@ class HomePage extends Component {
               <div className="col-sm-4">
                 <div className="features__item d-flex">
                   <div className="features__item__icon">
-                    <i className="fa fa-money" />
+                    <i className="fa fa-globe fa-fw" />
                   </div>
 
                   <div className="features__item__description">
@@ -242,7 +253,7 @@ class HomePage extends Component {
 
                 <div className="features__item d-flex">
                   <div className="features__item__icon">
-                    <i className="fa fa-money" />
+                    <i className="fa fa-fire fa-fw" />
                   </div>
 
                   <div className="features__item__description">
@@ -253,7 +264,7 @@ class HomePage extends Component {
 
                 <div className="features__item d-flex">
                   <div className="features__item__icon">
-                    <i className="fa fa-money" />
+                    <i className="fa fa-mobile fa-fw" />
                   </div>
 
                   <div className="features__item__description">
@@ -263,44 +274,44 @@ class HomePage extends Component {
                 </div>
               </div>
 
-              <div className="col-sm-4">
-                <img className="" src="assets/chef_PNG140@2x.jpg" alt="" />
+              <div className="col-sm-4 align-self-end">
+                <img className="" src={chef} alt="" />
               </div>
 
               <div className="col-sm-4">
                 <div className="features__item d-flex">
                   <div className="features__item__icon">
-                    <i className="fa fa-money" />
+                    <i className="fa fa-users fa-fw" />
                   </div>
 
                   <div className="features__item__description">
-                    <h3>Easy Online Ordering</h3>
+                    <h3>Group Ordering</h3>
+                    <p>It's easy to make a group order with your friends .</p>
+                  </div>
+                </div>
+
+                <div className="features__item d-flex">
+                  <div className="features__item__icon">
+                    <i className="fa fa-money fa-fw" />
+                  </div>
+
+                  <div className="features__item__description">
+                    <h3>Online Payments </h3>
+                    <p>Now you can order without cash payment.</p>
+                  </div>
+                </div>
+
+                <div className="features__item d-flex">
+                  <div className="features__item__icon">
+                    <i className="fa fa-fast-forward fa-fw" />
+                  </div>
+
+                  <div className="features__item__description">
+                    <h3>Fast Delivery</h3>
                     <p>
-                      You can easily navigate around site to complete your order
-                      .{" "}
+                      We Take responsibility for deliver your meal fast and
+                      saftly.
                     </p>
-                  </div>
-                </div>
-
-                <div className="features__item d-flex">
-                  <div className="features__item__icon">
-                    <i className="fa fa-money" />
-                  </div>
-
-                  <div className="features__item__description">
-                    <h3>Popular Restaurants </h3>
-                    <p>More than 500 restaurants menus in one place . </p>
-                  </div>
-                </div>
-
-                <div className="features__item d-flex">
-                  <div className="features__item__icon">
-                    <i className="fa fa-money" />
-                  </div>
-
-                  <div className="features__item__description">
-                    <h3>Mobile Application</h3>
-                    <p>Soon all Restaurants in your pocket .</p>
                   </div>
                 </div>
               </div>
@@ -310,9 +321,11 @@ class HomePage extends Component {
 
         {/* <!--End Features --> */}
         {/* <!--start testimonials--> */}
-        <h2 className="section__title p-5">Testimonials</h2>
-        <Carousel slides={this.props.comments} />
-        {/* <!--end testimonials--> */}
+        <section class="testimonials section-padding">
+          <h2 className="section__title p-5">Testimonials</h2>
+          <Carousel slides={this.props.comments} />
+          {/* <!--end testimonials--> */}
+        </section>
       </div>
     );
   }

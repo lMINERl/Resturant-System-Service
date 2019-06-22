@@ -12,8 +12,35 @@ import {
   deleteItem,
   getFilteredItems
 } from "../../store/actions/foodActions";
+import { getRestaurantById } from "../../store/actions/restaurantActions";
 import { addToCart } from "../../store/actions/cartActions";
 import { bindActionCreators } from "redux";
+
+function mapStateToProps(state) {
+  return {
+    data: state.food.filteredlist,
+    Categories: state.category.categories,
+    restaurant: state.restaurant.selectedRestaurant,
+    user: state.user.user,
+    token: state.user.token
+  };
+}
+
+function mapActionsToProps(dispatch) {
+  return bindActionCreators(
+    {
+      getRestaurantMenu,
+      addToCart,
+      setSize,
+      setRating,
+      setAmount,
+      deleteItem,
+      getFilteredItems,
+      getRestaurantById
+    },
+    dispatch
+  );
+}
 
 class CardListing extends Component {
   // from database
@@ -23,9 +50,10 @@ class CardListing extends Component {
   }
 
   componentDidMount() {
-
     if (this.props.match.params.id) {
       this.props.getRestaurantMenu(this.props.match.params.id);
+      this.props.getRestaurantById(this.props.match.params.id);
+
       // this.props.history.push("/") // notfound
     } else {
       this.props.getFilteredItems([], "category", true);
@@ -51,7 +79,7 @@ class CardListing extends Component {
     let menuListing = this.props.data ? (
       this.props.data.map((v, index) => {
         return (
-          <div className="col-md-3" key={v._id}>
+          <div className="col-md-4 mb-4" key={v._id}>
             <CardFood
               key={v._id}
               delete={() => this.props.deleteItem(v._id)}
@@ -67,6 +95,23 @@ class CardListing extends Component {
     ) : (
       <div>not found</div>
     );
+
+    const isLogedIn = () => {
+      let obj = { addFood: null };
+      if (this.props.user._id && this.props.token) {
+        obj.addRestaurant = (
+          <NavLink
+            to="/foodform"
+            className="badge badge-warning listing-header__btn "
+          >
+            <i className="fa fa-plus-square" />
+            Add Food
+          </NavLink>
+        );
+      }
+      return obj;
+    };
+
     return (
       <>
         <div className="h-100 mt-5 mb-5" />
@@ -76,14 +121,8 @@ class CardListing extends Component {
 
         <div className="">
           <div className="d-flex justify-content-between container mt-5 mb-5 listing-header listing-header--with-margin">
-            Domino's Pizza Menu
-            <NavLink
-              to="/foodform"
-              className="badge badge-warning listing-header__btn "
-            >
-              <i className="fa fa-plus-square" />
-              Add Food
-            </NavLink>
+            {this.props.restaurant.name}'s Menu
+            {isLogedIn().addFood}
           </div>
         </div>
         <div className="menu-card mt-5">
@@ -102,28 +141,6 @@ class CardListing extends Component {
       </>
     );
   }
-}
-
-function mapStateToProps(state) {
-  return {
-    data: state.food.filteredlist,
-    Categories: state.category.categories
-  };
-}
-
-function mapActionsToProps(dispatch) {
-  return bindActionCreators(
-    {
-      getRestaurantMenu,
-      addToCart,
-      setSize,
-      setRating,
-      setAmount,
-      deleteItem,
-      getFilteredItems
-    },
-    dispatch
-  );
 }
 
 export default connect(
