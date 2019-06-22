@@ -21,3 +21,19 @@
 .custom-btn a {
   color: #fff;
 }
+
+.menu-card__image-card {
+  width: 10rem;
+}
+
+.menu-card__image-card img {
+  max-width: 100%;
+}
+.menu-card__item {
+  margin: 15px;
+  /* padding: 10px; */
+}
+.menu-card__image-card
+{
+  margin-bottom:30px;
+}

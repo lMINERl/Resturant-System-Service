@@ -46,6 +46,7 @@ const initialState = {
     {
       _id: "5cf92b292a79451758f83c1c",
       name: "restaurant1",
+      imgUrl: img,
       email: "me@example.com",
       phone: "+201023522342",
       foodids: ["5cf929e62a79451758f83c1b"],
