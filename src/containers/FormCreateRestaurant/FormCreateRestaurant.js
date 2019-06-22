@@ -91,8 +91,8 @@ class FormCreateRestaurant extends React.Component {
                       {/* <!-- confirm --> */}
                       <div className="form-separator"></div>
                       <div className="ml-auto mr-auto">
-                          <button type="submit" class="button button--black">Save</button>
-                          <button type="submit" class="button button--secondary">Cancel</button>
+                          <button type="submit" className="button button--black">Save</button>
+                          <button type="submit" className="button button--secondary">Cancel</button>
                       </div>
 
 

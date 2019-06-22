@@ -19,7 +19,7 @@ import chef from "../../assets/chef_PNG140@2x.jpg";
 
 class HomePage extends Component {
   style = {
-    backgroundImage: "url('"+stepsBG+"')"
+    backgroundImage: "url('" + stepsBG + "')"
   };
   componentDidMount() {
     new WOW.WOW().init();
@@ -319,9 +319,11 @@ class HomePage extends Component {
 
         {/* <!--End Features --> */}
         {/* <!--start testimonials--> */}
-        <h2 className="section__title p-5">Testimonials</h2>
-        <Carousel slides={this.props.comments} />
-        {/* <!--end testimonials--> */}
+        <section class="testimonials section-padding">
+          <h2 className="section__title p-5">Testimonials</h2>
+          <Carousel slides={this.props.comments} />
+          {/* <!--end testimonials--> */}
+        </section>
       </div>
     );
   }

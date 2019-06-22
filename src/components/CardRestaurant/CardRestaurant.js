@@ -1,12 +1,10 @@
 import React from "react";
 import StarRating from "../../components/StarRating";
 import { NavLink } from "react-router-dom";
-import { addRestaurantToGroup } from '../../store/actions/groupActions';
-import { getRestaurantById } from '../../store/actions/restaurantActions';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-
+import { addRestaurantToGroup } from "../../store/actions/groupActions";
+import { getRestaurantById } from "../../store/actions/restaurantActions";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
 const CardRestaurant = props => {
   return (
@@ -21,8 +19,8 @@ const CardRestaurant = props => {
             />
           </div>
           <div className="menu-card__menu-data">
-            <NavLink 
-            onClick={()=>props.getRestaurantById(props.restaurant._id)}
+            <NavLink
+              onClick={() => props.getRestaurantById(props.restaurant._id)}
               to={`/restaurants/details/${props.restaurant._id}`}
             >
               <h3 className="menu-card__heading">{props.restaurant.name}</h3>
@@ -34,7 +32,7 @@ const CardRestaurant = props => {
               <i className="fa fa-heart-o" />
             </div>
             <div className="star-rating">
-              <ul className="list-inline">
+              <ul className="list-inline ">
                 <StarRating
                   setRate={rating =>
                     props.setrating(props.restaurant._id, rating)
@@ -58,7 +56,10 @@ const CardRestaurant = props => {
                 View Menu
               </NavLink>
             </button>
-            <button onClick={() => props.addRestaurantToGroup(props.restaurant)} className="button button--black button--small-btn">
+            <button
+              onClick={() => props.addRestaurantToGroup(props.restaurant)}
+              className="button button--black button--small-btn custom-btn"
+            >
               <NavLink to="/profile/grouporder">Add to group</NavLink>
             </button>
           </div>
@@ -69,10 +70,16 @@ const CardRestaurant = props => {
 };
 
 function mapActionToProps(dispatch) {
-  return bindActionCreators({
-    addRestaurantToGroup,
-    getRestaurantById
-  }, dispatch);
+  return bindActionCreators(
+    {
+      addRestaurantToGroup,
+      getRestaurantById
+    },
+    dispatch
+  );
 }
 
-export default connect(null, mapActionToProps)(CardRestaurant);
+export default connect(
+  null,
+  mapActionToProps
+)(CardRestaurant);

@@ -9,3 +9,15 @@
 .carousel {
   margin: 0rem;
 }
+.viewMenu-button {
+  margin-right: 30px;
+}
+.viewMenu-button a:hover {
+  color: #fff !important;
+}
+.custom-btn {
+  background-color: #fb5858;
+}
+.custom-btn a {
+  color: #fff;
+}

@@ -8,10 +8,15 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Proptype from "prop-types";
 
+import resLogo from "../../assets/white-hat-and-yellow-bread@2x.jpg";
 const CardFood = props => {
   let Sale = null;
   if (props.data.discountPrice > 0) {
-    Sale = <div className="menu-card__sale d-flex justify-content-center ">{props.data.discountPrice}%</div>;
+    Sale = (
+      <div className="menu-card__sale d-flex justify-content-center ">
+        {props.data.discountPrice}%
+      </div>
+    );
   }
   return (
     <div className="menu-card__item">
@@ -22,11 +27,7 @@ const CardFood = props => {
       </div>
       <div className="menu-card__info">
         <div className="menu-card__image-card">
-          <img
-            className="menu-card__image"
-            alt="logo"
-            src="images/services/logo.jpg"
-          />
+          <img className="menu-card__image" alt="logo" src={resLogo} />
           {Sale}
         </div>
         <NavLink

@@ -13,7 +13,9 @@ body {
   font-size: 1.6rem;
   letter-spacing: 0.3px;
   line-height: 1.7rem;
-  overflow-x: hidden; }
+  overflow-x: hidden; 
+  padding-top:78px
+}
 
 a:focus,
 a:hover {
@@ -1570,7 +1572,9 @@ a:hover {
   .carousel-slide__content {
     margin-bottom: 19px;
     font-family: "Open Sans", "Trebuchet MS", sans-serif;
-    font-size: 18px;
+    font-size: 30px;
+    line-height: 38px;
+
   }
   @media (max-width: 991px) {
     .carousel-slide__content {
@@ -1633,9 +1637,9 @@ a:hover {
     display: block;
     width: 24px;
     height: 3px;
-    background-color: #111;
+    background-color: #FFF;
     cursor: pointer;
-    opacity: 0.15;
+    opacity: 0.3;
     transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
   }
   .carousel__indicator:hover {
@@ -1644,4 +1648,10 @@ a:hover {
   .carousel_indicator--active, .carousel_indicator--active:hover {
     opacity: 0.75;
   }
-  
+ 
+
+.carousel__slides
+{
+  color:#FFF;
+  margin-top:50px;
+}
