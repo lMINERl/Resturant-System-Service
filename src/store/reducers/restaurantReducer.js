@@ -16,7 +16,7 @@ const initialState = {
     },
     {
       _id: "5cf92b292a79451758f83c1c3",
-      name: "MAC",
+      name: "McDonald's",
       imgUrl: null,
       rating: 3,
       location: "suez",
@@ -26,7 +26,7 @@ const initialState = {
     },
     {
       _id: "5cf92b292a79451758f83c1c4",
-      name: "Cook Door",
+      name: `Domino's Pizza`,
       imgUrl: null,
       rating: 2,
       location: "alex",
@@ -35,7 +35,7 @@ const initialState = {
     },
     {
       _id: "5cf92b292a79451758f83c1c5",
-      name: "Pizza Hut",
+      name: "Matbakh Al Kabsa",
       imgUrl: null,
       rating: 1,
       location: "alex",
