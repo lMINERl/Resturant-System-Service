@@ -79,7 +79,7 @@ class CardListing extends Component {
     let menuListing = this.props.data ? (
       this.props.data.map((v, index) => {
         return (
-          <div className="col-md-3" key={v._id}>
+          <div className="col-md-4 mb-4" key={v._id}>
             <CardFood
               key={v._id}
               delete={() => this.props.deleteItem(v._id)}

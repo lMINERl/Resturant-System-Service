@@ -1,13 +1,14 @@
 import * as actions from "../actions/restaurantActions";
 // import restaurantModel from '../../models/restaurant';
 import findIndex from "../../helpers/findIndex";
+import img from "../../assets/white-hat-and-yellow-bread@2x.jpg";
 
 const initialState = {
   restaurants: [
     {
       _id: "5cf92b292a79451758f83c1c2",
       name: "KFC",
-      imgUrl: null,
+      imgUrl: img,
       rating: 2,
       location: "ismailia",
       categories: ["category1", "category2"],
@@ -17,7 +18,7 @@ const initialState = {
     {
       _id: "5cf92b292a79451758f83c1c3",
       name: "MAC",
-      imgUrl: null,
+      imgUrl: img,
       rating: 3,
       location: "suez",
       categories: ["category1", "category2"],
@@ -27,7 +28,7 @@ const initialState = {
     {
       _id: "5cf92b292a79451758f83c1c4",
       name: "Cook Door",
-      imgUrl: null,
+      imgUrl: img,
       rating: 2,
       location: "alex",
       categories: ["category1", "category2"],
@@ -36,7 +37,7 @@ const initialState = {
     {
       _id: "5cf92b292a79451758f83c1c5",
       name: "Pizza Hut",
-      imgUrl: null,
+      imgUrl: img,
       rating: 1,
       location: "alex",
       categories: ["category1", "category2"],

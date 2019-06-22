@@ -279,7 +279,7 @@ class DetailsPage extends Component {
                   );
                 })}
               </div>
-              <OrderBill />
+              {/* <OrderBill /> */}
               {/* <div className="testimonials">
                 <div className="row">
                   {this.props.restaurant.comments.map(c => {
