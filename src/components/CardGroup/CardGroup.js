@@ -9,12 +9,12 @@ const CardGroup = props => {
   let Cart = view ? <OrderBill /> : <React.Fragment />;
 
   return (
-    <div className="menu-card__item  menu-border">
+    <div className="menu-card__item  menu-border mb-5">
       <div className="menu-card__info">
-        <div className="menu-card__image-card border--primary">
+        <div className="menu-card__image-card border--primary  border-0">
           <img className="menu-card__image" alt="white hat" src={resLogo} />
         </div>
-        <h3 className="menu-card__heading--black text-center">
+        <h3 className="menu-card__heading--black text-center mt-5">
           {props.data.name}
         </h3>
         <div className="menu-card__fav">

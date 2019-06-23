@@ -56,22 +56,19 @@ class FormCreateGroup extends React.Component {
       );
     });
     return (
-      <div className="container form-container form--height form-separator">
-        <h3 className="head-title col text-center">Create Resturant Group</h3>
-        <hr />
-        <div className="row d-flex">
-          {/* <!-- form --> */}
-          <div className="order-sm-0 order-1 col-md-7 col-sm-12 ml-sm-1 ml-md-5 mt-sm-2 p-4">
-            {/* <!-- header --> */}
+      <div className="container">
+        <h3 className="head-title col text-center p-4">Create Resturant Group</h3>
+        <div className="">
+       
+          <div className="">
+        
 
-            {/* <!-- form --> */}
+         
             <form className="" method="post" action="">
-              {/* <!-- padding --> */}
-
-              {/* <!-- horizontal display --> */}
+         
               <div className="d-flex flex-column">
-                <div className="form-group form-control--inputs">
-                  <label htmlFor="inputState">group Restaurant</label>
+                <div className="form-group">
+                  <label htmlFor="inputState">Group Restaurant</label>
                   <select
                     id="inputState"
                     className="form-control"
@@ -90,15 +87,7 @@ class FormCreateGroup extends React.Component {
 
                 {/* <!-- Location --> */}
                 <div className="form-separator" />
-                <div className="input-group col">
-                  <div className="input-group-prepend">
-                    <span
-                      className="input-group-text label label--size"
-                      id="location"
-                    >
-                      Location
-                    </span>
-                  </div>
+                
                   <input
                     className="form-control form-control--inputs "
                     type="text"
@@ -107,8 +96,7 @@ class FormCreateGroup extends React.Component {
                     aria-describedby="location"
                     onChange={e => this.setState({ location: e.target.value })}
                   />
-                </div>
-
+                  
                 <div className="form-separator" />
                 <div className="ml-auto mr-auto">
                   <button

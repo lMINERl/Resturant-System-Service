@@ -19,7 +19,7 @@ body {
   letter-spacing: 0.3px;
   line-height: 1.7rem;
   overflow-x: hidden; 
-  padding-top:78px
+  padding-top:50px
 }
 
 a:focus,
@@ -159,9 +159,12 @@ a:hover {
     .button-createGroup:hover {
       background-color: #ffc107;
       color: white; }
-
+.button__hover:hover
+{
+background-color:#ffc107
+}
 .menu-border {
-  border: 0.11rem solid #ffc107;
+  /* border: 0.11rem solid #ffc107; */
   padding: 0; }
 
 .border--primary {
@@ -185,7 +188,10 @@ a:hover {
   .menu-card__header p {
     font-size: 3rem;
     margin-left: 1rem; }
-
+.menu-card__edit-delete i 
+{
+  font-size:1.4rem !important
+}
 .menu-card__edit-delete-fav {
   position: absolute;
   right: 0;
@@ -203,9 +209,19 @@ a:hover {
   .menu-card__edit-delete-fav .fa-heart-o {
     color: red; }
 
+.menu-card__fav i{
+  font-size:1.4rem !important;
+}
+.menu-card__fav i:hover{
+color: #ffc107
+}
+.fa-calendar {
+color: #ffc107 !important
+}
 .menu-card__fav {
   position: absolute;
   right: 2rem;
+
   top: 2rem; }
   .menu-card__fav .fa-heart-o {
     color: red; }
@@ -264,7 +280,8 @@ a:hover {
   display: block;
   border-radius: 50%;
   background-color: white;
-  border: 0.1rem solid #ffc107; }
+  border: 0.1rem solid #ffc107;
+   }
 
 .menu-card__option-active {
   background-color: #ffc107; }
@@ -391,11 +408,13 @@ a:hover {
 .menu-card__calender-time-date {
   display: flex; }
   .menu-card__calender-time-date p, .menu-card__calender-time-date span {
-    font-size: 1.8rem;
     margin-bottom: 1rem; }
   .menu-card__calender-time-date i {
     margin-right: 3rem; }
-
+.menu-card__calender-time-date span
+{
+  font-size:1.5rem
+}
 .big-cart {
   height: 700 px !important;
   display: flex;
@@ -1153,6 +1172,10 @@ a:hover {
       .navigation__basic .nav-extras .nav li a {
         color: white;
         font-size: 1.7rem; }
+
+           .navigation__basic .nav-extras  li {
+        margin-right:10px}
+
       .navigation__basic .nav-extras .nav-btn:hover {
         color: white; }
       .navigation__basic .nav-extras .nav-item .cart-icon {

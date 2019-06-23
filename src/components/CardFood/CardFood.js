@@ -64,6 +64,11 @@ const CardFood = props => {
           <img className="menu-card__image" alt="logo" src={resLogo} />
           {Sale}
         </div>
+        <div className="menu-card__edit-delete-fav">
+        {isLogedIn().deleteFood}
+        {isLogedIn().editFood}
+        {isLogedIn().favFood}
+      </div>
         <NavLink
           to="/fooddetails"
           onClick={() => props.getItemById(props.data._id)}

@@ -40,12 +40,12 @@ class Navigation extends React.Component {
       };
       if (this.props.user._id && this.props.token) {
         obj.profile = (
-          <NavLink to="/profile">
-            <i className="fa fa-user-circle" />
+          <NavLink to="/profile" className="mt-3">
+            <i className="fa fa-user-circle text-white fa-fw" />
           </NavLink>
         );
         obj.profileSettings = (
-          <li className="nav-item dropdown">
+          <li className="nav-item dropdown mt-3 mr-3">
             <NavLink
               to="/"
               id="dropdownMenu2"
@@ -54,7 +54,7 @@ class Navigation extends React.Component {
               aria-expanded="false"
             >
               <i
-                className="fa fa-ellipsis-v setting_icon"
+                className="fa fa-ellipsis-v setting_icon text-white fa-fw "
                 onClick={() =>
                   this.setState({
                     ...this.state,
@@ -97,7 +97,7 @@ class Navigation extends React.Component {
         obj.groupOrder = (
           <NavLink
             to="/profile/grouporder"
-            className="button button--transparent  button--border--sm button--small-btn nav-btn"
+            className="button button--transparent  button--border--sm button--small-btn nav-btn button__hover"
           >
             Group Ordering
           </NavLink>
@@ -167,7 +167,7 @@ class Navigation extends React.Component {
                       />
                     </li>
                     {cartBill}
-                    <li className="nav-item">{IsLogedIn().profile}</li>
+                    <li className="nav-item" style={{    marginTop: '10px'}}>{IsLogedIn().profile}</li>
                     {IsLogedIn().profileSettings}
                   </ul>
                 </div>

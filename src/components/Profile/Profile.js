@@ -92,7 +92,7 @@ const Profile = props => {
         className="d-flex justify-content-center m-5"
         style={{ height: "100vh" }}
       >
-        you need to login
+        You need to login
       </h1>
     );
   }

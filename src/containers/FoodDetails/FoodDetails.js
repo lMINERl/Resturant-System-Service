@@ -67,7 +67,7 @@ class FoodDetails extends React.Component {
                 name="categorie"
                 className="form-control w-25 p-4 d-inline-block"
               />
-              <button className="button button--primary button--small-btn">
+              <button className="button button--primary button--small-btn mx-4">
                 <i className="fa fa-plus" /> Add
               </button>
             </div>
