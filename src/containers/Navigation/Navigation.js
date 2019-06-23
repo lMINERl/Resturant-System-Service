@@ -107,8 +107,8 @@ class Navigation extends React.Component {
         obj.bar = (
           <div className="navigation__secondary d-flex justify-content-end">
             <div className="login">
-              <NavLink to="/login">Login</NavLink>|
-              <NavLink to="/register">Register</NavLink>
+              <NavLink to="/login">Login </NavLink> |
+              <NavLink to="/register"> Register</NavLink>
             </div>
           </div>
         );
