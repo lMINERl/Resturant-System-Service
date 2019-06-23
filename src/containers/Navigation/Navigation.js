@@ -117,38 +117,39 @@ class Navigation extends React.Component {
     };
 
     return (
-      <div className="container-fluid fixed-top">
-        <div className="row">
-          <div className="col-md-12 col-sm-4 nopadding">
+      <div className="container-fluid">
+        <div className="navbar navbar-expand-lg fixed-top w-100">
+          <div className="nopadding w-100">
             {IsLogedIn().bar}
             <div className="navigation__basic navbar navbar-dark">
-              <div className="nav-line container d-flex align-items-start">
+              <div className="container">
                 <NavLink to="/" className="navbar-brand">
                   Hungry
                 </NavLink>
                 <div className="nav-content">
-                  <ul className="d-flex flex-direction-row justify-content-between">
-                    <li>
+                  <ul className="navbar-nav navigation__links">
+                    <li className="nav-item">
                       <NavLink to="/" exact>
                         Home
                       </NavLink>
                     </li>
-                    <li>
+                    <li className="nav-item">
                       <NavLink to="/restaurants">Restaurants</NavLink>
                     </li>
-                    <li>
+                    <li className="nav-item">
                       <NavLink to="/menus">Menus</NavLink>
                     </li>
                   </ul>
                 </div>
                 <div className="nav-extras">
-                  <ul className="nav d-flex flex-direction-row justify-content-between align-items-start">
+                  <ul className="navbar-nav mr-auto">
                     <li className="nav-item" />
+
                     <li className="nav-item dropdown ">
                       {IsLogedIn().groupOrder}
                       <button
                         // to="#"
-                        className="button"
+                        className="button position-relative"
                         onClick={() => this.toggleCart(!this.state.isCart)}
                         id="dropdownMenu2"
                         data-toggle="dropdown"
@@ -156,10 +157,11 @@ class Navigation extends React.Component {
                         aria-expanded="false"
                       >
                         <i className="fa fa-shopping-cart cart-icon" />
+                        <span className="cart-icon__orders">
+                          {this.totalCount(this.props.cart)}
+                        </span>
                       </button>
-                      <span className="cart-icon__orders">
-                        {this.totalCount(this.props.cart)}
-                      </span>
+
                       <div
                         className="dropdown-menu"
                         aria-labelledby="dropdownMenu2"

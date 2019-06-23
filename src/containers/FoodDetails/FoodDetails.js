@@ -9,34 +9,34 @@ import { setRating as foodRating } from "../../store/actions/foodActions";
 import StarRating from "../../components/StarRating/StarRating";
 
 class FoodDetails extends React.Component {
-  handleSubmit = e => {
-    e.preventDefault();
-    const { id } = this.state.res;
-    if (
-      this.refs.author.value !== "" &&
-      isNaN(this.refs.author.value) &&
-      this.refs.comment.value !== "" &&
-      isNaN(this.refs.author.value)
-    ) {
-      const author = this.refs.author.value;
-      const comment = this.refs.comment.value;
-      const rating = this.refs.rating.value;
-      this.props.addComment(id, comment, rating, author);
-    } else {
-      alert("please enter your name and comment");
-    }
-  };
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const { id } = this.state.res;
+  //   if (
+  //     this.refs.author.value !== "" &&
+  //     isNaN(this.refs.author.value) &&
+  //     this.refs.comment.value !== "" &&
+  //     isNaN(this.refs.author.value)
+  //   ) {
+  //     const author = this.refs.author.value;
+  //     const comment = this.refs.comment.value;
+  //     const rating = this.refs.rating.value;
+  //     this.props.addComment(id, comment, rating, author);
+  //   } else {
+  //     alert("please enter your name and comment");
+  //   }
+  // };
   render() {
-    let Food= this.props.food ? (
+    let Food = this.props.food ? (
       <section className="Restaurant" style={{ paddingTop: "100px" }}>
         <div className="container">
           <div className="Restaurant__photo d-flex justify-content-center align-items-center">
             <div className="text-center">
               <h3>{this.props.food.name}</h3>
               <span className="edit-icon">
-              <NavLink to="/foodform">
-                <i className="fa fa-pencil" /> 
-              </NavLink>             
+                <NavLink to="/foodform">
+                  <i className="fa fa-pencil" />
+                </NavLink>
               </span>
               <span className="love-icon">
                 <i className="fa fa-heart" />

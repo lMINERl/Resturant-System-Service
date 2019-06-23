@@ -3,6 +3,7 @@ import { AutoComplete } from "../AutoComplete/AutoComplete";
 // import { Autocomplete } from '../AutoComplete/AutoComplete';
 import Carousel from "../slider/slider";
 import { connect } from "react-redux";
+import {NavLink} from "react-router-dom";
 import WOW from "wowjs";
 
 // images
@@ -39,31 +40,30 @@ class HomePage extends Component {
             >
               <div className="carousel-inner">
                 <div className="carousel-item active">
-                  <div
-                    className="d-block d-block--first w-100"
-                    alt="First slide"
-                  >
+                  <div className="Header--BG1 w-100" alt="First slide">
                     <div className=" container">
-                      <div
-                        className="carousel-description p-0 wow fadeInLeft"
-                        data-wow-duration="1s"
-                      >
-                        <h3 className="caption">
-                          Order Your Food Online For <br />
-                          Take Away, Home Delivery
-                        </h3>
-                      </div>
+                      <div className="Header__content">
+                        <div
+                          className="carousel-description p-0 wow fadeInLeft"
+                          data-wow-duration="1s"
+                        >
+                          <h3 className="caption">
+                            Order Your Food Online For <br />
+                            Take Away, Home Delivery
+                          </h3>
+                        </div>
 
-                      {this.props.restaurants.forEach(r => {
-                        if (!cities.includes(r.location)) {
-                          cities.push(r.location);
-                        }
-                      })}
-                      <AutoComplete
-                        suggestions={cities}
-                        {...this.props}
-                        placeholder="Enter City To Find Restaurants"
-                      />
+                        {this.props.restaurants.forEach(r => {
+                          if (!cities.includes(r.location)) {
+                            cities.push(r.location);
+                          }
+                        })}
+                        <AutoComplete
+                          suggestions={cities}
+                          {...this.props}
+                          placeholder="Enter City To Find Restaurants"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -153,13 +153,15 @@ class HomePage extends Component {
                   With Your Friends In Few Steps .
                 </span>
               </div>
-              <button
+              <NavLink to="/groupform">
+               <button
                 className="button button-createGroup button--border wow fadeInUp"
                 data-wow-duration="1s"
                 data-wow-delay=".5s"
               >
                 Creat Your Group Now
-              </button>
+              </button>               
+              </NavLink>
             </div>
             <div
               className="big-cart-img col-md-4 wow fadeInRight"
@@ -272,7 +274,7 @@ class HomePage extends Component {
                 </div>
               </div>
 
-              <div className="col-sm-4">
+              <div className="col-sm-4 align-self-end">
                 <img className="" src={chef} alt="" />
               </div>
 

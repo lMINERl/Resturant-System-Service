@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 const Footer = props => {
   return (
-    <section className="container-color pb-2">
+    <section className="container-color pb-2 Footer">
       <div className="container">
         <div className="row">
           <div className="col-md-12">

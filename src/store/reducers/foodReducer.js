@@ -214,6 +214,7 @@ const foodReducer = (state = initialState, action) => {
         const data = { ...action.payload };
 
         nfoods.push(data);
+        console.log(nfoods)
       }
       break;
 
