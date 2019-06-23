@@ -12,40 +12,43 @@ export const initialState = {
     {
       userId: 121,
       comment: "I know they are going to be honest with me.",
-      rating: 3,
+      rating: 4,
       userName: "Israa"
     },
     {
       userId: 122,
       comment: "Hungry is always responsive to any question I have.",
-      rating: 3,
-      userName: "Marwa"
+      rating: 4,
+      userName: "Hatem"
     },
     {
       userId: 123,
       comment:
         "they keep me informed and they understand who we are and what we’re trying to do.",
-      rating: 3,
+      rating: 4,
       userName: "Ahmed"
     },
     {
       userId: 124,
       comment:
         "I am not going to get a subpar product; I know it is going to be good",
-      rating: 3,
-      userName: "Omar"
+      rating: 4,
+      userName: "Hadeer"
     },
     {
       userId: 125,
       comment:
         "All communication with them is really easy. They do handle everything.",
-      rating: 3,
+      rating: 4,
       userName: "Fatma"
     },
-    { userId: 126, comment: "lorem", rating: 3, userName: "Mohamed" },
-    { userId: 127, comment: "lorem", rating: 3, userName: "Rana" },
-    { userId: 128, comment: "lorem", rating: 3, userName: "Nora" },
-    { userId: 129, comment: "lorem", rating: 3, userName: "Sara" }
+    {
+      userId: 126,
+      comment:
+        "Hungry is a very good site , i have many groups with my friends .",
+      rating: 4,
+      userName: "Medhat"
+    }
   ]
 };
 

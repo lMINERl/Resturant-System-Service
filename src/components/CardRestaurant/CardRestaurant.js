@@ -99,10 +99,11 @@ const CardRestaurant = props => {
             <div className="d-flex justify-content-center w-100">
               <button className="button button--primary button--small-btn viewMenu-button">
                 <NavLink
+                style={{color:'white'}}
                   to={`/menus/${props.restaurant._id}`}
                   onClick={() => props.viewRestaurantMenu(props.restaurant._id)}
                 >
-                  <i className="fa fa-spoon margin-right viewMenu-button" />
+                  <i className="fa fa-spoon margin-right viewMenu-button"  />
                   View Menu
                 </NavLink>
               </button>

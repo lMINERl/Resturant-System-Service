@@ -15,7 +15,7 @@ const initialState = {
       location: "ismailia",
       categories: ["Sandwiches", "Fast Food"],
       description:
-        "Enjoy Free Delivery with KFC Egypt. Check out KFC menu and order from your favorite fried chicken                   restaurant in Cairo, Hurghada, Alexandria, Sharm Alshiekh...Check the Menu & Order Online. Order Food Online          from KFC, we deliver it to you. 11am - 3am. Delivery Around Egypt. Fast Delivery. Styles: Chicken Buckets,            Chicken Meals, Chicken Burgers, Snacks.Min. order:EGP 10.00"
+        "Enjoy Free Delivery with KFC Egypt. Fast Delivery chain by number of locations in the world"
     },
     {
       _id: "5cf92b292a79451758f83c1c3",
@@ -26,8 +26,7 @@ const initialState = {
       rating: 5,
       location: "ismailia",
       categories: ["Sandwiches", "Fast Food"],
-      description: `McDonald's is the second-largest fast food restaurant chain by number of locations in the world                   (36,000+).
-                  Discover our delicious menu featuring a wide selection of sandwiches, snacks, drinks and more. `
+      description: `McDonald's is the second-largest fast food restaurant chain by number of locations in the world .`
     },
     {
       _id: "5cf92b292a79451758f83c1c4",
@@ -39,7 +38,7 @@ const initialState = {
       location: "ismailia",
       categories: ["Pizza"],
       description:
-        "Domino's Pizza is a restaurant located in Egypt, serving a selection of Pizza that delivers              across.Choose your favorite pizzas,pastas, or sandwiches, and choose what time you'd like to receive              your meal. Then kick back and relax."
+        "Domino's Pizza is a restaurant located in Egypt, serving a selection of Pizza that delivers across.Choose your favorite pizzas."
     },
     {
       _id: "5cf92b292a79451758f83c1c5",

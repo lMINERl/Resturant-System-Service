@@ -15,6 +15,8 @@ import groupOrder from "../../assets/asset-1@2x.jpg";
 
 import stepsBG from "../../assets/download.jpg";
 import steps from "../../assets/dsfg-1@2x.jpg";
+import steps2 from "../../assets/2.jpg";
+import steps3 from "../../assets/3.jpg";
 
 import chef from "../../assets/chef_PNG140@2x.jpg";
 
@@ -203,7 +205,7 @@ class HomePage extends Component {
                     data-wow-delay="1s"
                   >
                     <div className="cart-img">
-                      <img className="img2" src={steps} alt="" />
+                      <img className="img2" src={steps2} alt="" />
                     </div>
                     <h2 className="cart-title">Choose Your Meal</h2>
                     <div className="cart-descryption">
@@ -217,7 +219,7 @@ class HomePage extends Component {
                     data-wow-delay="1.5s"
                   >
                     <div className="cart-img">
-                      <img className="img2" src={steps} alt="" />
+                      <img className="img2" src={steps3} alt="" />
                     </div>
                     <h2 className="cart-title">CheckOut & Enjoy</h2>
                     <div className="cart-descryption">
