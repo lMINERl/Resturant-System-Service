@@ -102,9 +102,6 @@ class FormCreateRestaurant extends React.Component {
                           <button type="submit" className="button button--black mr-5">Save</button>
                           <button type="submit" className="button button--secondary">Cancel</button>
                       </div>
-
-             
-
                   </div>
               </form>
           </div>
