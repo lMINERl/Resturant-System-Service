@@ -86,6 +86,9 @@ const userReducer = (state = initialState, action) => {
       currentPage = action.payload;
       break;
 
+    case actionTypes.UPDATE_USER:{
+      currentUser= {...action.payload};
+    }
     case action.ERROR:
       console.error(action.payload);
       break;

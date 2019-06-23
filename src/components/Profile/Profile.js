@@ -42,12 +42,21 @@ const Profile = props => {
                   >
                     Cuisins
                   </NavLink>
+                  <NavLink
+                    to="/profile"
+                    activeClassName="activebtn"
+                    className="button button--primary mr-3 button--small-btn button--rounded"
+                  >
+                    Profile
+                  </NavLink>
                 </div>
               </div>
               <div className="row">
                 <div className="col-md-12">
                   <Switch>
-                    <Route path="/profile" exact component={profileData} />
+                    <Route path="/profile"
+                     exact 
+                     component={profileData} />
                     <Route
                       path="/profile/grouporder"
                       exact
