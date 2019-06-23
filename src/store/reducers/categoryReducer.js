@@ -8,15 +8,19 @@ const initialState = {
     },
     {
       _id: "5cf92b292a79451758f83c1s1",
-      name: "category1"
+      name: "Pizza"
     },
     {
       _id: "5cf92b292a79451758f83c1s2",
-      name: "category2"
+      name: "Sandwiches"
     },
     {
       _id: "5cf92b292a79451758f83c1s3",
-      name: "category3"
+      name: "Fast Food"
+    },
+    {
+      _id: "5cf92b292a79451758f83c1s4",
+      name: "Pasta"
     }
   ],
   checkedItems: new Map()
