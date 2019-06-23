@@ -19,11 +19,10 @@ const mapDispatchToProps = dispatch => {
 };
 const mapStateToProps = state => {
   return {
-    user: state.user.isRegistered,
+    user: state.user.isRegistered
     // error: auth.error
   };
 };
-
 
 // Images
 
@@ -52,8 +51,7 @@ class SignupComponent extends Component {
   }
   render() {
     return (
-      <div style={{ padding: 20 }}>
-        {/* {this._renderErrorIfAny()} */}
+      <div className="cheese__wrapper d-flex align-items-center">
         <Formik
           initialValues={{ email: "", password: "", name: "" }}
           onSubmit={this.handleFormSubmit.bind(this)}
@@ -77,26 +75,17 @@ class SignupComponent extends Component {
             errors,
             touched
           }) => (
-            <div className="container form-style d-flex flex-direction-row justify-content-center align-items-center">
-              <img
-                src={register}
-                alt="Background for register form"
-                className="form-style__img"
-              />
-
+            <div className="container">
               <div className="row">
-                <div className="col-md-12 col-sm-6 form-style__body" style={{top:`25%`}}>
-                  <h2 className="form-style__body__title">Sign Up</h2>
-                  <form
-                    className="form-style__body__inputs"
-                    method="GET"
-                    action="#"
-                  >
+                <div className="cheese__content">
+                  <h2 className="">Sign Up</h2>
+                  <form className="" method="GET" action="#">
                     <Input
                       invalid={errors.name && touched.name}
                       type="text"
                       name="name"
-                      placeholder="your name..."
+                      className="form-control inputPadding--focus input--transparent"
+                      placeholder="Please Enter your name..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -107,7 +96,8 @@ class SignupComponent extends Component {
                       invalid={errors.email && touched.email}
                       type="email"
                       name="email"
-                      placeholder="your email..."
+                      placeholder="Please Enter your email..."
+                      className="form-control inputPadding--focus input--transparent my-3"
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -119,7 +109,8 @@ class SignupComponent extends Component {
                       invalid={errors.password && touched.password}
                       type="password"
                       name="password"
-                      placeholder="your password..."
+                      className="form-control inputPadding--focus input--transparent "
+                      placeholder="Please Enter your password ..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -128,6 +119,7 @@ class SignupComponent extends Component {
                     ) : null}
                     <button
                       type="submit"
+                      className="button button--secondary my-4"
                       onClick={handleSubmit}
                       disabled={!isValid || isSubmitting}
                     >
@@ -139,7 +131,6 @@ class SignupComponent extends Component {
             </div>
           )}
         />
-        
       </div>
     );
   }

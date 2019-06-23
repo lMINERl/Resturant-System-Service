@@ -5,7 +5,7 @@ class Comment extends Component {
            <>
                     
                    <div className="col-md-6">
-                   <div class="item">
+                   <div className="item">
                         <div className="testimonial">
                             <p>{this.props.data.comment}</p>
                         </div>

@@ -8,6 +8,7 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const LOGIN = "LOGIN";
 export const ERROR = "ERROR";
 export const REGISTER = "REGISTER";
+export const UPDATE_USER = "UPDATE_USER";
 
 export const loginDispatch = requset_data => {
   return dispatch => {
@@ -26,6 +27,19 @@ export const registerDispatch = requset_data => {
       .register(requset_data)
       .then(v => {
         dispatch(registerUser(v.data));
+      })
+      .catch(err => dispatch(riseError(err)));
+  };
+};
+
+
+export const updateUserDispatch = (requset_data,token) => {
+  return dispatch => {
+    userAPI
+      .editProfile(requset_data,token)
+      .then(v => {
+        debugger;
+        dispatch(updateUser(v.data));
       })
       .catch(err => dispatch(riseError(err)));
   };
@@ -61,3 +75,6 @@ export const riseError = msg => {
 export const registerUser = responseData => {
   return { type: REGISTER, payload: responseData };
 };
+export const updateUser = currentUser => {
+  return { type: UPDATE_USER, payload: currentUser }
+}

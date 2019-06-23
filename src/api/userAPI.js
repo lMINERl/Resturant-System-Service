@@ -21,6 +21,10 @@ export const userAPI = {
   },
   getProfile() {
     return axios.get(`${baseURL}/users/profile`);
+  },
+  editProfile(user, token) {
+    debugger;
+    return axios.put(`${baseURL}/users/profile/edit`, { body: user, headers:{authorization:token} });
   }
 };
 //let baseURL = process.env.REACT_APP_BASE_URL || "http://localhost:5030";

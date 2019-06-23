@@ -80,7 +80,7 @@ a:hover {
 .input--transparent:focus {
   border: none;
   border-radius: 0;
-  border: 1px solid #333;
+  border-bottom: 1px solid #333;
   box-shadow: none;
   font-size: 1.7rem;
   background: none;
@@ -788,7 +788,7 @@ a:hover {
     color: white;
     padding: 1rem;
     position: absolute;
-    left: 60%;
+    left: 50%;
     transform: translateX(-50%);
     font-size: 1.5rem; }
   .order-bill__check-subtotal {
@@ -1750,6 +1750,25 @@ a:hover {
 .menu-card__image-card {
   width: 10rem;
 }
+
+
+/* ========Start cheese====== */
+.cheese__wrapper
+{
+  background: url(assets/login.png) center center no-repeat;
+  /* padding: 20px; */
+  width: 600px;
+  height: 700px;
+  
+  text-align: center;
+  margin: auto;
+}
+.cheese__content
+{
+  margin:auto;
+  margin-bottom:25%;
+}
+/* ========End cheese====== */
 /* occordion */
 .accordion-list {
   list-style: none;

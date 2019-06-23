@@ -46,7 +46,7 @@ class LoginPage extends Component {
   }
   render() {
     return (
-      <div style={{ padding: 20 }}>
+      <div className="cheese__wrapper d-flex align-items-center">
         {this._renderErrorIfAny()}
         <Formik
           initialValues={{ email: "", password: "" }}
@@ -68,25 +68,17 @@ class LoginPage extends Component {
             errors,
             touched
           }) => (
-            <div className="container form-style d-flex flex-direction-row justify-content-center align-items-center">
-              <img
-                src={loginBG}
-                alt="Background for register form"
-                className="form-style__img"
-              />
+            <div className="container">
               <div className="row">
-                <div className="col-md-12 col-sm-6 form-style__body" style={{top:`25%`}}>
-                  <h2 className="form-style__body__title">Log in</h2>
-                  <form
-                    className="form-style__body__inputs"
-                    method="GET"
-                    action="#"
-                  >
+                <div className="cheese__content ">
+                  <h2 className="">Log in</h2>
+                  <form className="" method="GET" action="#">
                     <Input
                       invalid={errors.email && touched.email}
                       type="email"
                       name="email"
-                      placeholder="your email..."
+                      className="form-control inputPadding--focus input--transparent"
+                      placeholder="Please Enter your email ..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -98,7 +90,8 @@ class LoginPage extends Component {
                       invalid={errors.password && touched.password}
                       type="password"
                       name="password"
-                      placeholder="your password..."
+                      className="form-control inputPadding--focus input--transparent mt-3"
+                      placeholder="Please Enter your password..."
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -107,18 +100,23 @@ class LoginPage extends Component {
                     ) : null}
                     <button
                       type="submit"
+                      className="button button--secondary my-4"
                       onClick={handleSubmit}
                       disabled={!isValid || isSubmitting}
                     >
                       Sign in
                     </button>
                   </form>
-                  <p className="form-style__body--forget  d-flex flex-direction-row justify-content-center align-items-center">
-                    <NavLink to="/">Forget Password</NavLink>
+                  <p className="">
+                    <NavLink to="/" className="text-info">
+                      Forget Password
+                    </NavLink>
                   </p>
-                  <p className="form-style__body--signup  d-flex flex-direction-row justify-content-center align-items-center">
-                    Don't have an account ?{" "}
-                    <NavLink to="/register">Signup</NavLink>
+                  <p className="">
+                    Don't have an account ?
+                    <NavLink to="/register" className="text-dark">
+                      Signup
+                    </NavLink>
                   </p>
                 </div>
               </div>

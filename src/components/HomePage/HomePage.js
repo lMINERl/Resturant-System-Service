@@ -323,7 +323,7 @@ class HomePage extends Component {
 
         {/* <!--End Features --> */}
         {/* <!--start testimonials--> */}
-        <section class="testimonials section-padding">
+        <section className="testimonials section-padding">
           <h2 className="section__title p-5">Testimonials</h2>
           <Carousel slides={this.props.comments} />
           {/* <!--end testimonials--> */}
