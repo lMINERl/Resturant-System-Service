@@ -2,7 +2,7 @@ export const UPDATE_ITEM = 'UPDATE_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const ADD_GROUP = 'ADD_GROUP';
 export const GET_ITEMS = 'GET_ITEMS';
-export const GET_ITEM_BY_ID = 'GET_ITEM_BY_ID';
+export const GET_GROUP_BY_ID = 'GET_GROUP_BY_ID';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
 export const ADD_RESTAURANT_TO_GROUP = 'ADD_RESTAURANT_TO_GROUP';
 
@@ -37,10 +37,10 @@ export const getItems = () => {
         payload: null
     }
 }
-export const getItemById = (itemId) => {
+export const getGroupById = (groupId) => {
     return {
-        type: GET_ITEM_BY_ID,
-        payload: itemId
+        type: GET_GROUP_BY_ID,
+        payload: groupId
     }
 }
 export const addRestaurantToGroup = (restaurant) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import AccordionItem from "../../containers/AccordionItem";
+import AccordionItem from "../../components/AccordionItem";
 
 const GroupBill = props => {
   let orderlist = props.data ? (
