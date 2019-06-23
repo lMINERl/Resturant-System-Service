@@ -106,7 +106,7 @@ const RestaurantListing = props => {
                   <SideBar />
                 </div>
                 <div className="col-md-9 d-flex flex-wrap align-content-around">
-                  <nav className="navbar navbar-full-width navbar-expand-lg navbar-light bg-light justify-content-between mb-4 py-3 col w-100 align-items-center">
+                  <nav className="navbar navbar-full-width navbar-expand-lg navbar-light bg-light justify-content-between mb-4 p-3 col w-100 align-items-center">
                     <form className="form-inline">
                       <input
                         className="filter-search form-control input-search mr-0 "

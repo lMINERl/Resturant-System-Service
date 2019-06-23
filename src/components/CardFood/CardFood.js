@@ -68,7 +68,9 @@ const CardFood = props => {
           to="/fooddetails"
           onClick={() => props.getItemById(props.data._id)}
         >
-          <h3 className="menu-card__heading text-center">{props.data.name}</h3>
+          <h3 className="menu-card__heading text-center mt-5 mb-2">
+            {props.data.name}
+          </h3>
         </NavLink>
         <div className="star-rating text-center">
           <ul className="list-inline">
