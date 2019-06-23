@@ -11,10 +11,12 @@ const AccordionItem = props => {
   const orderedFoods = groupUser => {
     return groupUser.ordererdFoods.map((o, index) => {
       return (
-        <div key={index}>
-          <p className="accordion-item__paragraph">{o.foodname}</p>
-          <p className="accordion-item__paragraph">{o.price}</p>
+        <React.Fragment key={index}>
+        <div className="row">
+        <div className="col-9"><p className="accordion-item__paragraph">{o.foodname}</p></div> 
+        <div className="col-3"><p className="accordion-item__paragraph">{o.price}</p></div>  
         </div>
+        </React.Fragment >
       );
     });
   };
@@ -32,10 +34,9 @@ const AccordionItem = props => {
         changeView(index);
       }}
     >
-        <div className="accordion-item__line">
-          <h3 className="accordion-item__title">{g.username}</h3>
-          <p>{g.totalPrice}</p>
-          <span className="accordion-item__icon" />
+        <div className="accordion-item__line row">
+         <div className="col-9"> <h3 className="accordion-item__title">{g.username}</h3></div>
+         <div className="col-3"><p> Total Price :{g.totalPrice}</p></div>
         </div>
         <div className="accordion-item__inner">
           <div className="accordion-item__content">{orderedFoods(g)}</div>

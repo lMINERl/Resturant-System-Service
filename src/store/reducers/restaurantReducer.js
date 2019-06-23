@@ -1,7 +1,6 @@
 import * as actions from "../actions/restaurantActions";
 // import restaurantModel from '../../models/restaurant';
 import findIndex from "../../helpers/findIndex";
-import img from "../../assets/white-hat-and-yellow-bread@2x.jpg";
 
 const initialState = {
   restaurants: [

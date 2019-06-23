@@ -4,25 +4,92 @@ const initialState = {
   groups: [
     {
       _id: "a287319",
-      name: "KFC3",
-      day: "Friday",
-      date: "22/4/2019",
+      name: "McDonald's",
+      day: "Monday",
+      date: "24/6/2019",
       groupUsers: [
         {
-          username: "Fatma",
-          totalPrice: 140,
+          username: "Israa",
+          totalPrice: 90,
           ordererdFoods: [
-            { foodname: "Dinner Box", price: 70 },
-            { foodname: "Toasted Twister", price: 70 }
+            { foodname: "Chicken McNuggets", price: 90 }
+          ]
+        },
+        {
+          username: "Mohammed",
+          totalPrice: 150,
+          ordererdFoods: [{ foodname: "Grand Share Box", price: 150 }]
+        },
+        {
+          username: "Mahmoud",
+          totalPrice: 90,
+          ordererdFoods: [
+            { foodname: "Chicken McNuggets", price: 90 }
+          ]
+        },
+        {
+          username: "Fatma",
+          totalPrice: 240,
+          ordererdFoods: [
+            { foodname: "Chicken McNuggets", price: 90 },
+            { foodname: "Grand Share Box", price: 150 }
+            
+          ]
+        },
+        {
+          username: "Aya",
+          totalPrice: 240,
+          ordererdFoods: [
+            { foodname: "Grand Share Box", price: 150 }    
+          ]
+        }
+      ],
+      time: "03:00AM",
+      location: "location1"
+    },
+    {
+      _id: "a212387319",
+      name: "KFC",
+      day: "Monday",
+      date: "24/6/2019",
+      groupUsers: [
+        {
+          username: "Heba",
+          totalPrice: 70,
+          ordererdFoods: [
+            { foodname: "Dinner Box", price: 70 }     
+          ]
+        },
+        {
+          username: "Mohammed",
+          totalPrice: 170,
+          ordererdFoods: [{ foodname: "Shrimp Meal", price: 100 },{ foodname: "Toasted Twister", price: 70 }]
+        }
+      ],
+      time: "04:00PM",
+      location: "location3"
+    } ,
+    {
+      _id: "a2873190",
+      name: "Domino's Pizza",
+      day: "Tuesday",
+      date: "25/4/2019",
+      groupUsers: [
+        {
+          username: "Sara",
+          totalPrice: 115,
+          ordererdFoods: [
+            { foodname: "Chicken Legend Pizza", price: 50 },
+            { foodname: "Meatzza Pizza", price: 65 }
           ]
         },
         {
           username: "Mohammed",
           totalPrice: 100,
-          ordererdFoods: [{ foodname: "Shrimp Meal", price: 100 }]
+          ordererdFoods: [{ foodname: "Shrimp Superb Cheese Pizza", price: 35 },{ foodname: "Meatzza Pizza", price: 65 }]
         }
       ],
-      time: "01:00AM",
+      time: "06:00PM",
       location: "location1"
     },
     {
@@ -32,29 +99,6 @@ const initialState = {
       date: "-/-/-",
       time: "-:-",
       location: "location2"
-    },
-    {
-      _id: "a212387319",
-      name: "KFC",
-      day: "Monday",
-      date: "23/4/2019",
-      groupUsers: [
-        {
-          username: "Fatma",
-          totalPrice: 140,
-          ordererdFoods: [
-            { foodname: "Dinner Box", price: 70 },
-            { foodname: "Toasted Twister", price: 70 }
-          ]
-        },
-        {
-          username: "Mohammed",
-          totalPrice: 100,
-          ordererdFoods: [{ foodname: "Shrimp Meal", price: 100 }]
-        }
-      ],
-      time: "04:00AM",
-      location: "location3"
     }
   ],
   selectedGroup: null,
