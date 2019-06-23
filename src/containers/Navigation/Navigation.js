@@ -7,7 +7,7 @@ const mapStateToProps = state => {
   return {
     cart: state.cart,
     user: state.user.user,
-    token: state.user.token
+    token: state.user.token,
   };
 };
 
@@ -38,7 +38,6 @@ class Navigation extends React.Component {
         profileSettings: null,
         groupOrder: null
       };
-      // debugger;
       if (this.props.user._id && this.props.token) {
         obj.profile = (
           <NavLink to="/profile">

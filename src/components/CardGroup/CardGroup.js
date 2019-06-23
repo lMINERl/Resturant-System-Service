@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import OrderBill from "../OrderBill";
 
 import resLogo from "../../assets/white-hat-and-yellow-bread@2x.jpg";
+
 const CardGroup = props => {
   const [view, setView] = useState(false);
   let Cart = view ? <OrderBill /> : <React.Fragment />;
@@ -42,7 +43,9 @@ const CardGroup = props => {
           }}
           className="fa fa-trash"
         />
-        <i className="fa fa-sign-out" />
+        <NavLink to={`/profile/grouporder/${props.data._id}`}>
+          <i className="fa fa-user-circle-o" />
+        </NavLink>
       </div>
       <NavLink
         to={`/menus/${props.data._id}`}

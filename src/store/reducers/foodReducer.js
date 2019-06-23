@@ -164,7 +164,7 @@ const initialState = {
       description:"Rich layer of Mozzarella cheese"
     },
     {
-     _id: "5cf929e62a79451758f83c1b10",
+     _id: "5cf929e62a79451758f83c1b11",
       name: "Spaghetti Neapolitan",
       restaurantId:"5cf92b292a79451758f83c1c5",
       discountPrice: 0,
@@ -180,7 +180,7 @@ const initialState = {
       description:"Pasta, peppers, zucchini and eggplant"
     },
     {
-     _id: "5cf929e62a79451758f83c1b11",
+     _id: "5cf929e62a79451758f83c1b12",
       name: "Spicy Penne Arrabbiata",
       restaurantId:"5cf92b292a79451758f83c1c5",
       discountPrice: 0,
@@ -214,6 +214,7 @@ const foodReducer = (state = initialState, action) => {
         const data = { ...action.payload };
 
         nfoods.push(data);
+        console.log(nfoods)
       }
       break;
 

@@ -14,7 +14,6 @@ import { RestaurantDetails } from "../components/RestaurantDetails";
 import CardListing from "../containers/CardListing/";
 import MenuListing from "../containers/menuListing/menuListing";
 import Profile from "../components/Profile";
-
 import RestaurantListing from "../containers/RestaurantListing";
 import RestaurantDetailsPage from "../containers/RestaurantDetailsPage/RestaurantDetailsPage";
 class App extends React.Component {
@@ -64,7 +63,6 @@ class App extends React.Component {
                   exact
                   component={RestaurantDetailsPage}
                 />
-
                 <Redirect path="/home" to="/" />
               </Switch>
               <Footer />

@@ -3,6 +3,7 @@ import { AutoComplete } from "../AutoComplete/AutoComplete";
 // import { Autocomplete } from '../AutoComplete/AutoComplete';
 import Carousel from "../slider/slider";
 import { connect } from "react-redux";
+import {NavLink} from "react-router-dom";
 import WOW from "wowjs";
 
 // images
@@ -14,6 +15,8 @@ import groupOrder from "../../assets/asset-1@2x.jpg";
 
 import stepsBG from "../../assets/download.jpg";
 import steps from "../../assets/dsfg-1@2x.jpg";
+import steps2 from "../../assets/2.jpg";
+import steps3 from "../../assets/3.jpg";
 
 import chef from "../../assets/chef_PNG140@2x.jpg";
 
@@ -152,13 +155,15 @@ class HomePage extends Component {
                   With Your Friends In Few Steps .
                 </span>
               </div>
-              <button
+              <NavLink to="/groupform">
+               <button
                 className="button button-createGroup button--border wow fadeInUp"
                 data-wow-duration="1s"
                 data-wow-delay=".5s"
               >
                 Creat Your Group Now
-              </button>
+              </button>               
+              </NavLink>
             </div>
             <div
               className="big-cart-img col-md-4 wow fadeInRight"
@@ -200,7 +205,7 @@ class HomePage extends Component {
                     data-wow-delay="1s"
                   >
                     <div className="cart-img">
-                      <img className="img2" src={steps} alt="" />
+                      <img className="img2" src={steps2} alt="" />
                     </div>
                     <h2 className="cart-title">Choose Your Meal</h2>
                     <div className="cart-descryption">
@@ -214,7 +219,7 @@ class HomePage extends Component {
                     data-wow-delay="1.5s"
                   >
                     <div className="cart-img">
-                      <img className="img2" src={steps} alt="" />
+                      <img className="img2" src={steps3} alt="" />
                     </div>
                     <h2 className="cart-title">CheckOut & Enjoy</h2>
                     <div className="cart-descryption">

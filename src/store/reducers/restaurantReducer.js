@@ -7,60 +7,65 @@ const initialState = {
   restaurants: [
     {
       _id: "5cf92b292a79451758f83c1c2",
+      userId: "5d0b9afc7a25e228e0f4032a",
       name: "KFC",
-      imgUrl: img,
-      rating: 2,
+      imgUrl:
+        "https://images.deliveryhero.io/image/otlob/restaurants/e5bi_sqp.jpg?v=20150909144409?size=120",
+      rating: 4,
       location: "ismailia",
-      categories: ["category1", "category2"],
+      categories: ["Sandwiches", "Fast Food"],
       description:
-        "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
+        "Enjoy Free Delivery with KFC Egypt. Fast Delivery chain by number of locations in the world"
     },
     {
       _id: "5cf92b292a79451758f83c1c3",
-      name: "MAC",
-      imgUrl: img,
-      rating: 3,
-      location: "suez",
-      categories: ["category1", "category2"],
-      description:
-        'Our menu is simple yet delicious with a variety of "MACS" available.'
+      userId: "5d0b9afc7a25e228e0f4032a",
+      name: "McDonald's",
+      imgUrl:
+        "https://images.deliveryhero.io/image/otlob/restaurants/mac_636878411090902333.jpg?size=120",
+      rating: 5,
+      location: "ismailia",
+      categories: ["Sandwiches", "Fast Food"],
+      description: `McDonald's is the second-largest fast food restaurant chain by number of locations in the world .`
     },
     {
       _id: "5cf92b292a79451758f83c1c4",
-      name: "Cook Door",
-      imgUrl: img,
-      rating: 2,
-      location: "alex",
-      categories: ["category1", "category2"],
-      description: "Our menu is simple yet delicious."
+      userId: "5d0b9afc7a25e228e0f4032a",
+      name: `Domino's Pizza`,
+      imgUrl:
+        "https://images.deliveryhero.io/image/otlob/restaurants/e3zx_sqp.jpg?v=20180731170850?size=120",
+      rating: 3,
+      location: "ismailia",
+      categories: ["Pizza"],
+      description:
+        "Domino's Pizza is a restaurant located in Egypt, serving a selection of Pizza that delivers across.Choose your favorite pizzas."
     },
     {
       _id: "5cf92b292a79451758f83c1c5",
-      name: "Pizza Hut",
-      imgUrl: img,
-      rating: 1,
-      location: "alex",
-      categories: ["category1", "category2"],
-      description: "Our menu is simple yet delicious."
+      userId: "5d0d0802fc822a301c4c9148",
+      name: "Matbakh Al Kabsa",
+      imgUrl:
+        "https://images.deliveryhero.io/image/otlob/restaurants/e2bu_sqp.PNG?v=20180319205535",
+      rating: 2,
+      location: "cairo",
+      categories: ["Pasta"],
+      description:
+        "The Matbakh Al Kabsa menu is available online in Hangry. Order now your Matbakh Al Kabsa meal.                     ✓Fast ✓Easy ✓Promotions ✓Reviews | Hangry."
     },
     {
-      _id: "5cf92b292a79451758f83c1c",
-      name: "restaurant1",
-      imgUrl: img,
-      email: "me@example.com",
-      phone: "+201023522342",
-      foodids: ["5cf929e62a79451758f83c1b"],
-      tags: ["tag1", "tag2"],
-      categories: ["category1", "category2"],
-      location: "cairo",
+      _id: "5cf92b292a79451758f83c1c6",
+      userId: "5d0d0802fc822a301c4c9148",
+      name: "Buffalo Burger",
+      imgUrl:
+        "https://images.deliveryhero.io/image/otlob/restaurants/n4wq_sqp.jpg?v=20180502100826?size=120",
       rating: 4,
-      comments: [{ userId: "5cf92f1c2a79451758f83c2a", number: 0 }],
-      description:
-        "KFC's menu has evolved from its legendary Original Recipe pressure fried chicken."
+      location: "cairo",
+      categories: ["Fast Food"],
+      description: `Buffalo Burger uses high-quality raw ingredients, classic-cooking, “fire-grilled burgers”                    methods, clean environments and distinctive`
     }
   ],
   selectedRestaurant: {},
-  restaurantMenu: ["5cf929e62a79451758f83c1b"],
+  restaurantMenu: ["5cf929e62a79451758f83c1b"], //not sure i'm not found function for it
   pageSize: 5,
   currentPage: 1,
   filteredRestaurants: null

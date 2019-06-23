@@ -7,6 +7,21 @@ const initialState = {
       name: "KFC3",
       day: "Friday",
       date: "22/4/2019",
+      groupUsers: [
+        {
+          username: "Fatma",
+          totalPrice: 140,
+          ordererdFoods: [
+            { foodname: "Dinner Box", price: 70 },
+            { foodname: "Toasted Twister", price: 70 }
+          ]
+        },
+        {
+          username: "Mohammed",
+          totalPrice: 100,
+          ordererdFoods: [{ foodname: "Shrimp Meal", price: 100 }]
+        }
+      ],
       time: "01:00AM",
       location: "location1"
     },
@@ -23,18 +38,33 @@ const initialState = {
       name: "KFC",
       day: "Monday",
       date: "23/4/2019",
+      groupUsers: [
+        {
+          username: "Fatma",
+          totalPrice: 140,
+          ordererdFoods: [
+            { foodname: "Dinner Box", price: 70 },
+            { foodname: "Toasted Twister", price: 70 }
+          ]
+        },
+        {
+          username: "Mohammed",
+          totalPrice: 100,
+          ordererdFoods: [{ foodname: "Shrimp Meal", price: 100 }]
+        }
+      ],
       time: "04:00AM",
       location: "location3"
     }
   ],
-  selectedGroup: 0,
+  selectedGroup: null,
   pageSize: 5,
   currentPage: 1
 };
 
 const groupsReducer = (state = initialState, action) => {
   let groups = [...state.groups];
-  let selectedGroup = state.selectedGroup;
+  let selectedGroup = null;
   let pageSize = state.pageSize;
   let currentPage = state.pageSize;
   switch (action.type) {
@@ -76,11 +106,11 @@ const groupsReducer = (state = initialState, action) => {
       }
       break;
 
-    case actionTypes.GET_ITEM_BY_ID:
+    case actionTypes.GET_GROUP_BY_ID:
       {
         const _id = action.payload;
         const itemindex = groups.findIndex(el => el._id === _id);
-        if (itemindex !== -1) selectedGroup = itemindex;
+        if (itemindex !== -1) selectedGroup = { ...groups[itemindex] };
       }
       break;
     case actionTypes.ADD_RESTAURANT_TO_GROUP:

@@ -7,6 +7,7 @@ import ProfileSideBar from "../ProfileSideBar";
 import profileData from "../profileData/profileData";
 import profileEdit from "../profileEdit/profileEdit";
 import { connect } from "react-redux";
+import GroupDetails from "../../containers/GroupDetails";
 
 const Profile = props => {
   if (props.user._id && props.token) {
@@ -58,6 +59,11 @@ const Profile = props => {
                       component={ProfileFavRestaurants}
                     />
                     <Route
+                      path="/profile/grouporder/:groupId"
+                      exact
+                      component={GroupDetails}
+                    />
+                    <Route
                       path="/profile/cuisins"
                       exact
                       component={ProfileFavCuisins}
@@ -72,7 +78,14 @@ const Profile = props => {
       </>
     );
   } else {
-    return <h1 className="d-flex justify-content-center m-5" style={{height:"100vh"}} >you need to login</h1>;
+    return (
+      <h1
+        className="d-flex justify-content-center m-5"
+        style={{ height: "100vh" }}
+      >
+        you need to login
+      </h1>
+    );
   }
 };
 function mapStateToProps(state) {

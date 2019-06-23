@@ -7,7 +7,6 @@ import { getItemById } from "../../store/actions/foodActions";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import Proptype from "prop-types";
-
 import resLogo from "../../assets/white-hat-and-yellow-bread@2x.jpg";
 function mapStateToProps(state) {
   return {

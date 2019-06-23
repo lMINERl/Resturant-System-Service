@@ -4,7 +4,7 @@ import CardFood from "../../components/CardFood/CardFood";
 import { NavLink } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../store/actions/cartActions";
-import { addComment } from "../../store/actions/userActions";
+
 import {
   setRating as restaurantRating,
   getRestaurantById
@@ -17,7 +17,6 @@ import {
   setAmount
 } from "../../store/actions/foodActions";
 // import Comment from "../../components/comments/comments";
-import OrderBill from "../../components/OrderBill/OrderBill";
 import StarRating from "../../components/StarRating/StarRating";
 
 class DetailsPage extends Component {
