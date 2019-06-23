@@ -7,6 +7,23 @@ const initialState = {
       name: "KFC3",
       day: "Friday",
       date: "22/4/2019",
+      groupUsers:[
+        {
+          username:"Fatma",
+          totalPrice:140,
+          ordererdFoods:[
+            {foodname:"Dinner Box",price:70},
+            {foodname:"Toasted Twister",price:70}
+          ]
+        },
+        {
+          username:"Mohammed",
+          totalPrice:100,
+          ordererdFoods:[
+            {foodname:"Shrimp Meal",price:100}
+          ]
+        }
+      ],
       time: "01:00AM",
       location: "location1"
     },
@@ -23,6 +40,23 @@ const initialState = {
       name: "KFC",
       day: "Monday",
       date: "23/4/2019",
+      groupUsers:[
+        {
+          username:"Fatma",
+          totalPrice:"140 EPG",
+          ordererdFoods:[
+            {foodname:"Dinner Box",price:70},
+            {foodname:"Toasted Twister",price:70}
+          ]
+        },
+        {
+          username:"Mohammed",
+          totalPrice:100,
+          ordererdFoods:[
+            {foodname:"Shrimp Meal",price:100}
+          ]
+        }
+      ],
       time: "04:00AM",
       location: "location3"
     }
