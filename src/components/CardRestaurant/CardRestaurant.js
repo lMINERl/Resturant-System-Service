@@ -2,6 +2,7 @@ import React from "react";
 import StarRating from "../../components/StarRating";
 import { NavLink } from "react-router-dom";
 import { addRestaurantToGroup } from "../../store/actions/groupActions";
+import readMore from "../../helpers/readMore";
 
 import {
   getRestaurantById,
@@ -93,17 +94,17 @@ const CardRestaurant = props => {
             </div>
             <div className="menu-card__data">
               <p className="menu-card__data-info">
-                {props.restaurant.description}
+                {readMore(props.restaurant.description, 60)}
               </p>
             </div>
             <div className="d-flex justify-content-center w-100">
               <button className="button button--primary button--small-btn viewMenu-button">
                 <NavLink
-                style={{color:'white'}}
+                  style={{ color: "white" }}
                   to={`/menus/${props.restaurant._id}`}
                   onClick={() => props.viewRestaurantMenu(props.restaurant._id)}
                 >
-                  <i className="fa fa-spoon margin-right viewMenu-button"  />
+                  <i className="fa fa-spoon margin-right viewMenu-button" />
                   View Menu
                 </NavLink>
               </button>
