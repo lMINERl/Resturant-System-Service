@@ -27,7 +27,7 @@ const GroupOrder = (props) => {
           <div className="col-md-4">
             <div className="menu-card__item  menu-border">
               <div className="menu-card__item-add text-center">
-                <p>Add Restaurant</p>
+                <p>Add Group Order</p>
                 <NavLink to="/groupform" className="fa fa-plus-circle fa-3x"></NavLink>
               </div>
             </div>

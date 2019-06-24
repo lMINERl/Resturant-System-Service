@@ -33,22 +33,22 @@ const ProfileSideBar = (props) => {
                     <input type="text" placeholder="Search group .. " className="form-control p-4"/>
                             </li>
                     <li className="p-1 mb-1">
-                      <NavLink to="">ITI UI group</NavLink>
+                      <NavLink to="">ITI UI</NavLink>
                     </li>
                     <hr/>
 
                       <li className="p-1 mb-1 ">
-                        <NavLink to="">ITI UI group</NavLink>
+                        <NavLink to="">ITI SD</NavLink>
                       </li>
                       <hr/>
 
                         <li className="p-1 mb-1 ">
-                          <NavLink to="">ITI UI group</NavLink>
+                          <NavLink to="">ITI Wireless</NavLink>
                         </li>
                         <hr/>
 
                           <li className="p-1 mb-1">
-                            <NavLink to="">ITI UI group</NavLink>
+                            <NavLink to="">ITI 3-Month Track</NavLink>
                           </li>
                         </ul>
                     </li>
