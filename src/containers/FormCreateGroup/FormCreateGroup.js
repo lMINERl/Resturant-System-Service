@@ -57,7 +57,7 @@ class FormCreateGroup extends React.Component {
     });
     return (
       <div className="container">
-        <h3 className="head-title col text-center p-4">Create Resturant Group</h3>
+        <h3 className="head-title col text-center p-4">Create Group Order</h3>
         <div className="">
        
           <div className="">

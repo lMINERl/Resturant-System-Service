@@ -15,8 +15,8 @@ import groupOrder from "../../assets/asset-1@2x.jpg";
 
 import stepsBG from "../../assets/download.jpg";
 import steps from "../../assets/dsfg-1@2x.jpg";
-import steps2 from "../../assets/2.jpg";
-import steps3 from "../../assets/3.jpg";
+import steps2 from "../../assets/sdfsdfs.jpg";
+import steps3 from "../../assets/we.jpg";
 
 import chef from "../../assets/chef_PNG140@2x.jpg";
 

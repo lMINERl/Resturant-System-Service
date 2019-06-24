@@ -8,7 +8,7 @@ import CartItem from "../cartItem/cartItem";
 class Cart extends React.Component {
     renderCart() {
         return (
-            <div>
+            <div style={{overflow:"scroll",height:'80vh'}}>
                 {this.cartList()}
             </div>
         );
