@@ -44,8 +44,9 @@ const CardRestaurant = props => {
           type="button"
           onClick={() => props.addRestaurantToGroup(props.restaurant)}
           className="button button--black button--small-btn"
+      
         >
-          <NavLink to="/profile/grouporder">Add to group</NavLink>
+          <NavLink to="/profile/grouporder" className="text-white">Add to group</NavLink>
         </button>
       );
       if (props.user.roles.some(v => v === "delete"))
