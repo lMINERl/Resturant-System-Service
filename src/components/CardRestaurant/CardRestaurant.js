@@ -41,6 +41,7 @@ const CardRestaurant = props => {
       obj.favResturant = <i className="fa fa-heart-o" />;
       obj.addToGroup = (
         <button
+          type="button"
           onClick={() => props.addRestaurantToGroup(props.restaurant)}
           className="button button--black button--small-btn"
         >
@@ -98,14 +99,14 @@ const CardRestaurant = props => {
               </p>
             </div>
             <div className="d-flex justify-content-center w-100">
-              <button className="button button--primary button--small-btn viewMenu-button">
+              <button type="button" className="button button--primary button--small-btn">
                 <NavLink
                   style={{ color: "white" }}
                   to={`/menus/${props.restaurant._id}`}
                   onClick={() => props.viewRestaurantMenu(props.restaurant._id)}
                 >
-                  <i className="fa fa-spoon margin-right viewMenu-button" />
-                  View Menu
+                  <i className="fa fa-spoon margin-right" />
+                   View Menu
                 </NavLink>
               </button>
 
