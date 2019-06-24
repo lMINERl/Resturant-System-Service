@@ -91,14 +91,6 @@ const initialState = {
       ],
       time: "06:00PM",
       location: "location1"
-    },
-    {
-      _id: "a287311239",
-      name: "Group",
-      day: "-",
-      date: "-/-/-",
-      time: "-:-",
-      location: "location2"
     }
   ],
   selectedGroup: null,
